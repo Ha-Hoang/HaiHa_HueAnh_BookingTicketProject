@@ -6,10 +6,14 @@ export const theme = createMuiTheme({
       main: "#fff",
     },
     secondary: {
+      light: "#ff8664",
+      dark: "#fb4226",
       main: "#fa5238",
+      contrastText: "#fff",
     },
   },
   typography: {
-    fontFamily: "Roboto",
+    fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
+    fontSize: 13,
   },
 });

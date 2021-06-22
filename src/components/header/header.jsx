@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { NavLink } from "react-router-dom";
 import { CardMedia } from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
+import logo from "../../assets/images/web-logo.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,16 +15,33 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-  },
-  navActive: {
-    color: "#fa5238",
+    justifyContent: "center",
   },
   media: {
     height: 50,
     width: 50,
+    marginRight: 150,
   },
   text: {
     textDecoration: "none",
+    fontWeight: 500,
+  },
+  textButton: {
+    textTransform: "capitalize",
+    color: "#9b9b9b",
+  },
+  hover: {
+    padding: 10,
+    transition: "all 0.5s",
+    "&:hover": {
+      color: "#fb4226",
+      cursor: "pointer",
+    },
+  },
+  avatar: {
+    width: 30,
+    height: 30,
+    marginRight: 5,
   },
 }));
 
@@ -34,42 +53,35 @@ export default function Header() {
       <AppBar position="static">
         <Toolbar>
           <NavLink to="/" exact>
-            <CardMedia
-              image="https://tix.vn/app/assets/img/icons/web-logo.png"
-              component="img"
-              className={classes.media}
-            />
+            <CardMedia image={logo} component="img" className={classes.media} />
           </NavLink>
-          <Typography variant="h6" className={classes.title}>
-            <NavLink
-              to="/"
-              exact
-              className={classes.text}
-              activeClassName={classes.navActive}
-            >
-              Home
+          <Toolbar className={classes.title}>
+            <Typography className={classes.text && classes.hover}>
+              Lịch chiếu
+            </Typography>
+            <Typography className={classes.text && classes.hover}>
+              Cụm rạp
+            </Typography>
+            <Typography className={classes.text && classes.hover}>
+              Tin tức
+            </Typography>
+            <Typography className={classes.text && classes.hover}>
+              Ứng dụng
+            </Typography>
+          </Toolbar>
+          <Toolbar>
+            <NavLink to="/signin" exact className={classes.text}>
+              <Button color="inherit" className={classes.textButton}>
+                <Avatar src="/broken-image.jpg" className={classes.avatar} />
+                Đăng Nhập
+              </Button>
             </NavLink>
-          </Typography>
-          <Button color="inherit">
-            <NavLink
-              to="/signin"
-              exact
-              className={classes.text}
-              activeClassName={classes.navActive}
-            >
-              SIGN IN
+            <NavLink to="/signup" exact className={classes.text}>
+              <Button color="inherit" className={classes.textButton}>
+                Đăng Ký
+              </Button>
             </NavLink>
-          </Button>
-          <Button color="inherit">
-            <NavLink
-              to="/signup"
-              exact
-              className={classes.text}
-              activeClassName={classes.navActive}
-            >
-              SIGN UP
-            </NavLink>
-          </Button>
+          </Toolbar>
         </Toolbar>
       </AppBar>
     </div>
