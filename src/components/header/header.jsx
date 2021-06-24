@@ -8,6 +8,9 @@ import { NavLink } from "react-router-dom";
 import { CardMedia } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import logo from "../../assets/images/web-logo.png";
+import { useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core";
+import HeaderResponsive from "./headerResponsive";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,13 +25,19 @@ const useStyles = makeStyles((theme) => ({
     width: 50,
     marginRight: 150,
   },
-  text: {
+  textNavLink: {
     textDecoration: "none",
     fontWeight: 500,
+    "&:hover": {
+      textDecoration: "none",
+    },
   },
   textButton: {
     textTransform: "capitalize",
     color: "#9b9b9b",
+    "&:focus": {
+      outline: "none",
+    },
   },
   hover: {
     padding: 10,
@@ -48,40 +57,58 @@ const useStyles = makeStyles((theme) => ({
 export default function Header() {
   const classes = useStyles();
 
+  //Breakpoints
+  const theme = useTheme();
+
+  const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
-          <NavLink to="/" exact>
-            <CardMedia image={logo} component="img" className={classes.media} />
-          </NavLink>
-          <Toolbar className={classes.title}>
-            <Typography className={classes.text && classes.hover}>
-              Lịch chiếu
-            </Typography>
-            <Typography className={classes.text && classes.hover}>
-              Cụm rạp
-            </Typography>
-            <Typography className={classes.text && classes.hover}>
-              Tin tức
-            </Typography>
-            <Typography className={classes.text && classes.hover}>
-              Ứng dụng
-            </Typography>
-          </Toolbar>
-          <Toolbar>
-            <NavLink to="/signin" exact className={classes.text}>
-              <Button color="inherit" className={classes.textButton}>
-                <Avatar src="/broken-image.jpg" className={classes.avatar} />
-                Đăng Nhập
-              </Button>
-            </NavLink>
-            <NavLink to="/signup" exact className={classes.text}>
-              <Button color="inherit" className={classes.textButton}>
-                Đăng Ký
-              </Button>
-            </NavLink>
-          </Toolbar>
+        <Toolbar style={{ width: "100%" }}>
+          {isMatch ? (
+            <HeaderResponsive />
+          ) : (
+            <>
+              <NavLink to="/" exact>
+                <CardMedia
+                  image={logo}
+                  component="img"
+                  className={classes.media}
+                />
+              </NavLink>
+              <Toolbar className={classes.title}>
+                <Typography className={classes.textNavLink && classes.hover}>
+                  Lịch chiếu
+                </Typography>
+                <Typography className={classes.textNavLink && classes.hover}>
+                  Cụm rạp
+                </Typography>
+                <Typography className={classes.textNavLink && classes.hover}>
+                  Tin tức
+                </Typography>
+                <Typography className={classes.textNavLink && classes.hover}>
+                  Ứng dụng
+                </Typography>
+              </Toolbar>
+              <Toolbar>
+                <NavLink to="/signin" exact className={classes.textNavLink}>
+                  <Button color="inherit" className={classes.textButton}>
+                    <Avatar
+                      src="/broken-image.jpg"
+                      className={classes.avatar}
+                    />
+                    Đăng Nhập
+                  </Button>
+                </NavLink>
+                <NavLink to="/signup" exact className={classes.textNavLink}>
+                  <Button color="inherit" className={classes.textButton}>
+                    Đăng Ký
+                  </Button>
+                </NavLink>
+              </Toolbar>
+            </>
+          )}
         </Toolbar>
       </AppBar>
     </div>

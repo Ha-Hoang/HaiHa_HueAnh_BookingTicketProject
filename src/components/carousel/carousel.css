@@ -1,5 +1,5 @@
 .slick-dots {
-  bottom: 80px;
+  bottom: 50px;
 }
 .slick-dots li button:before {
   font-size: 14px;
@@ -40,4 +40,27 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+}
+
+@media screen and (max-width: 992px) {
+  #app .app__wrapper {
+    padding: 1rem 0 8rem 0;
+  }
+
+  .app__content .app__left {
+    text-align: center;
+  }
+
+  .app__content .app__left h1 {
+    font-size: 2.8rem;
+    line-height: 5rem;
+  }
+
+  .hideOnSmallScreen {
+    display: none !important;
+  }
+
+  .footer__copyright > div:nth-child(2) {
+    text-align: center;
+  }
 }

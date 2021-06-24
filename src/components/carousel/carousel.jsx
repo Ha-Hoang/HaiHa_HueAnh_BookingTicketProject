@@ -18,18 +18,41 @@ export default class Carousel extends Component {
       speed: 50,
       autoplaySpeed: 10000,
       cssEase: "linear",
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 1,
+          },
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            dots: false,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            dots: false,
+          },
+        },
+      ],
     };
     return (
       <div>
         <Slider {...settings}>
           <div className="slider1">
-            <img src={slide1} alt="slide1" />
+            <img width="100%" src={slide1} alt="slide1" />
           </div>
           <div className="slider2">
-            <img src={slide2} alt="slide2" />
+            <img width="100%" src={slide2} alt="slide2" />
           </div>
           <div className="slider3">
-            <img src={slide3} alt="slide3" />
+            <img width="100%" src={slide3} alt="slide3" />
           </div>
         </Slider>
       </div>
