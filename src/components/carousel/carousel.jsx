@@ -19,6 +19,7 @@ export default class Carousel extends Component {
       autoplaySpeed: 10000,
       cssEase: "linear",
       initialSlide: 0,
+      arrows: false,
       responsive: [
         {
           breakpoint: 1024,

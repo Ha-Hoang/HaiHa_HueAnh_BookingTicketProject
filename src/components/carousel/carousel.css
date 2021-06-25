@@ -9,39 +9,6 @@
   color: #fb4226;
 }
 
-.slick-next {
-  right: 0;
-}
-.slick-prev {
-  left: 0;
-}
-.slick-prev:before,
-.slick-next:before {
-  color: transparent;
-}
-.slick-prev {
-  background-image: url("../../assets/images/back-session.png");
-  transform: translateX(100%);
-}
-
-.slick-next {
-  background-image: url("../../assets/images/next-session.png");
-  transform: translateX(-100%);
-}
-
-.slick-prev,
-.slick-next {
-  position: absolute;
-  top: 40%;
-  width: 50px;
-  height: 100px;
-  z-index: 2;
-  opacity: 0.5;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-
 @media screen and (max-width: 992px) {
   #app .app__wrapper {
     padding: 1rem 0 8rem 0;
