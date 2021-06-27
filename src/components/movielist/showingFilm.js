@@ -45,7 +45,7 @@ export default class ShowingFilm extends Component {
     return (
       <Slider {...settings}>
         <div className="tab-content">
-          <div className="tab-pane container active" id="showing">
+          <div className="tab-pane container active">
             <div className="showing_item">
               <div className="item_poster">
                 <img

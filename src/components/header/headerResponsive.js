@@ -18,6 +18,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { Avatar, Button, CardMedia } from "@material-ui/core";
 import logo from "../../assets/images/web-logo.png";
 import { NavLink } from "react-router-dom";
+import { Link } from "react-scroll";
 
 const drawerWidth = 240;
 
@@ -100,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
       outline: "none",
     },
     fontSize: "16px",
-  }
+  },
 }));
 
 export default function HeaderResponsive() {
@@ -172,14 +173,62 @@ export default function HeaderResponsive() {
         </div>
         <Divider />
         <List>
-          {["Lịch chiếu", "Cụm rạp", "Tin tức", "Ứng dụng"].map(
+          {/* {["Lịch chiếu", "Cụm rạp", "Tin tức", "Ứng dụng"].map(
             (text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon></ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
             )
-          )}
+          )} */}
+          <Link
+            activeClass="active"
+            to="movieList"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            <ListItem button key="Lịch chiếu">
+              <ListItemIcon></ListItemIcon>
+              <ListItemText primary="Lịch chiếu" />
+            </ListItem>
+          </Link>
+          <Link
+            activeClass="active"
+            to=""
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            <ListItem button key="Cụm rạp">
+              <ListItemIcon></ListItemIcon>
+              <ListItemText primary="Cụm rạp" />
+            </ListItem>
+          </Link>
+          <Link
+            activeClass="active"
+            to=""
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            <ListItem button key="Tin tức">
+              <ListItemIcon></ListItemIcon>
+              <ListItemText primary="Tin tức" />
+            </ListItem>
+          </Link>
+          <Link
+            activeClass="active"
+            to=""
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            <ListItem button key="Ứng dụng">
+              <ListItemIcon></ListItemIcon>
+              <ListItemText primary="Ứng dụng" />
+            </ListItem>
+          </Link>
         </List>
       </Drawer>
     </div>

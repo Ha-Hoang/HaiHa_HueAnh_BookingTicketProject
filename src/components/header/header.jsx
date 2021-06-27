@@ -11,6 +11,7 @@ import logo from "../../assets/images/web-logo.png";
 import { useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core";
 import HeaderResponsive from "./headerResponsive";
+import { Link } from "react-scroll";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,18 +79,50 @@ export default function Header() {
                 />
               </NavLink>
               <Toolbar className={classes.title}>
-                <Typography className={classes.textNavLink && classes.hover}>
-                  Lịch chiếu
-                </Typography>
-                <Typography className={classes.textNavLink && classes.hover}>
-                  Cụm rạp
-                </Typography>
-                <Typography className={classes.textNavLink && classes.hover}>
-                  Tin tức
-                </Typography>
-                <Typography className={classes.textNavLink && classes.hover}>
-                  Ứng dụng
-                </Typography>
+                <Link
+                  activeClass="active"
+                  to="movieList"
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                >
+                  <Typography className={classes.textNavLink && classes.hover}>
+                    Lịch chiếu
+                  </Typography>
+                </Link>
+                <Link
+                  activeClass="active"
+                  to=""
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                >
+                  <Typography className={classes.textNavLink && classes.hover}>
+                    Cụm rạp
+                  </Typography>
+                </Link>
+                <Link
+                  activeClass="active"
+                  to=""
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                >
+                  <Typography className={classes.textNavLink && classes.hover}>
+                    Tin tức
+                  </Typography>
+                </Link>
+                <Link
+                  activeClass="active"
+                  to=""
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                >
+                  <Typography className={classes.textNavLink && classes.hover}>
+                    Ứng dụng
+                  </Typography>
+                </Link>
               </Toolbar>
               <Toolbar>
                 <NavLink to="/signin" exact className={classes.textNavLink}>

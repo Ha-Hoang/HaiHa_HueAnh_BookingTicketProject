@@ -86,7 +86,7 @@ export default function MovieList() {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="movieList">
       <AppBar position="static" color="default" className={classes.fixAppBar}>
         <Tabs
           value={value}
