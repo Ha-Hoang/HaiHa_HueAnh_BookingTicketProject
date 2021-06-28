@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
-import slide1 from "../../assets/images/slide-1.jpg";
-import slide2 from "../../assets/images/slide-2.jpg";
-import slide3 from "../../assets/images/slide-3.jpg";
 import "./carousel.css";
+import { data } from "./data";
 
 export default class Carousel extends Component {
   render() {
@@ -46,15 +44,11 @@ export default class Carousel extends Component {
     return (
       <div>
         <Slider {...settings}>
-          <div className="slider1">
-            <img width="100%" src={slide1} alt="slide1" />
-          </div>
-          <div className="slider2">
-            <img width="100%" src={slide2} alt="slide2" />
-          </div>
-          <div className="slider3">
-            <img width="100%" src={slide3} alt="slide3" />
-          </div>
+          {data.map((item) => (
+            <div>
+              <img src={item} width="100%" alt="" />
+            </div>
+          ))}
         </Slider>
       </div>
     );

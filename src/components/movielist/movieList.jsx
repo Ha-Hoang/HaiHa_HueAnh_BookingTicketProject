@@ -8,7 +8,6 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import ShowingFilm from "./showingFilm";
-import UpcomingFilm from "./upcomingFilm";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -118,7 +117,7 @@ export default function MovieList() {
           <ShowingFilm />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <UpcomingFilm />
+          <ShowingFilm />
         </TabPanel>
       </SwipeableViews>
     </div>
