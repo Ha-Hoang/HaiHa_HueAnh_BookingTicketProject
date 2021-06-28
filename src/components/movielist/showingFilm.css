@@ -3,6 +3,7 @@
 }
 .showing_item img.poster {
   width: 100%;
+  height: 300px;
 }
 .tab-content .showing_item .item_poster {
   position: relative;
@@ -51,6 +52,10 @@
   font-size: 13px;
   color: grey;
   letter-spacing: 0.5px;
+  white-space: nowrap;
+  width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .showing_item .item_content button {
   position: absolute;
@@ -113,4 +118,8 @@
 }
 .slick-prev {
   left: -23px;
+}
+.slick-prev,
+.slick-next {
+  top: 42%;
 }
