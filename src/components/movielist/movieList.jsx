@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     maxWidth: "940px",
     margin: "auto",
-    paddingTop: "72px",
+    paddingTop: "100px",
   },
   textTab: {
     fontSize: "22px",

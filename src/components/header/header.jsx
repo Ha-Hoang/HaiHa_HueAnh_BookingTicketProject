@@ -16,6 +16,10 @@ import { Link } from "react-scroll";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    position: "fixed",
+    width: "100%",
+    zIndex: "9",
+    backgroundColor: "rgba(255,255,255,.95)"
   },
   title: {
     flexGrow: 1,
@@ -86,7 +90,10 @@ export default function Header() {
                   smooth={true}
                   duration={500}
                 >
-                  <Typography className={classes.textNavLink && classes.hover}>
+                  <Typography
+                    component={"span"}
+                    className={classes.textNavLink && classes.hover}
+                  >
                     Lịch chiếu
                   </Typography>
                 </Link>
