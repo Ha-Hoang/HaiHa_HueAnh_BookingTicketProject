@@ -160,7 +160,7 @@ export default class Footer extends Component {
               </div>
               <div className="footer__copyright row m-0">
                 <div className="col-md-1 col-sm-12 p-0 text-center">
-                  <img className="logo"src={logo23} alt="logo23" />
+                  <img className="logo" src={logo23} alt="logo23" />
                 </div>
                 <div className="col-md-9 mb-3">
                   <h4>TIX – SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION</h4>
@@ -176,16 +176,13 @@ export default class Footer extends Component {
                   <p>Số Điện Thoại (Hotline): 1900 545 436</p>
                   <p>
                     Email:{" "}
-                    <a target="_blank" href="mailto:support@tix.vn">
+                    <a href="mailto:support@tix.vn">
                       support@tix.vn
                     </a>
                   </p>
                 </div>
                 <div className="col-md-2 col-sm-12 text-md-right text-center p-0">
-                  <a
-                    target="_blank"
-                    href="http://online.gov.vn/Home/WebDetails/62782"
-                  >
+                  <a href="http://online.gov.vn/Home/WebDetails/62782">
                     <img
                       className="certificate"
                       src="https://s3img.vcdn.vn/123phim/2020/03/d1e6bd560daa9e20131ea8a0f62e87f8.png"

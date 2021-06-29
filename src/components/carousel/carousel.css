@@ -1,3 +1,6 @@
+.slickSlider {
+  transform: translateY(50px);
+}
 .slick-dots {
   bottom: 50px;
 }
@@ -8,4 +11,3 @@
 .slick-dots li.slick-active button:before {
   color: #fb4226;
 }
-

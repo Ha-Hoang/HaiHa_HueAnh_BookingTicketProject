@@ -6,6 +6,9 @@ import "./carousel.css";
 import { data } from "./data";
 
 export default class Carousel extends Component {
+  state = {
+    slideArray: data
+  }
   render() {
     const settings = {
       dots: true,
@@ -42,11 +45,11 @@ export default class Carousel extends Component {
       ],
     };
     return (
-      <div>
+      <div className="slickSlider">
         <Slider {...settings}>
-          {data.map((item) => (
-            <div>
-              <img src={item} width="100%" alt="" />
+          {this.state.slideArray.map((slide, index) => (
+            <div key={index}>
+              <img src={slide} width="100%" alt="" />
             </div>
           ))}
         </Slider>
