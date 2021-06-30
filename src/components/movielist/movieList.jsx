@@ -51,22 +51,21 @@ const useStyles = makeStyles((theme) => ({
   },
   textTab: {
     fontSize: "22px",
-    fontWeight: "600",
     textTransform: "capitalize",
     color: "#000",
     backgroundColor: "#fff",
-    transition: "all 0.5s",
+    transition: "all 0.2s",
     "&:focus": {
       outline: "none",
-      fontSize: "26px",
+      fontSize: "24px",
     },
     "&:hover": {
-      fontSize: "26px",
+      fontSize: "24px",
     },
   },
   fixAppBar: {
     boxShadow: "none",
-    maxWidth: "376px",
+    maxWidth: "330px",
     margin: "auto",
   },
 }));
