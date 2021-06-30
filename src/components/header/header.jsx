@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   textNavLink: {
     textDecoration: "none",
-    fontWeight: 500,
+    fontWeight: "500px",
     "&:hover": {
       textDecoration: "none",
     },

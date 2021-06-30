@@ -8,6 +8,7 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import CardMedia from "@material-ui/core/CardMedia";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -31,11 +32,12 @@ const useStyles = makeStyles((theme) => ({
     right: "-20px",
     transform: "translateY(-20px)",
     backgroundColor: "transparent",
-    border: "none"
+    border: "none",
   },
 }));
 
 export default function ShowingFilmContent(props) {
+  const history = useHistory();
   const { movie } = props;
 
   const classes = useStyles();
@@ -78,7 +80,10 @@ export default function ShowingFilmContent(props) {
                 <Fade in={open}>
                   <div className={classes.paper}>
                     <button onClick={closeModal} className={classes.close}>
-                      <img src="https://tix.vn/app/assets/img/icons/close.png" alt="tix"></img>
+                      <img
+                        src="https://tix.vn/app/assets/img/icons/close.png"
+                        alt="tix"
+                      ></img>
                     </button>
                     <CardMedia
                       component="iframe"
@@ -96,7 +101,13 @@ export default function ShowingFilmContent(props) {
               <h3>{movie.tenPhim}</h3>
               <p>{movie.moTa}</p>
             </div>
-            <button href="#">Mua vé</button>
+            <button
+              onClick={() => {
+                history.push(`/moviedetail/${movie.maPhim}`);
+              }}
+            >
+              Mua vé
+            </button>
           </div>
           <div className="showing_rate text-center">
             <p>{movie.danhGia}</p>
