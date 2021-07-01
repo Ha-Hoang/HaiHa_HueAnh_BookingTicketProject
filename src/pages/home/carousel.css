@@ -1,0 +1,33 @@
+.slickSlider {
+  transform: translateY(50px);
+}
+.slick-dots {
+  bottom: 50px;
+}
+.slick-dots li button:before {
+  font-size: 14px;
+  color: #d8d8d8;
+}
+.slick-dots li.slick-active button:before {
+  color: #fb4226;
+}
+.button {
+  position: relative;
+  transform: translateY(-300px);
+}
+.button-previous {
+  text-align: left;
+  background-color: transparent;
+  border: none;
+}
+.button-next {
+  position: absolute;
+  right: 0;
+  background-color: transparent;
+  border: none;
+}
+.button-previous img,
+.button-next img {
+  width: 50px;
+  height: 50px;
+}

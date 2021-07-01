@@ -173,14 +173,6 @@ export default function HeaderResponsive() {
         </div>
         <Divider />
         <List>
-          {/* {["Lịch chiếu", "Cụm rạp", "Tin tức", "Ứng dụng"].map(
-            (text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon></ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            )
-          )} */}
           <Link
             activeClass="active"
             to="movieList"
