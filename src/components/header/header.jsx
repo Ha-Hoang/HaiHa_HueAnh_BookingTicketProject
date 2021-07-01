@@ -10,8 +10,8 @@ import Avatar from "@material-ui/core/Avatar";
 import logo from "../../assets/images/web-logo.png";
 import { useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core";
-import HeaderResponsive from "./headerResponsive";
 import { Link } from "react-scroll";
+import HeaderResponsive from "./header.responsive";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     position: "fixed",
     width: "100%",
     zIndex: "9",
-    backgroundColor: "rgba(255,255,255,.95)"
+    backgroundColor: "rgba(255,255,255,.95)",
   },
   title: {
     flexGrow: 1,
@@ -31,8 +31,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 150,
   },
   textNavLink: {
-    textDecoration: "none",
-    fontWeight: "500px",
+    textDecoration: "none",   
     "&:hover": {
       textDecoration: "none",
     },
@@ -46,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   hover: {
     padding: 10,
+    fontWeight: "500",
     transition: "all 0.5s",
     "&:hover": {
       color: "#fb4226",
