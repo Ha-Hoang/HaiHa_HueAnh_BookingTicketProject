@@ -7,3 +7,10 @@ export const getListMovieAPI = () => {
     method: GET,
   });
 };
+
+export const getMovieDetailAPI = (maPhim) => {
+  return axios({
+    url: `${baseUrl}/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`,
+    method: GET,
+  });
+};
