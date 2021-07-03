@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import ShowingFilmContent from "./showingFilmContent";
-import "../../../node_modules/slick-carousel/slick/slick.css";
-import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import { connect } from "react-redux";
-import { getMovieListAction } from "../../store/actions/movie.action";
+import { getMovieListAction } from "../../../../store/actions/movie.action";
 
 class ShowingFilm extends Component {
   renderMovieList = () => {

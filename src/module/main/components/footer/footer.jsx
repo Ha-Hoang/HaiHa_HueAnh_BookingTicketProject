@@ -1,28 +1,28 @@
 import React, { Component } from "react";
-import logo1 from "../../assets/images/cnx.jpg";
-import logo2 from "../../assets/images/BHD.png";
-import logo3 from "../../assets/images/cgv.png";
-import logo4 from "../../assets/images/dongdacinema.png";
-import logo5 from "../../assets/images/galaxycine.png";
-import logo6 from "../../assets/images/STARLIGHT.png";
-import logo7 from "../../assets/images/dcine.png";
-import logo8 from "../../assets/images/zalopay_icon.png";
-import logo9 from "../../assets/images/megags.png";
-import logo10 from "../../assets/images/cinestar.png";
-import logo11 from "../../assets/images/TOUCH.png";
-import logo12 from "../../assets/images/payoo.jpg";
-import logo13 from "../../assets/images/VCB.png";
-import logo14 from "../../assets/images/AGRIBANK.png";
-import logo15 from "../../assets/images/VIETTINBANK.png";
-import logo16 from "../../assets/images/IVB.png";
-import logo17 from "../../assets/images/123go.png";
-import logo18 from "../../assets/images/laban.png";
-import logo19 from "../../assets/images/apple-logo.png";
-import logo20 from "../../assets/images/android-logo.png";
-import logo21 from "../../assets/images/facebook-logo.png";
-import logo22 from "../../assets/images/zalo-logo.png";
-import logo23 from "../../assets/images/zion-logo.jpg";
-import "./footer.css";
+import logo1 from "../../../../assets/images/cnx.jpg";
+import logo2 from "../../../../assets/images/BHD.png";
+import logo3 from "../../../../assets/images/cgv.png";
+import logo4 from "../../../../assets/images/dongdacinema.png";
+import logo5 from "../../../../assets/images/galaxycine.png";
+import logo6 from "../../../../assets/images/STARLIGHT.png";
+import logo7 from "../../../../assets/images/dcine.png";
+import logo8 from "../../../../assets/images/zalopay_icon.png";
+import logo9 from "../../../../assets/images/megags.png";
+import logo10 from "../../../../assets/images/cinestar.png";
+import logo11 from "../../../../assets/images/TOUCH.png";
+import logo12 from "../../../../assets/images/payoo.jpg";
+import logo13 from "../../../../assets/images/VCB.png";
+import logo14 from "../../../../assets/images/AGRIBANK.png";
+import logo15 from "../../../../assets/images/VIETTINBANK.png";
+import logo16 from "../../../../assets/images/IVB.png";
+import logo17 from "../../../../assets/images/123go.png";
+import logo18 from "../../../../assets/images/laban.png";
+import logo19 from "../../../../assets/images/apple-logo.png";
+import logo20 from "../../../../assets/images/android-logo.png";
+import logo21 from "../../../../assets/images/facebook-logo.png";
+import logo22 from "../../../../assets/images/zalo-logo.png";
+import logo23 from "../../../../assets/images/zion-logo.jpg";
+import "./footer.scss";
 
 export default class Footer extends Component {
   render() {
@@ -33,9 +33,7 @@ export default class Footer extends Component {
             <div className="footer__content">
               <div className="footer__info row m-0">
                 <div className="info__item info__item--left col-md-4">
-                  <h4 className="col-md-12 mb-3 pl-0 m-0 text-white text-uppercase hideOnSmallScreen">
-                    tix
-                  </h4>
+                  <h4 className="col-md-12 mb-3 pl-0 m-0 text-white text-uppercase hideOnSmallScreen">tix</h4>
                   <div className="row m-0 justify-content-md-start justify-content-center">
                     <ul className="d-flex flex-wrap w-100">
                       <li className="col-lg-6 col-md-12 col-sm-6 pl-0 pr-4 hideOnSmallScreen">
@@ -54,9 +52,7 @@ export default class Footer extends Component {
                   </div>
                 </div>
                 <div className="info__item info__item--middle col-md-4 hideOnSmallScreen">
-                  <h4 className="col-md-12 mb-3 pl-0 m-0 text-white text-uppercase">
-                    Đối tác
-                  </h4>
+                  <h4 className="col-md-12 mb-3 pl-0 m-0 text-white text-uppercase">Đối tác</h4>
                   <div className="row m-0 mb-3">
                     <a className="bg-white" href="/">
                       <img src={logo3} alt="logo3" />
@@ -131,12 +127,8 @@ export default class Footer extends Component {
                 </div>
                 <div className="info__item info__item--right col-md-4">
                   <div className="row mb-2 m-0">
-                    <h4 className="col-md-6 m-0 text-white text-uppercase text-center hideOnSmallScreen">
-                      mobile app
-                    </h4>
-                    <h4 className="col-md-6 m-0 text-white text-uppercase text-center hideOnSmallScreen">
-                      social
-                    </h4>
+                    <h4 className="col-md-6 m-0 text-white text-uppercase text-center hideOnSmallScreen">mobile app</h4>
+                    <h4 className="col-md-6 m-0 text-white text-uppercase text-center hideOnSmallScreen">social</h4>
                   </div>
                   <div className="row m-0 w-100 justify-content-center">
                     <div className="col-md-6 d-flex justify-content-center hideOnSmallScreen">
@@ -164,21 +156,15 @@ export default class Footer extends Component {
                 </div>
                 <div className="col-md-9 mb-3">
                   <h4>TIX – SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION</h4>
-                  <p>
-                    Địa chỉ: Z06 Đường số 13, Phường Tân Thuận Đông, Quận 7, Tp.
-                    Hồ Chí Minh, Việt Nam.
-                  </p>
+                  <p>Địa chỉ: Z06 Đường số 13, Phường Tân Thuận Đông, Quận 7, Tp. Hồ Chí Minh, Việt Nam.</p>
                   <p>Giấy chứng nhận đăng ký kinh doanh số: 0101659783,</p>
                   <p>
-                    đăng ký thay đổi lần thứ 30, ngày 22 tháng 01 năm 2020 do Sở
-                    kế hoạch và đầu tư Thành phố Hồ Chí Minh cấp.
+                    đăng ký thay đổi lần thứ 30, ngày 22 tháng 01 năm 2020 do Sở kế hoạch và đầu tư Thành phố Hồ Chí
+                    Minh cấp.
                   </p>
                   <p>Số Điện Thoại (Hotline): 1900 545 436</p>
                   <p>
-                    Email:{" "}
-                    <a href="mailto:support@tix.vn">
-                      support@tix.vn
-                    </a>
+                    Email: <a href="mailto:support@tix.vn">support@tix.vn</a>
                   </p>
                 </div>
                 <div className="col-md-2 col-sm-12 text-md-right text-center p-0">
