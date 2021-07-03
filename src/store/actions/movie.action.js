@@ -1,5 +1,4 @@
-import axios from "axios";
-import { getListMovieAPI } from "../../api/movie.api";
+import { getListMovieAPI, getMovieDetailAPI } from "../../api/movie.api";
 import { GET_MOVIE_DETAIL, GET_MOVIE_LIST } from "../constants/movie.const";
 
 export const getMovieListAction = () => {
@@ -19,10 +18,7 @@ export const getMovieListAction = () => {
 export const getMovieDetailAction = (maPhim) => {
   return async (dispatch) => {
     try {
-      const res = await axios({
-        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`,
-        method: "GET",
-      });
+      const res = await getMovieDetailAPI(maPhim);
       dispatch({
         type: GET_MOVIE_DETAIL,
         payload: res.data,
