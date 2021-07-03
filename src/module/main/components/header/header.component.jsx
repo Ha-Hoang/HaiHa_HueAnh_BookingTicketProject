@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import { NavLink } from "react-router-dom";
 import { CardMedia } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
-import logo from "../../assets/images/web-logo.png";
+import logo from "../../../../assets/images/web-logo.png";
 import { useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core";
 import { Link } from "react-scroll";
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 150,
   },
   textNavLink: {
-    textDecoration: "none",   
+    textDecoration: "none",
     "&:hover": {
       textDecoration: "none",
     },
@@ -76,68 +76,28 @@ export default function Header() {
           ) : (
             <>
               <NavLink to="/" exact>
-                <CardMedia
-                  image={logo}
-                  component="img"
-                  className={classes.media}
-                />
+                <CardMedia image={logo} component="img" className={classes.media} />
               </NavLink>
               <Toolbar className={classes.title}>
-                <Link
-                  activeClass="active"
-                  to="movieList"
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                >
-                  <Typography
-                    component={"span"}
-                    className={classes.textNavLink && classes.hover}
-                  >
+                <Link activeClass="active" to="movieList" spy={true} smooth={true} duration={500}>
+                  <Typography component={"span"} className={classes.textNavLink && classes.hover}>
                     Lịch chiếu
                   </Typography>
                 </Link>
-                <Link
-                  activeClass="active"
-                  to=""
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                >
-                  <Typography className={classes.textNavLink && classes.hover}>
-                    Cụm rạp
-                  </Typography>
+                <Link activeClass="active" to="" spy={true} smooth={true} duration={500}>
+                  <Typography className={classes.textNavLink && classes.hover}>Cụm rạp</Typography>
                 </Link>
-                <Link
-                  activeClass="active"
-                  to=""
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                >
-                  <Typography className={classes.textNavLink && classes.hover}>
-                    Tin tức
-                  </Typography>
+                <Link activeClass="active" to="" spy={true} smooth={true} duration={500}>
+                  <Typography className={classes.textNavLink && classes.hover}>Tin tức</Typography>
                 </Link>
-                <Link
-                  activeClass="active"
-                  to=""
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                >
-                  <Typography className={classes.textNavLink && classes.hover}>
-                    Ứng dụng
-                  </Typography>
+                <Link activeClass="active" to="" spy={true} smooth={true} duration={500}>
+                  <Typography className={classes.textNavLink && classes.hover}>Ứng dụng</Typography>
                 </Link>
               </Toolbar>
               <Toolbar>
                 <NavLink to="/signin" exact className={classes.textNavLink}>
                   <Button color="inherit" className={classes.textButton}>
-                    <Avatar
-                      src="/broken-image.jpg"
-                      className={classes.avatar}
-                    />
+                    <Avatar src="/broken-image.jpg" className={classes.avatar} />
                     Đăng Nhập
                   </Button>
                 </NavLink>

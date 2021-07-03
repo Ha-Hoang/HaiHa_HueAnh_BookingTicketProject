@@ -1,24 +1,43 @@
 import "./App.css";
+import "../node_modules/slick-carousel/slick/slick.css";
+import "../node_modules/slick-carousel/slick/slick-theme.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Header from "./components/header/header";
-import Footer from "./components/footer/footer";
-import Home from "./pages/home/home.page";
-import SignIn from "./pages/sign-in/sign-in.page";
-import SignUp from "./pages/sign-up/sign-up.page";
-import MovieDetail from "./pages/movie-detail/movie-detail.page";
+import { routerAdmin, routerMain } from "./configs/router";
+import MainTemplate from "./templates/main/main.template";
+import AdminTemplate from "./templates/admin/admin.template";
 
 function App() {
+  function renderRouterMain() {
+    return routerMain.map((router) => {
+      const { path, exact, Component } = router;
+      return (
+        <Route path={path} exact={exact}>
+          <MainTemplate>
+            <Component />
+          </MainTemplate>
+        </Route>
+      );
+    });
+  }
+  function renderRouterAdmin() {
+    return routerAdmin.map((router) => {
+      const { path, exact, Component } = router;
+      return (
+        <Route path={path} exact={exact}>
+          <AdminTemplate>
+            <Component />
+          </AdminTemplate>
+        </Route>
+      );
+    });
+  }
   return (
     <>
       <BrowserRouter>
-        <Header />
         <Switch>
-          <Route path="/signin" exact component={SignIn} />
-          <Route path="/signup" exact component={SignUp} />
-          <Route path="/moviedetail/:movieCode" exact component={MovieDetail} />
-          <Route path="/" exact component={Home} />
+          {renderRouterMain()}
+          {renderRouterAdmin()}
         </Switch>
-        <Footer />
       </BrowserRouter>
     </>
   );

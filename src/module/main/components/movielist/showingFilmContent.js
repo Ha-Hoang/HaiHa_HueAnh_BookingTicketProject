@@ -1,7 +1,7 @@
 import React from "react";
-import playVideo from "../../assets/images/play-video.png";
-import star1 from "../../assets/images/star1.png";
-import star12 from "../../assets/images/star1.2.png";
+import playVideo from "../../../../assets/images/play-video.png";
+import star1 from "../../../../assets/images/star1.png";
+import star12 from "../../../../assets/images/star1.2.png";
 import "./showingFilm.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
@@ -80,16 +80,9 @@ export default function ShowingFilmContent(props) {
                 <Fade in={open}>
                   <div className={classes.paper}>
                     <button onClick={closeModal} className={classes.close}>
-                      <img
-                        src="https://tix.vn/app/assets/img/icons/close.png"
-                        alt="tix"
-                      ></img>
+                      <img src="https://tix.vn/app/assets/img/icons/close.png" alt="tix"></img>
                     </button>
-                    <CardMedia
-                      component="iframe"
-                      src={movie.trailer}
-                      className={classes.iframe}
-                    />
+                    <CardMedia component="iframe" src={movie.trailer} className={classes.iframe} />
                   </div>
                 </Fade>
               </Modal>
