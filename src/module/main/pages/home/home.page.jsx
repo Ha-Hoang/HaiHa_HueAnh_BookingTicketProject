@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "./home.scss";
 import { arrow, data } from "./data";
 import MovieList from "../../components/movielist/movieList";
+import CinemaApp from "../../components/cinema-app/cinema-app.component";
 
 export default class Home extends Component {
   constructor(props) {
@@ -89,6 +90,9 @@ export default class Home extends Component {
         <section>
           {" "}
           <MovieList />
+        </section>
+        <section className="cinema-app">
+          <CinemaApp />
         </section>
       </div>
     );

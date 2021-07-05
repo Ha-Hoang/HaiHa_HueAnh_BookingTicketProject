@@ -20,3 +20,4 @@ export const movieReducer = (state = initialState, action) => {
       return state;
   }
 };
+
