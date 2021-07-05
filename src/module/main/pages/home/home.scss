@@ -1,0 +1,56 @@
+.slickSlider {
+  transform: translateY(50px);
+}
+
+.slick-dots {
+  bottom: 50px;
+  li button {
+    &:before {
+      font-size: 14px;
+      color: #d8d8d8;
+    }
+  }
+  li.slick-active button {
+    &:before {
+      color: #fb4226;
+    }
+  }
+}
+
+.button {
+  position: relative;
+  .button-previous {
+    text-align: left;
+  }
+  .button-next {
+    position: absolute;
+    right: 0;
+  }
+}
+
+.button-previous,
+.button-next {
+  cursor: pointer;
+  transform: translateY(-300px);
+  background-color: transparent;
+  border: none;
+  img {
+    width: 50px;
+    height: 50px;
+  }
+  &:focus {
+    outline: none;
+  }
+  @media screen and (max-width: 1196px) {
+    transform: translateY(-280px);
+  }
+  @media screen and (max-width: 1024px) {
+    transform: translateY(-250px);
+  }
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
+}
+
+
+
