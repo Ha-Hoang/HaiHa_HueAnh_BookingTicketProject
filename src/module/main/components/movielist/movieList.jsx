@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -7,7 +7,10 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import Slider from "react-slick";
+import { getMovieListAction } from "../../../../store/actions/movie.action";
 import ShowingFilm from "./showingFilm";
+import { useDispatch, useSelector } from "react-redux";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -83,6 +86,60 @@ export default function MovieList() {
     setValue(index);
   };
 
+  const settings = {
+    rows: 2,
+    dots: false,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
+  
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMovieListAction());
+  }, [dispatch]);
+
+  const movieList = useSelector((state) => state.movie.movieList);
+  const renderMovieList = () => {
+    return movieList.map((movie, index) => {
+      return <ShowingFilm movie={movie} key={index} />;
+    });
+  };
+
   return (
     <div className={classes.root} id="movieList">
       <AppBar position="static" color="default" className={classes.fixAppBar}>
@@ -113,10 +170,10 @@ export default function MovieList() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <ShowingFilm />
+          <Slider {...settings}>{renderMovieList()}</Slider>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <ShowingFilm />
+          <Slider {...settings}>{renderMovieList()}</Slider>
         </TabPanel>
       </SwipeableViews>
     </div>

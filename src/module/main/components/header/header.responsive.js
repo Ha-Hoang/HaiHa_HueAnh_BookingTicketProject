@@ -129,7 +129,11 @@ export default function HeaderResponsive() {
         <Toolbar>
           <Typography variant="h6" noWrap className={classes.title}>
             <NavLink to="/" exact>
-              <CardMedia image={logo} component="img" className={classes.media} />
+              <CardMedia
+                image={logo}
+                component="img"
+                className={classes.media}
+              />
             </NavLink>
           </Typography>
           <IconButton
@@ -154,7 +158,11 @@ export default function HeaderResponsive() {
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === "rtl" ? (
+              <ChevronLeftIcon />
+            ) : (
+              <ChevronRightIcon />
+            )}
           </IconButton>
           <NavLink to="/signin" exact className={classes.textNavLink}>
             <Button color="inherit" className={classes.textButton}>
@@ -165,25 +173,49 @@ export default function HeaderResponsive() {
         </div>
         <Divider />
         <List>
-          <Link activeClass="active" to="movieList" spy={true} smooth={true} duration={500}>
+          <Link
+            activeClass="active"
+            to="movieList"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
             <ListItem button key="Lịch chiếu">
               <ListItemIcon></ListItemIcon>
               <ListItemText primary="Lịch chiếu" />
             </ListItem>
           </Link>
-          <Link activeClass="active" to="" spy={true} smooth={true} duration={500}>
+          <Link
+            activeClass="active"
+            to=""
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
             <ListItem button key="Cụm rạp">
               <ListItemIcon></ListItemIcon>
               <ListItemText primary="Cụm rạp" />
             </ListItem>
           </Link>
-          <Link activeClass="active" to="" spy={true} smooth={true} duration={500}>
+          <Link
+            activeClass="active"
+            to=""
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
             <ListItem button key="Tin tức">
               <ListItemIcon></ListItemIcon>
               <ListItemText primary="Tin tức" />
             </ListItem>
           </Link>
-          <Link activeClass="active" to="" spy={true} smooth={true} duration={500}>
+          <Link
+            activeClass="active"
+            to=""
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
             <ListItem button key="Ứng dụng">
               <ListItemIcon></ListItemIcon>
               <ListItemText primary="Ứng dụng" />

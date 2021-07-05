@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import "./carousel.css";
+import "./home.scss";
 import { arrow, data } from "./data";
 import MovieList from "../../components/movielist/movieList";
+import CinemaApp from "../../components/cinema-app/cinema-app.component";
 
 export default class Home extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ export default class Home extends Component {
     this.state = {
       slideArray: data,
       arrowArray: arrow,
+      open: false,
     };
   }
   next() {
@@ -20,6 +22,18 @@ export default class Home extends Component {
   previous() {
     this.slider.slickPrev();
   }
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  closeModal = () => {
+    this.setState({ open: false });
+  };
 
   render() {
     const settings = {
@@ -44,14 +58,12 @@ export default class Home extends Component {
           breakpoint: 600,
           settings: {
             slidesToShow: 1,
-            dots: false,
           },
         },
         {
           breakpoint: 480,
           settings: {
             slidesToShow: 1,
-            dots: false,
           },
         },
       ],
@@ -61,7 +73,7 @@ export default class Home extends Component {
         <div className="slickSlider">
           <Slider ref={(c) => (this.slider = c)} {...settings}>
             {this.state.slideArray.map((slide, index) => (
-              <div key={index}>
+              <div key={index} className="slide_item-poster">
                 <img src={slide} width="100%" alt="" />
               </div>
             ))}
@@ -78,6 +90,9 @@ export default class Home extends Component {
         <section>
           {" "}
           <MovieList />
+        </section>
+        <section className="cinema-app">
+          <CinemaApp />
         </section>
       </div>
     );
