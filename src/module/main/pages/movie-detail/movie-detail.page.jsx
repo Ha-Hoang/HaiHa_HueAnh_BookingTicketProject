@@ -36,84 +36,141 @@ class MovieDetail extends Component {
     const { movieDetail } = this.props;
     const { classes } = this.props;
     return (
-      <div className={classes.movieDetail}>
-        <CardMedia component="img" image={movieDetail.hinhAnh} className={classes.imgBackground} />
-        <Container maxwidth="lg" className={classes.movieContent}>
-          <Grid container>
-            <Grid item lg={4} md={3} sm={3} xs={12} className={classes.itemContent}>
-              <div className={classes.itemPoster}>
-                <img className={classes.poster} src={movieDetail.hinhAnh} alt="" />
-                <div className={classes.hoverPoster}>
-                  <button className={classes.button} type="button" onClick={this.handleOpen}>
-                    <img className={classes.imgPlayVid} src={playVideo} alt="playvideo" />
-                  </button>
-                  <Modal
-                    aria-labelledby="transition-modal-title"
-                    aria-describedby="transition-modal-description"
-                    className={classes.modal}
-                    open={this.state.open}
-                    onClose={this.handleClose}
-                    closeAfterTransition
-                    BackdropComponent={Backdrop}
-                    BackdropProps={{
-                      timeout: 500,
-                    }}
-                  >
-                    <Fade in={this.state.open}>
-                      <div className={classes.paper}>
-                        <button onClick={this.closeModal} className={classes.close}>
-                          <img src="https://tix.vn/app/assets/img/icons/close.png" alt="tix"></img>
-                        </button>
-                        <CardMedia component="iframe" src={movieDetail.trailer} className={classes.iframe} />
-                      </div>
-                    </Fade>
-                  </Modal>
+      <div>
+        <div className={classes.movieDetail}>
+          <CardMedia
+            component="img"
+            image={movieDetail.hinhAnh}
+            className={classes.imgBackground}
+          />
+          <Container maxwidth="lg" className={classes.movieContent}>
+            <Grid container>
+              <Grid
+                item
+                lg={4}
+                md={3}
+                sm={3}
+                xs={12}
+                className={classes.itemContent}
+              >
+                <div className={classes.itemPoster}>
+                  <img
+                    className={classes.poster}
+                    src={movieDetail.hinhAnh}
+                    alt=""
+                  />
+                  <div className={classes.hoverPoster}>
+                    <button
+                      className={classes.button}
+                      type="button"
+                      onClick={this.handleOpen}
+                    >
+                      <img
+                        className={classes.imgPlayVid}
+                        src={playVideo}
+                        alt="playvideo"
+                      />
+                    </button>
+                    <Modal
+                      aria-labelledby="transition-modal-title"
+                      aria-describedby="transition-modal-description"
+                      className={classes.modal}
+                      open={this.state.open}
+                      onClose={this.handleClose}
+                      closeAfterTransition
+                      BackdropComponent={Backdrop}
+                      BackdropProps={{
+                        timeout: 500,
+                      }}
+                    >
+                      <Fade in={this.state.open}>
+                        <div className={classes.paper}>
+                          <button
+                            onClick={this.closeModal}
+                            className={classes.close}
+                          >
+                            <img
+                              src="https://tix.vn/app/assets/img/icons/close.png"
+                              alt="tix"
+                            ></img>
+                          </button>
+                          <CardMedia
+                            component="iframe"
+                            src={movieDetail.trailer}
+                            className={classes.iframe}
+                          />
+                        </div>
+                      </Fade>
+                    </Modal>
+                  </div>
                 </div>
-              </div>
+              </Grid>
+              <Grid
+                item
+                lg={8}
+                md={9}
+                sm={9}
+                xs={12}
+                className={classes.textInfo}
+              >
+                <Typography variant="h3" className={classes.textTransformMovie}>
+                  {movieDetail.tenPhim}
+                </Typography>
+                <Typography variant="h5" className={classes.textTransform}>
+                  {movieDetail.moTa}
+                </Typography>
+                <TableContainer className={classes.table}>
+                  <Table>
+                    <TableRow>
+                      <TableCell
+                        className={classes.tableCellWidth && classes.tableCell}
+                      >
+                        <Typography variant="h6">Bí danh</Typography>
+                      </TableCell>
+                      <TableCell className={classes.tableCell}>
+                        <Typography
+                          variant="h6"
+                          className={classes.textTransform}
+                        >
+                          {movieDetail.biDanh}
+                        </Typography>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell
+                        className={classes.tableCellWidth && classes.tableCell}
+                      >
+                        <Typography variant="h6">Ngày Khởi chiếu</Typography>
+                      </TableCell>
+                      <TableCell className={classes.tableCell}>
+                        <Typography variant="h6">
+                          {Format(
+                            "MM/dd/yyyy",
+                            new Date(movieDetail.ngayKhoiChieu)
+                          )}
+                        </Typography>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell
+                        className={classes.tableCellWidth && classes.tableCell}
+                      >
+                        <Typography variant="h6">Đánh giá</Typography>
+                      </TableCell>
+                      <TableCell className={classes.tableCell}>
+                        <Typography variant="h6">
+                          {movieDetail.danhGia}
+                        </Typography>
+                      </TableCell>
+                    </TableRow>
+                  </Table>
+                </TableContainer>
+                <button className={classes.buttonBuyTicket}>Mua vé</button>
+              </Grid>
             </Grid>
-            <Grid item lg={8} md={9} sm={9} xs={12} className={classes.textInfo}>
-              <Typography variant="h3" className={classes.textTransformMovie}>
-                {movieDetail.tenPhim}
-              </Typography>
-              <Typography variant="h5" className={classes.textTransform}>
-                {movieDetail.moTa}
-              </Typography>
-              <TableContainer className={classes.table}>
-                <Table>
-                  <TableRow>
-                    <TableCell className={classes.tableCell} style={{ width: "35%" }}>
-                      <Typography variant="h6">Bí danh</Typography>
-                    </TableCell>
-                    <TableCell className={classes.tableCell}>
-                      <Typography variant="h6" className={classes.textTransform}>
-                        {movieDetail.biDanh}
-                      </Typography>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className={classes.tableCell} style={{ width: "35%" }}>
-                      <Typography variant="h6">Ngày Khởi chiếu</Typography>
-                    </TableCell>
-                    <TableCell className={classes.tableCell}>
-                      <Typography variant="h6">{Format("MM/dd/yyyy", new Date(movieDetail.ngayKhoiChieu))}</Typography>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className={classes.tableCell} style={{ width: "35%" }}>
-                      <Typography variant="h6">Đánh giá</Typography>
-                    </TableCell>
-                    <TableCell className={classes.tableCell}>
-                      <Typography variant="h6">{movieDetail.danhGia}</Typography>
-                    </TableCell>
-                  </TableRow>
-                </Table>
-              </TableContainer>
-              <button className={classes.buttonBuyTicket}>Mua vé</button>
-            </Grid>
-          </Grid>
-        </Container>
-
-        <section className="show-time">
+          </Container>
+        </div>
+        <section className={classes.showTime}>
           <ShowTime />
         </section>
       </div>
@@ -131,4 +188,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(withStyles(style)(withRouter(MovieDetail)));
+export default connect(mapStateToProps)(
+  withStyles(style)(withRouter(MovieDetail))
+);
