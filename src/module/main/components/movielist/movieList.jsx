@@ -11,6 +11,7 @@ import Slider from "react-slick";
 import { getMovieListAction } from "../../../../store/actions/movie.action";
 import ShowingFilm from "./showingFilm";
 import { useDispatch, useSelector } from "react-redux";
+import Loading from "../loading.component";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -127,19 +128,23 @@ export default function MovieList() {
     ],
   };
 
-  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMovieListAction());
   }, [dispatch]);
 
   const movieList = useSelector((state) => state.movie.movieList);
+  const loading = useSelector((state) => state.common.loading);
+
   const renderMovieList = () => {
     return movieList.map((movie, index) => {
       return <ShowingFilm movie={movie} key={index} />;
     });
   };
 
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className={classes.root} id="movieList">
       <AppBar position="static" color="default" className={classes.fixAppBar}>
