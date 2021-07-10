@@ -15,6 +15,9 @@ import { getMovieDetailAction } from "../../../../store/actions/movie.action";
 import Format from "date-format";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
+import Loading from "../../components/loading.component";
+import { Link } from "react-scroll";
+
 class MovieDetail extends Component {
   state = {
     open: false,
@@ -33,8 +36,13 @@ class MovieDetail extends Component {
   };
 
   render() {
-    const { movieDetail } = this.props;
+    const { movieDetail, loading } = this.props;
     const { classes } = this.props;
+
+    if (loading) {
+      return <Loading />;
+    }
+
     return (
       <div>
         <div className={classes.movieDetail}>
@@ -165,12 +173,14 @@ class MovieDetail extends Component {
                     </TableRow>
                   </Table>
                 </TableContainer>
-                <button className={classes.buttonBuyTicket}>Mua vé</button>
+                <Link to="show-time" spy={true} smooth={true} duration={500}>
+                  <button className={classes.buttonBuyTicket}>Mua vé</button>
+                </Link>
               </Grid>
             </Grid>
           </Container>
         </div>
-        <section className={classes.showTime}>
+        <section className={classes.showTime} id="show-time">
           <ShowTime />
         </section>
       </div>
@@ -185,6 +195,7 @@ class MovieDetail extends Component {
 const mapStateToProps = (state) => {
   return {
     movieDetail: state.movie.movieDetail,
+    loading: state.common.loading,
   };
 };
 
