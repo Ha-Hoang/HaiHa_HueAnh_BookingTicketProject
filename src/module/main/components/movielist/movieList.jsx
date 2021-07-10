@@ -161,11 +161,13 @@ export default function MovieList() {
             label="Đang Chiếu"
             {...a11yProps(0)}
             className={classes.textTab}
+            disableRipple={true}
           />
           <Tab
             label="Sắp Chiếu"
             {...a11yProps(1)}
             className={classes.textTab}
+            disableRipple={true}
           />
         </Tabs>
       </AppBar>

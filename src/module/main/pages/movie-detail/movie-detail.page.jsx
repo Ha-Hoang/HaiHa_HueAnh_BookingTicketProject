@@ -121,10 +121,10 @@ class MovieDetail extends Component {
                 xs={12}
                 className={classes.textInfo}
               >
-                <Typography variant="h3" className={classes.textTransformMovie}>
+                <Typography variant="h4" className={classes.textTransformMovie}>
                   {movieDetail.tenPhim}
                 </Typography>
-                <Typography variant="h5" className={classes.textTransform}>
+                <Typography variant="h6" className={classes.textTransform}>
                   {movieDetail.moTa}
                 </Typography>
                 <TableContainer className={classes.table}>
