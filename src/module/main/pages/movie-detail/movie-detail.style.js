@@ -7,7 +7,7 @@ export const style = {
   imgBackground: {
     filter: "blur(15px)",
     width: "100%",
-    height: "550px",
+    height: "500px",
     "@media (max-width: 768px)": {
       height: "700px",
     },
@@ -23,10 +23,13 @@ export const style = {
   },
   movieContent: {
     position: "absolute",
-    top: "50%",
+    top: "60%",
     width: "100%",
     left: "50%",
     transform: "translate3d(-50%,-50%,0)",
+    "@media (max-width: 992px)": {
+      top: "55%",
+    },
   },
   modal: {
     display: "flex",
@@ -180,5 +183,10 @@ export const style = {
   },
   showTime: {
     backgroundColor: "rgb(10, 32, 41)",
+    paddingTop: "75px",
+    height: "900px",
+    "@media (max-width: 768px)": {
+      height: "1500px"
+    },
   },
 };

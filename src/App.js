@@ -21,10 +21,10 @@ function App() {
     });
   }
   function renderRouterAdmin() {
-    return routerAdmin.map((router) => {
+    return routerAdmin.map((router, index) => {
       const { path, exact, Component } = router;
       return (
-        <Route path={path} exact={exact}>
+        <Route path={path} exact={exact} key={index}>
           <AdminTemplate>
             <Component />
           </AdminTemplate>
