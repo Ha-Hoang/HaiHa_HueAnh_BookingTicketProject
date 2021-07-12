@@ -1,35 +1,44 @@
 export const style = {
   movieDetail: {
     position: "relative",
-    paddingTop: "70px",
+    width: "100%",
+    height: "600px",
     background: "linear-gradient(to top, rgb(10, 32, 41), transparent 100%)",
+    "@media (max-width: 992px)": {
+      height: "750px",
+    },
+    "@media (max-width: 768px)": {
+      height: "800px",
+    },
   },
   imgBackground: {
     filter: "blur(15px)",
     width: "100%",
-    height: "500px",
-    "@media (max-width: 768px)": {
-      height: "700px",
-    },
-  },
-  itemContent: {
-    padding: "50px 50px 60px 90px",
-    "@media (max-width: 992px)": {
-      padding: "85px 50px 60px 58px",
-    },
-    "@media (max-width: 768px)": {
-      padding: "0px 50px 60px 83px",
-    },
+    height: "100%",
   },
   movieContent: {
     position: "absolute",
+    maxWidth: "870px",
+    margin: "auto",
     top: "60%",
     width: "100%",
     left: "50%",
     transform: "translate3d(-50%,-50%,0)",
-    "@media (max-width: 992px)": {
-      top: "55%",
+    "@media (max-width: 960px)": {
+      maxWidth: "750px",
     },
+  },
+  itemContent: {
+    maxWidth: "240px",
+    margin: "auto",
+  },
+  itemPoster: {
+    position: "relative",
+    width: "100%",
+  },
+  poster: {
+    width: "100%",
+    borderRadius: "8px",
   },
   modal: {
     display: "flex",
@@ -55,9 +64,6 @@ export const style = {
       outline: "none",
     },
   },
-  itemPoster: {
-    position: "relative",
-  },
   hoverPoster: {
     position: "absolute",
     top: "0",
@@ -68,22 +74,6 @@ export const style = {
     "&:hover": {
       opacity: "1",
       zIndex: "3",
-      cursor: "pointer",
-    },
-  },
-  poster: {
-    width: "100%",
-    height: "300px",
-    borderRadius: "8px",
-    "@media (max-width: 1280px)": {
-      width: "200px",
-    },
-    "@media (max-width: 992px)": {
-      width: "180px",
-      height: "250px",
-    },
-    "@media (max-width: 768px)": {
-      width: "320px",
     },
   },
   button: {
@@ -95,23 +85,9 @@ export const style = {
     transform: "translate(-50%, -50%)",
     backgroundColor: "transparent",
     border: "none",
+    cursor: "pointer",
     "&:focus": {
       outline: "none",
-    },
-    "@media (max-width: 1280px)": {
-      transform: "translateY(-50%)",
-    },
-    "@media (max-width: 1200px)": {
-      transform: "translate(40%, -49%)",
-    },
-    "@media (max-width: 992px)": {
-      transform: "translate(50%,-55%)",
-    },
-    "@media (max-width: 767px)": {
-      transform: "translate(223%,-45%)",
-    },
-    "@media (max-width: 600px)": {
-      transform: "translate(-70%,-45%)",
     },
   },
   imgPlayVid: {
@@ -122,34 +98,9 @@ export const style = {
     left: "50%",
     transform: "translate(-50%, -50%)",
   },
-  table: {
-    paddingTop: "40px",
-    "@media (max-width: 768px)": {
-      paddingTop: "10px",
-    },
-  },
   textInfo: {
     color: "white",
-    "@media (max-width: 1280px)": {
-      padding: "0 150px",
-    },
-    "@media (max-width: 992px)": {
-      padding: "20px 110px",
-    },
-    "@media (max-width: 768px)": {
-      padding: "0px",
-      maxWidth: "500px",
-      margin: "auto",
-    },
-  },
-  tableCell: {
-    border: "none",
-    "@media (max-width: 768px)": {
-      padding: "3px 10px",
-    },
-  },
-  tableCellWidth: {
-    width: "35%",
+    padding: "0 20px",
   },
   buttonBuyTicket: {
     margin: "26px 18px",
@@ -171,14 +122,11 @@ export const style = {
   },
   textTransform: {
     textTransform: "capitalize",
-    "@media (max-width: 992px)": {
-      fontSize: "20px",
-    },
   },
   textTransformMovie: {
     textTransform: "uppercase",
     "@media (max-width: 992px)": {
-      fontSize: "30px",
+      paddingTop: "20px",
     },
   },
   showTime: {
@@ -186,7 +134,7 @@ export const style = {
     paddingTop: "75px",
     height: "900px",
     "@media (max-width: 768px)": {
-      height: "1500px"
+      height: "1500px",
     },
   },
 };
