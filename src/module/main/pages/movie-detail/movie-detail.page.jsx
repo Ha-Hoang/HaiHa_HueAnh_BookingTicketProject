@@ -127,7 +127,7 @@ class MovieDetail extends Component {
                 </Typography>
                 <Typography variant="h6">
                   Ngày Khởi Chiếu:{" "}
-                  {Format("MM/dd/yyyy", new Date(movieDetail.ngayKhoiChieu))}
+                  {Format("dd/MM/yyyy", new Date(movieDetail.ngayKhoiChieu))}
                 </Typography>
                 <Typography variant="h6">
                   Đánh Giá: {movieDetail.danhGia}
