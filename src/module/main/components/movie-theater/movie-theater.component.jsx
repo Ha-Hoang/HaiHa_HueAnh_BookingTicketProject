@@ -6,7 +6,6 @@ import {
   ListItemAvatar,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import bhd from "../../../../assets/images/BHD.png";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -23,15 +22,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MovieTheater() {
+export default function MovieTheater(props) {
+  const { cinema } = props;
   const classes = useStyles();
   return (
-    <ListItem className={classes.listItem}>
+    <ListItem className={classes.listItem} onClick={() => props.handleChoiceMovie(cinema.maHeThongRap)}>
       <ListItemAvatar>
-        <Avatar className={classes.avatar} alt="bhd" src={bhd} />
+        <Avatar className={classes.avatar} alt="bhd" src={cinema.logo} />
       </ListItemAvatar>
       <Typography variant="span" className={classes.textCinemaName}>
-        BHD Star Cineplex
+        {cinema.tenHeThongRap}
       </Typography>
     </ListItem>
   );
