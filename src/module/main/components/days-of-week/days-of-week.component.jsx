@@ -25,24 +25,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DaysOfWeek() {
+export default function DaysOfWeek(props) {
   const classes = useStyles();
+
   return (
     <div className={classes.root}>
       <ul className={classes.ul}>
-        <Day />
-        <Day />
-        <Day />
-        <Day />
-        <Day />
-        <Day />
-        <Day />
-        <Day />
-        <Day />
-        <Day />
-        <Day />
-        <Day />
-        <Day />
         <Day />
       </ul>
     </div>

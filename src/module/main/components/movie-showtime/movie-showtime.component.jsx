@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MovieShowTime(props) {
   const classes = useStyles();
+  const {lichChieu} = props;
   return (
     <div>
       <Grid container>
@@ -19,7 +20,7 @@ export default function MovieShowTime(props) {
           <Typography variant="span" className={classes.filmType}>
             2D DIGITAL
           </Typography>
-          <ShowTime2dDigital />
+          <ShowTime2dDigital lichChieu={lichChieu}/>
         </Grid>
       </Grid>
       <Divider />
