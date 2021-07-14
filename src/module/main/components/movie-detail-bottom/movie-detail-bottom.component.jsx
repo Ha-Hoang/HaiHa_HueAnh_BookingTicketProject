@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Divider, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MovieTheaterList from "../movie-theater-list/movie-theater-list.component";
 import DaysOfWeek from "../days-of-week/days-of-week.component";
 import MovieShowTimeList from "../movie-showtime-list/movie-showtime-list.component";
+import { useDispatch } from "react-redux";
+import { getCinemaGroupAction } from "../../../../store/actions/cinema.action";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -32,21 +35,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MovieDetailBottom() {
+export default function MovieDetailBottom(props) {
+  const dispatch = useDispatch();
   const classes = useStyles();
+  const [maHeThongRap, setMaHeThongRap] = useState("");
+  const [lichChieuRap, setLichChieuRap] = useState([]);
+  const lichChieu = useSelector((state) => state.movie.movieDetail.lichChieu);
+
+  const handleChoiceMovie = (maHeThongRap) => {
+    const lichChieuRap = lichChieu.filter(
+      (lichChieu) => lichChieu.thongTinRap.maHeThongRap === maHeThongRap
+    );
+    setMaHeThongRap(maHeThongRap);
+    setLichChieuRap(lichChieuRap);
+    dispatch(getCinemaGroupAction(maHeThongRap));
+  };
+
+  const [ngayThang, setNgayThang] = useState(new Date());
 
   return (
     <Container className={classes.container}>
       <Grid container className={classes.row}>
         <Grid item lg={3} md={3} sm={3} xs={12} className={classes.col1}>
-          <MovieTheaterList />
+          <MovieTheaterList
+            maHeThongRap={maHeThongRap}
+            handleChoiceMovie={handleChoiceMovie}
+          />
         </Grid>
 
         <Divider orientation="vertical" flexItem />
 
         <Grid item lg={9} md={9} sm={9} xs={12} className={classes.col2}>
           <DaysOfWeek />
-          <MovieShowTimeList />
+          <MovieShowTimeList lichChieuRap={lichChieuRap} />
         </Grid>
       </Grid>
     </Container>

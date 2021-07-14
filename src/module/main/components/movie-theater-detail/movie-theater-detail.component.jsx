@@ -92,7 +92,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MovieTheaterDetail() {
+export default function MovieTheaterDetail(props) {
+  const {chiTietRap }= props;
   const classes = useStyles();
   return (
     <Grid container>
@@ -100,9 +101,9 @@ export default function MovieTheaterDetail() {
         <img src={bhdstar} alt="bhd" className={classes.logo} />
       </Grid>
       <Grid item lg={10}>
-        <Typography variant="h6">GLX-Nguyễn Du</Typography>
+        <Typography variant="h6">{chiTietRap.tenCumRap}</Typography>
         <Typography variant="span" className={classes.address}>
-          116 Nguyễn Du, Q1
+         {chiTietRap.diaChi}
         </Typography>
       </Grid>
     </Grid>

@@ -131,7 +131,7 @@ export default function MovieList() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMovieListAction());
-  }, [dispatch]);
+  }, []);
 
   const movieList = useSelector((state) => state.movie.movieList);
   const loading = useSelector((state) => state.common.loading);
