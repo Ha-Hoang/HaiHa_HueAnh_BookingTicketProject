@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MovieTheaterList(props) {
   const classes = useStyles();
+  const { maHeThongRap } = props;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,10 +31,14 @@ export default function MovieTheaterList(props) {
 
   const { handleChoiceMovie } = props;
   const renderCinemaList = () => {
-    return cinemaList?.map((cinema, index) => {
+    return cinemaList.map((cinema, index) => {
       return (
         <div key={index}>
-          <MovieTheater cinema={cinema} handleChoiceMovie={handleChoiceMovie} />
+          <MovieTheater
+            cinema={cinema}
+            maHeThongRap={maHeThongRap}
+            handleChoiceMovie={handleChoiceMovie}
+          />
           <Divider orientation="horizontal" className={classes.divider} />
         </div>
       );

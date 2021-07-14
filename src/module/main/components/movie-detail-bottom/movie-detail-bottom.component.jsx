@@ -51,18 +51,23 @@ export default function MovieDetailBottom(props) {
     dispatch(getCinemaGroupAction(maHeThongRap));
   };
 
+  const [ngayThang, setNgayThang] = useState(new Date());
+
   return (
     <Container className={classes.container}>
       <Grid container className={classes.row}>
         <Grid item lg={3} md={3} sm={3} xs={12} className={classes.col1}>
-          <MovieTheaterList handleChoiceMovie={handleChoiceMovie} />
+          <MovieTheaterList
+            maHeThongRap={maHeThongRap}
+            handleChoiceMovie={handleChoiceMovie}
+          />
         </Grid>
 
         <Divider orientation="vertical" flexItem />
 
         <Grid item lg={9} md={9} sm={9} xs={12} className={classes.col2}>
           <DaysOfWeek />
-          <MovieShowTimeList lichChieuRap={lichChieuRap}/>
+          <MovieShowTimeList lichChieuRap={lichChieuRap} />
         </Grid>
       </Grid>
     </Container>

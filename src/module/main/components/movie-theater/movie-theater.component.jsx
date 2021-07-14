@@ -20,13 +20,30 @@ const useStyles = makeStyles((theme) => ({
       cursor: "pointer",
     },
   },
+  listItemActive: {
+    opacity: "1",
+    cursor: "pointer",
+  },
+  textCinemaName: {
+    textTransform: "capitalize",
+  },
 }));
 
 export default function MovieTheater(props) {
   const { cinema } = props;
+  const { maHeThongRap } = props;
+  
   const classes = useStyles();
+
   return (
-    <ListItem className={classes.listItem} onClick={() => props.handleChoiceMovie(cinema.maHeThongRap)}>
+    <ListItem
+      className={
+        cinema.maHeThongRap === maHeThongRap
+          ? classes.listItemActive
+          : classes.listItem
+      }
+      onClick={() => props.handleChoiceMovie(cinema.maHeThongRap)}
+    >
       <ListItemAvatar>
         <Avatar className={classes.avatar} alt="bhd" src={cinema.logo} />
       </ListItemAvatar>

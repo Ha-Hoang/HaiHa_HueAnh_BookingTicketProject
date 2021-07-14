@@ -2,6 +2,7 @@ import React from "react";
 import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import Format from "date-format";
 
 const useStyles = makeStyles((theme) => ({
   coverText: {
@@ -17,11 +18,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ShowTime2dDigital() {
+export default function ShowTime2dDigital(props) {
   const classes = useStyles();
-  return (
-    <Typography className={classes.coverText} variant="h5">
-      <Link className={classes.textTime}>13:00</Link>
-    </Typography>
-  );
+  const { lichChieu } = props;
+
+  return lichChieu.map((time, index) => {
+    return (
+      <>
+        <Typography key={index} className={classes.coverText} variant="h5">
+          <Link to="/" className={classes.textTime}>
+            {Format("hh:mm", new Date(time.ngayChieuGioChieu))}
+          </Link>
+        </Typography>
+      </>
+    );
+  });
 }
