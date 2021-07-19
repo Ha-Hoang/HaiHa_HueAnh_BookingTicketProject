@@ -5,8 +5,6 @@ import Cinema from '../cinema/cinema.component';
 class CinemaList extends Component {
     render() {
         return (
-          <div className="tab-content">
-          {/* BHD  */}
           <div className="tab-pane active" id="v-pills-bhd" role="tabpanel">
             <div className="row">
               <div className="col-md-4">
@@ -23,8 +21,6 @@ class CinemaList extends Component {
               </div>
             </div>
           </div>
-          </div>
-
         );
     }
 }
