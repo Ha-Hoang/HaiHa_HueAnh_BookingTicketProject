@@ -1,5 +1,5 @@
 
-import { signInAPI } from "../../api/auth.api"
+import { signInAPI, signUpAPI } from "../../api/auth.api"
 import { SIGN_IN } from "../constants/auth.const"
 
 export const signInAction = (user) =>{
@@ -23,3 +23,13 @@ export const signInAction = (user) =>{
     }
 }
 
+export const signUpAction = (user, history) =>{
+    return async (dispatch) =>{
+        try {
+            const res = await signUpAPI(user);
+            history.push("/signin");
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}

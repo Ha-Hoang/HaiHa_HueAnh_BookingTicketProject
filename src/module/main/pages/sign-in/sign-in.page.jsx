@@ -6,6 +6,8 @@ import bgSignIn from "../../../../assets/images/bg-sign-in.jpg";
 import signInLogo from "../../../../assets/images/sign-in-logo.png";
 import { signInAction } from "../../../../store/actions/auth.action";
 import "./sign-in.styles.scss";
+import { Link } from "@material-ui/core";
+import { NavLink } from "react-router-dom";
 
 const signIpUser = yup.object().shape({
   taiKhoan : yup.string().required("Nhap tai Khoan"),
@@ -28,14 +30,14 @@ class SignIn extends Component {
         style={{ backgroundImage: `url(${bgSignIn})` }}
       >
         <div className="sign-in__container">
-          <button
+          <NavLink to="/"
             type="button"
             class="close"
             data-dismiss="modal"
             aria-hidden="true"
           >
             &times;
-          </button>
+          </NavLink>
           <div className="sign-in__content">
             <img
               src={signInLogo}

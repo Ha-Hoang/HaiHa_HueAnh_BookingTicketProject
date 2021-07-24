@@ -4,19 +4,19 @@ import * as yup from "yup";
 import "./sign-up.styles.scss";
 import { signUpAction } from "../../../../store/actions/auth.action";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 const signUpUser = yup.object().shape({
   taiKhoan : yup.string().required("Nhap tai Khoan"),
   matKhau : yup.string().required("Nhap mat khau"),
   hoTen : yup.string().required("Nhap ho ten"),
   email : yup.string().required("Nhap email").email("email sai"),
-  soDT : yup.string().required("Nhap so dien thoai"),
-  maNhom: yup.string().required("nhap ma nhom"),
+  soDT : yup.number().typeError("Nhap so dien thoai 0-9").required("Nhap SDT"),
+  maNhom: yup.string().required("Nhap ma nhom"),
 
 })
 class SignUp extends Component {
   handleSubmit = (value) => {
-    
+    this.props.dispatch(signUpAction(value, this.props.history));
   };
   render() {
     return (
@@ -29,7 +29,7 @@ class SignUp extends Component {
               email: "",
               soDT: "",
               hoTen: "",
-              maNhom: "GP01",
+              maNhom: "",
               maLoaiNguoiDung: "KhachHang"
             }}
             validationSchema={signUpUser}
@@ -153,4 +153,4 @@ class SignUp extends Component {
     );
   }
 }
-export default connect()(SignUp);
+export default connect()(withRouter(SignUp));
