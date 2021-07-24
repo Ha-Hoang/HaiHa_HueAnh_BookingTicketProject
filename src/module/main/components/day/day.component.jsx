@@ -1,5 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
+import Format from "date-format";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   li: {
@@ -19,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Day(props) {
   const classes = useStyles();
+  const lichChieu = useSelector((state) => state.movie.movieDetail.lichChieu);
 
   const daysofWeek = [];
   const days = [
@@ -33,6 +36,7 @@ export default function Day(props) {
 
   for (let i = 0; i <= 13; i++) {
     let date = new Date(Date.now() + 1000 * 60 * 60 * 24 * i);
+    Format("dd/MM/yyyy", date);
     daysofWeek.push(date);
   }
 
@@ -41,6 +45,7 @@ export default function Day(props) {
       <li
         className={classes.li}
         key={index}
+        onClick={() => props.handleChoiceDay(day)}
       >
         <p className={classes.pDay}>{days[day.getDay()]}</p>
         <p className={classes.pDate}>{day.getDate()}</p>
