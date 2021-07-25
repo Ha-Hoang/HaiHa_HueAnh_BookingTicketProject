@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     fontWeight: "500",
   },
+  liActive: {
+    color: "red",
+  },
   pDay: {
     marginBottom: "0",
     fontSize: "14px",
@@ -21,8 +24,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Day(props) {
   const classes = useStyles();
-  const lichChieu = useSelector((state) => state.movie.movieDetail.lichChieu);
-
   const daysofWeek = [];
   const days = [
     "Chủ Nhật",

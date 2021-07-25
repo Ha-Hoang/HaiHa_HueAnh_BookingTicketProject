@@ -80,7 +80,7 @@ export default function Header() {
               </NavLink>
               <Toolbar className={classes.title}>
                 <Link activeClass="active" to="movieList" spy={true} smooth={true} duration={500}>
-                  <Typography component={"span"} className={classes.textNavLink && classes.hover}>
+                  <Typography className={classes.textNavLink && classes.hover}>
                     Lịch chiếu
                   </Typography>
                 </Link>

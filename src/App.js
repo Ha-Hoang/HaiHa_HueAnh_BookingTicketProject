@@ -9,10 +9,10 @@ import AdminTemplate from "./templates/admin/admin.template";
 
 function App() {
   function renderRouterMain() {
-    return routerMain.map((router) => {
+    return routerMain.map((router, index) => {
       const { path, exact, Component } = router;
       return (
-        <Route path={path} exact={exact}>
+        <Route path={path} exact={exact} key={index}>
           <MainTemplate>
             <Component />
           </MainTemplate>

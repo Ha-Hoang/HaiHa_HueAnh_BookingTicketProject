@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import { makeStyles } from "@material-ui/core";
+import React from "react";
 import cinemaLogo from "../../../../assets/images/BHD.png";
-class LogoCineplex extends Component {
-    render() {
-        return (
-            <a href="#v-pills-bhd" className="nav-link active" data-toggle="pill">
-                <img src={cinemaLogo} alt="hehe" />
-            </a>
-            );
-    }
-}
 
-export default LogoCineplex;
+const useStyles = makeStyles((theme) => ({
+  imgLogo: {
+    width: "100%",
+  },
+}));
+export default function LogoCineplex(props) {
+  const classes = useStyles();
+  return <img src={cinemaLogo} alt="hehe" className={classes.imgLogo} />;
+}
