@@ -28,7 +28,7 @@ export default class Loading extends Component {
         >
           <img
             src={logo}
-            class="animate__animated animate__pulse animate__infinite"
+            className="animate__animated animate__pulse animate__infinite"
             alt=""
           />
         </div>

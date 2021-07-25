@@ -1,24 +1,34 @@
-import React, { Component } from "react";
+import { Grid, makeStyles } from "@material-ui/core";
+import React from "react";
 import CinemaList from "../cinema-list/cinema-list.component";
 import Cineplex from "../cineplex/cineplex.component";
-import "./cinema-app.styles.scss";
-class CinemaApp extends Component {
-  render() {
-    return (
-      <section className="cinemaBlock ">
-        <div className="wrapper container">
-          <div className="row">
-            <div className="col-md-1 ">
-              <Cineplex />
-            </div>
-            <div className="col-md-11 scroll-0">
-              <CinemaList />
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-}
 
-export default CinemaApp;
+const useStyles = makeStyles((theme) => ({
+  cineplex: {
+    border: "1px solid #e2e2e2",
+    padding: "0",
+    borderRight: "none",
+  },
+  cinemaList: {
+    border: "1px solid #e2e2e2",
+  },
+  wrapper: {
+    maxWidth: "940px",
+    margin: "auto",
+  },
+}));
+export default function CinemaApp(props) {
+  const classes = useStyles();
+  return (
+    <section className={classes.wrapper}>
+      <Grid container>
+        <Grid item md={1} className={classes.cineplex}>
+          <Cineplex />
+        </Grid>
+        <Grid item md={11} className={classes.cinemaList}>
+          <CinemaList />
+        </Grid>
+      </Grid>
+    </section>
+  );
+}

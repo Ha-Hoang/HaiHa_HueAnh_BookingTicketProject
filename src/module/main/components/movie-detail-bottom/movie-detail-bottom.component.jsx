@@ -55,7 +55,8 @@ export default function MovieDetailBottom(props) {
   const [ngayThang, setNgayThang] = useState(new Date());
   const handleChoiceDay = (ngay) => {
     const lichChieuRap = lichChieu.filter(
-      (lichChieu) => Format("dd/MM/yyyy", new Date(lichChieu.ngayChieuGioChieu)) === ngay
+      (lichChieu) =>
+        Format("dd/MM/yyyy", new Date(lichChieu.ngayChieuGioChieu)) === ngay
     );
     setLichChieuRap(lichChieuRap);
     setNgayThang(ngayThang);

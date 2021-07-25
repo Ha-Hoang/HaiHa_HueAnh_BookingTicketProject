@@ -119,9 +119,9 @@ class MovieDetail extends Component {
                 <Typography variant="h4" className={classes.textTransformMovie}>
                   {movieDetail.tenPhim}
                 </Typography>
-                <Typography variant="span" className={classes.textTransform}>
+                <span className={classes.textTransform}>
                   {movieDetail.moTa}
-                </Typography>
+                </span>
                 <Typography variant="h6" style={{ paddingTop: "10px" }}>
                   Bí Danh: {movieDetail.biDanh}
                 </Typography>

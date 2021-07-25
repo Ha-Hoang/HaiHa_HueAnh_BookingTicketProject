@@ -1,7 +1,6 @@
 import React from "react";
 import {
   ListItem,
-  Typography,
   Avatar,
   ListItemAvatar,
 } from "@material-ui/core";
@@ -47,9 +46,9 @@ export default function MovieTheater(props) {
       <ListItemAvatar>
         <Avatar className={classes.avatar} alt="bhd" src={cinema.logo} />
       </ListItemAvatar>
-      <Typography variant="span" className={classes.textCinemaName}>
+      <span className={classes.textCinemaName}>
         {cinema.tenHeThongRap}
-      </Typography>
+      </span>
     </ListItem>
   );
 }

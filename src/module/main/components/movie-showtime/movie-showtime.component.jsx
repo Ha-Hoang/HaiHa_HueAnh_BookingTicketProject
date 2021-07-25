@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ShowTime2dDigital from "../showtime-2ddigital/showtime-2ddigital.component";
@@ -16,11 +16,11 @@ export default function MovieShowTime(props) {
   return (
     <div>
       <Grid container>
-        <Grid lg={12}>
-          <Typography variant="span" className={classes.filmType}>
+        <Grid item lg={12}>
+          <span className={classes.filmType}>
             2D DIGITAL
-          </Typography>
-          <ShowTime2dDigital lichChieu={lichChieu}/>
+          </span>
+          <ShowTime2dDigital lichChieu={lichChieu} />
         </Grid>
       </Grid>
       <Divider />
