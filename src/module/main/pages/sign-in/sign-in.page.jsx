@@ -87,7 +87,7 @@ class SignIn extends Component {
                 <div className="bottom text-center mb-5">
                   <p className="sm-text mx-auto mb-3">
                     Bạn chưa có tài khoản?
-                    <button className="btn btn-white ml-2">Đăng ký</button>
+                    <NavLink to="/signup" className="btn btn-white ml-2">Đăng ký</NavLink>
                   </p>
                 </div>
               </Form>

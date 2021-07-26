@@ -63,10 +63,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
-  // show user name
-  const showUser = useSelector((state) =>{
-    return state.auth.userLogin;
-  });
+  //show user name
+  // const showUser = useSelector((state) =>{
+  //   return state.auth.userLogin;
+  // });
   
 
   //Breakpoints
@@ -102,10 +102,10 @@ export default function Header() {
                 </Link>
               </Toolbar>
               <Toolbar>
-              {
-                  showUser ? (<NavLink to="/" exact >
-                    <span>hi, {showUser.hoTen}</span>
-                  </NavLink>) : (<>
+              
+                  {/* showUser ? (<NavLink to="/" exact >
+                    <span>hi, {showUser.hoTen}</span> */}
+                  
                     <NavLink to="/signin" exact className={classes.textNavLink}>
                   <Button color="inherit" className={classes.textButton}>
                     <Avatar
@@ -120,8 +120,8 @@ export default function Header() {
                     Đăng Ký
                   </Button>
                 </NavLink>
-                  </>)
-                }
+                
+                
               </Toolbar>
             </>
           )}

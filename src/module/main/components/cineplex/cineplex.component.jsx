@@ -21,32 +21,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-class Cineplex extends Component {
-  render() {
-    return (
-      <ul className="nav nav-pills col-768">
-        <li className="nav-item">
-          <LogoCineplex />
-        </li>
-        {/* <li className="nav-item">
-          <LogoCineplex />
-        </li>
-        <li className="nav-item">
-          <LogoCineplex />
-        </li>
-        <li className="nav-item">
-          <LogoCineplex />
-        </li>
-        <li className="nav-item">
-          <LogoCineplex />
-        </li>
-        <li className="nav-item">
-          <LogoCineplex />
-        </li> */}
-      </ul>
-    );
-  }
-}
 
 export default function Cineplex(props) {
   const classes = useStyles();
