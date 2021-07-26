@@ -1,6 +1,8 @@
 import { makeStyles } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import LogoCineplex from "../logo-cineplex/logo-cineplex.component";
+import { useSelector, useDispatch } from "react-redux";
+import { getCinemaListAction } from "../../../../store/actions/cinema.action";
 
 const useStyles = makeStyles((theme) => ({
   liLogo: {
@@ -23,26 +25,20 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Cineplex(props) {
   const classes = useStyles();
-  return (
-    <ul className={classes.ulLogo}>
-      <li className={classes.liLogo}>
-        <LogoCineplex />
-      </li>
-      <li className={classes.liLogo}>
-        <LogoCineplex />
-      </li>
-      <li className={classes.liLogo}>
-        <LogoCineplex />
-      </li>
-      <li className={classes.liLogo}>
-        <LogoCineplex />
-      </li>
-      <li className={classes.liLogo}>
-        <LogoCineplex />
-      </li>
-      <li className={classes.liLogo}>
-        <LogoCineplex />
-      </li>
-    </ul>
-  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCinemaListAction());
+  }, []);
+  const cinemaList = useSelector((state) => state.cinema.cinemaList);
+  const renderLogoCineplex = () => {
+    return cinemaList.map((item, index) => {
+      return (
+        <li className={classes.liLogo} key={index}>
+          <LogoCineplex item={item} />
+        </li>
+      );
+    });
+  };
+  return <ul className={classes.ulLogo}>{renderLogoCineplex()}</ul>;
 }
