@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: "5px",
     },
   },
- 
 }));
 export default function CinemaList(props) {
   const classes = useStyles();
@@ -45,26 +44,4 @@ export default function CinemaList(props) {
       </div>
     </div>
   );
-
-class CinemaList extends Component {
-    render() {
-        return (
-          <div className="tab-pane active" id="v-pills-bhd" role="tabpanel">
-            <div className="row">
-              <div className="col-md-4">
-                <div className="nav nav-pills " role="tablist">
-                <Cinema />
-                <Cinema />
-                <Cinema />
-                <Cinema />
-                <Cinema />
-                  </div>
-              </div>
-              <div className="col-md-8 fix-padding fixed-scroll">
-               <CinemaMovieDetailList />
-              </div>
-            </div>
-          </div>
-        );
-    }
 }
