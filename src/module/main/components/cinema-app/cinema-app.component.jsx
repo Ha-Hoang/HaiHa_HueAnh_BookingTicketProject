@@ -1,5 +1,8 @@
 import { Grid, makeStyles } from "@material-ui/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCinemaGroupAction } from "../../../../store/actions/cinema.action";
+import { getMovieDetailAction } from "../../../../store/actions/movie.action";
 import CinemaList from "../cinema-list/cinema-list.component";
 import Cineplex from "../cineplex/cineplex.component";
 
@@ -17,8 +20,10 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
   },
 }));
+
 export default function CinemaApp(props) {
   const classes = useStyles();
+
   return (
     <section className={classes.wrapper}>
       <Grid container>

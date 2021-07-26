@@ -1,5 +1,6 @@
 import { Grid, makeStyles } from "@material-ui/core";
 import React from "react";
+import { useSelector } from "react-redux";
 import CinemaMovieDetailList from "../cinema-movie-detail-list/cinemaMovieDetailList.component";
 import Cinema from "../cinema/cinema.component";
 
@@ -24,16 +25,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function CinemaList(props) {
   const classes = useStyles();
+
   return (
     <div className="tab-content">
       <div>
         <Grid container>
           <Grid item md={4} className={classes.cinema}>
             <div>
-              <Cinema />
-              <Cinema />
-              <Cinema />
-              <Cinema />
               <Cinema />
             </div>
           </Grid>
