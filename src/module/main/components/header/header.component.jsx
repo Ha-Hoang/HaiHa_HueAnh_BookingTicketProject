@@ -14,7 +14,6 @@ import { Link } from "react-scroll";
 import HeaderResponsive from "./header.responsive";
 import { useSelector } from "react-redux";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -63,11 +62,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
-  // show user name
-  const showUser = useSelector((state) =>{
-    return state.auth.userLogin;
-  });
-  
 
   //Breakpoints
   const theme = useTheme();
@@ -83,44 +77,76 @@ export default function Header() {
           ) : (
             <>
               <NavLink to="/" exact>
-                <CardMedia image={logo} component="img" className={classes.media} />
+                <CardMedia
+                  image={logo}
+                  component="img"
+                  className={classes.media}
+                />
               </NavLink>
               <Toolbar className={classes.title}>
-                <Link activeClass="active" to="movieList" spy={true} smooth={true} duration={500}>
+                <Link
+                  activeClass="active"
+                  to="movieList"
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                >
                   <Typography className={classes.textNavLink && classes.hover}>
                     Lịch chiếu
                   </Typography>
                 </Link>
-                <Link activeClass="active" to="" spy={true} smooth={true} duration={500}>
-                  <Typography className={classes.textNavLink && classes.hover}>Cụm rạp</Typography>
+                <Link
+                  activeClass="active"
+                  to=""
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                >
+                  <Typography className={classes.textNavLink && classes.hover}>
+                    Cụm rạp
+                  </Typography>
                 </Link>
-                <Link activeClass="active" to="" spy={true} smooth={true} duration={500}>
-                  <Typography className={classes.textNavLink && classes.hover}>Tin tức</Typography>
+                <Link
+                  activeClass="active"
+                  to=""
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                >
+                  <Typography className={classes.textNavLink && classes.hover}>
+                    Tin tức
+                  </Typography>
                 </Link>
-                <Link activeClass="active" to="" spy={true} smooth={true} duration={500}>
-                  <Typography className={classes.textNavLink && classes.hover}>Ứng dụng</Typography>
+                <Link
+                  activeClass="active"
+                  to=""
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                >
+                  <Typography className={classes.textNavLink && classes.hover}>
+                    Ứng dụng
+                  </Typography>
                 </Link>
               </Toolbar>
               <Toolbar>
-              {
-                  showUser ? (<NavLink to="/" exact >
-                    <span>hi, {showUser.hoTen}</span>
-                  </NavLink>) : (<>
+                {
+                  <>
                     <NavLink to="/signin" exact className={classes.textNavLink}>
-                  <Button color="inherit" className={classes.textButton}>
-                    <Avatar
-                      src="/broken-image.jpg"
-                      className={classes.avatar}
-                    />
-                    Đăng Nhập
-                  </Button>
-                </NavLink>
-                <NavLink to="/signup" exact className={classes.textNavLink}>
-                  <Button color="inherit" className={classes.textButton}>
-                    Đăng Ký
-                  </Button>
-                </NavLink>
-                  </>)
+                      <Button color="inherit" className={classes.textButton}>
+                        <Avatar
+                          src="/broken-image.jpg"
+                          className={classes.avatar}
+                        />
+                        Đăng Nhập
+                      </Button>
+                    </NavLink>
+                    <NavLink to="/signup" exact className={classes.textNavLink}>
+                      <Button color="inherit" className={classes.textButton}>
+                        Đăng Ký
+                      </Button>
+                    </NavLink>
+                  </>
                 }
               </Toolbar>
             </>
