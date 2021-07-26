@@ -1,0 +1,108 @@
+section.sign-in {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  //căn chính giữa
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div.sign-in__container {
+    padding: 40px 32px 30px;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(20, 50, 93, 0.9),
+      rgba(8, 22, 48, 0.9)
+    );
+  }
+  div.form-group {
+    label {
+        color: white;
+    }
+    input.sign-in__input {
+      border-radius: 50px !important;
+      padding: 12px 15px 12px 15px !important;
+      width: 100%;
+      font-size: 16px !important;
+      color: #000 !important;
+      font-weight: 400;
+    }
+     
+  }
+  input:focus, button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 2px solid #d42525 !important;
+    outline-width: 0;
+    font-weight: 400;
+  }
+}
+
+.btn-color {
+    border-radius: 50px;
+    color: #fff;
+    background-image: linear-gradient(to right, #d42525, #f96400);
+    padding: 15px;
+    cursor: pointer;
+    border: none !important;
+    margin-top: 30px;
+}
+
+.btn-color:hover {
+    color: #fff;
+    background-image: linear-gradient(to right, #f96400, #d42525);
+}
+
+.btn-white {
+    border-radius: 50px !important;
+    color: #d42525 ;
+    background-color: #fff;
+    padding: 8px 40px;
+    cursor: pointer;
+    
+}
+
+.btn-white:hover {
+    color: #fff;
+    background-image: linear-gradient(to right, #f96400, #d42525)
+}
+
+
+.bottom {
+    width: 100%;
+    margin-top: 50px !important
+}
+.btn-block{
+    width: 60% !important;
+}
+
+.sm-text {
+    font-size: 15px;
+    font-style: italic;
+    color: white;
+}
+
+@media screen and (max-width: 992px) {
+    .card1 {
+        width: 100%;
+        padding: 40px 30px 10px 30px;
+    }
+
+
+}
+
+@media screen and (max-width: 768px) {
+    .containers {
+        padding: 10px !important;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .sign-in__loogo{
+      width: 80%;
+      display: block;
+  margin-left: auto;
+  margin-right: auto;
+    }
+    
+}
+

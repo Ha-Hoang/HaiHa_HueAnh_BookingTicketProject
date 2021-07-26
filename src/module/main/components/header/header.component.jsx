@@ -12,6 +12,8 @@ import { useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core";
 import { Link } from "react-scroll";
 import HeaderResponsive from "./header.responsive";
+import { useSelector } from "react-redux";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,6 +63,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
+  // show user name
+  const showUser = useSelector((state) =>{
+    return state.auth.userLogin;
+  });
+  
 
   //Breakpoints
   const theme = useTheme();
@@ -95,9 +102,16 @@ export default function Header() {
                 </Link>
               </Toolbar>
               <Toolbar>
-                <NavLink to="/signin" exact className={classes.textNavLink}>
+              {
+                  showUser ? (<NavLink to="/" exact >
+                    <span>hi, {showUser.hoTen}</span>
+                  </NavLink>) : (<>
+                    <NavLink to="/signin" exact className={classes.textNavLink}>
                   <Button color="inherit" className={classes.textButton}>
-                    <Avatar src="/broken-image.jpg" className={classes.avatar} />
+                    <Avatar
+                      src="/broken-image.jpg"
+                      className={classes.avatar}
+                    />
                     Đăng Nhập
                   </Button>
                 </NavLink>
@@ -106,6 +120,8 @@ export default function Header() {
                     Đăng Ký
                   </Button>
                 </NavLink>
+                  </>)
+                }
               </Toolbar>
             </>
           )}
