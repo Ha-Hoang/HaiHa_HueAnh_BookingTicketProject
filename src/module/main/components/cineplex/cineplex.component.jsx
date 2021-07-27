@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LogoCineplex from "../logo-cineplex/logo-cineplex.component";
 import { useSelector, useDispatch } from "react-redux";
 import { getCinemaListAction } from "../../../../store/actions/cinema.action";
@@ -34,7 +34,7 @@ export default function Cineplex(props) {
   const renderLogoCineplex = () => {
     return cinemaList.map((item, index) => {
       return (
-        <li className={classes.liLogo} key={index}>
+        <li className={classes.liLogo} key={index} onClick={() => props.handleChoiceCinema(item.maHeThongRap)}>
           <LogoCineplex item={item} />
         </li>
       );
