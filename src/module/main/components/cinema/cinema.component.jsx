@@ -56,11 +56,9 @@ export default function Cinema(props) {
         </div>
         <div className={classes.describe}>
           <p className={classes.title}>
-            <span>BHD Star - Bitexco</span>
+            <span>BHD Star Bitexco</span>
           </p>
-          <p className={classes.address}>
-            L3-Bitexco Icon 68, 2 Hải Triều, Q1{" "}
-          </p>
+          <p className={classes.address}>L3-Bitexco Icon 68, 2 Hải Triều, Q.1</p>
           <p className={classes.moreInfo}>[chi tiết]</p>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import { makeStyles } from "@material-ui/core";
 import React from "react";
-import cinemaLogo from "../../../../assets/images/BHD.png";
 
 const useStyles = makeStyles((theme) => ({
   imgLogo: {

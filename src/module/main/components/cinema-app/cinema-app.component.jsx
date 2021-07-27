@@ -2,7 +2,6 @@ import { Grid, makeStyles } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCinemaGroupAction } from "../../../../store/actions/cinema.action";
-import { getMovieDetailAction } from "../../../../store/actions/movie.action";
 import CinemaList from "../cinema-list/cinema-list.component";
 import Cineplex from "../cineplex/cineplex.component";
 
@@ -24,14 +23,29 @@ const useStyles = makeStyles((theme) => ({
 export default function CinemaApp(props) {
   const classes = useStyles();
 
+  const dispatch = useDispatch();
+  //const cinemaList = useSelector((state) => state.cinema.cinemaList);
+  const [maHeThongRap, setMaHeThongRap] = useState("BHDStar");
+  const [cinemaGroup, setCinemaGroup] = useState([]);
+
+  const handleChoiceCinema = (maHeThongRap) => {
+    // const cinemaGroup = cinemaList.filter(
+    //   (list) => list.maHeThongRap === maHeThongRap
+    // );
+    // console.log(cinemaGroup);
+    dispatch(getCinemaGroupAction(maHeThongRap));
+    setMaHeThongRap(maHeThongRap);
+    // setCinemaGroup(cinemaGroup);
+  };
+  
   return (
     <section className={classes.wrapper}>
       <Grid container>
         <Grid item md={1} className={classes.cineplex}>
-          <Cineplex />
+          <Cineplex handleChoiceCinema={handleChoiceCinema} />
         </Grid>
         <Grid item md={11} className={classes.cinemaList}>
-          <CinemaList />
+          <CinemaList cinemaGroup={cinemaGroup} />
         </Grid>
       </Grid>
     </section>
