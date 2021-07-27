@@ -4,12 +4,10 @@ import CinemaMovieDetail from "../cinema-movie-detail/cinemaMovieDetail..compone
 class CinemaMovieDetailList extends Component {
   render() {
     return (
-      <div className="tab-content">
-        <div
-          className="tab-pane active"
-          id="v-pills-bhd-cinema-1"
-          role="tabpanel"
-        >
+      <div>
+        <div>
+          <CinemaMovieDetail />
+          <CinemaMovieDetail />
           <CinemaMovieDetail />
           <CinemaMovieDetail />
           <CinemaMovieDetail />

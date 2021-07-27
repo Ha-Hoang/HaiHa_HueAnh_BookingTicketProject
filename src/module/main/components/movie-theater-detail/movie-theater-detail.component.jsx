@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MovieTheaterDetail(props) {
-  const {chiTietRap }= props;
+  const { chiTietRap } = props;
   const classes = useStyles();
   return (
     <Grid container>
@@ -102,9 +102,9 @@ export default function MovieTheaterDetail(props) {
       </Grid>
       <Grid item lg={10}>
         <Typography variant="h6">{chiTietRap.tenCumRap}</Typography>
-        <Typography variant="span" className={classes.address}>
-         {chiTietRap.diaChi}
-        </Typography>
+        <span className={classes.address}>
+          {chiTietRap.diaChi}
+        </span>
       </Grid>
     </Grid>
   );

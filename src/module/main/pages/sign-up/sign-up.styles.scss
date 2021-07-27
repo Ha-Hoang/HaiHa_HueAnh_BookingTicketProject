@@ -1,0 +1,86 @@
+body{
+    background-color: #dee9ff;
+}
+.sign-up form{
+    background-image: linear-gradient(
+      to bottom,
+      rgba(20, 50, 93, 0.9),
+      rgba(8, 22, 48, 0.9)
+    );
+}
+
+.registration-form{
+	padding: 50px 0;
+}
+
+.registration-form form{
+    background-color: #fff;
+    max-width: 600px;
+    margin: auto;
+    padding: 50px 70px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+.registration{
+    font-size: 50px;
+	text-align: center;
+    
+}
+.registration .registration__name{
+    padding: 10px;
+    background: linear-gradient(to right, #f96400 10%,#d42525 100%);
+    -webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	margin-bottom: 20px;
+}
+
+.registration-form .item{
+	border-radius: 20px;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+}
+
+.registration-form .create-account{
+
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-image: linear-gradient(to right, #f96400, #d42525);
+    border: none;
+    color: white;
+    margin-top: 20px;
+}
+.registration-form .create-account:hover{
+    background-image: linear-gradient(to right, #d42525, #f96400);
+
+}
+.create-account
+input:focus, select:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 2px solid #d42525 !important;
+    outline-width: 0;
+    font-weight: 400;
+}
+.btn-bottom {
+    border-radius: 50px !important;
+    color: #d42525 ;
+    background-color: #fff;
+    padding: 8px 40px;
+    cursor: pointer;
+    
+}
+
+.btn-bottom:hover {
+    color: #fff;
+    background-image: linear-gradient(to right, #f96400, #d42525)
+}
+  
+@media (max-width: 576px) {
+    .registration-form form{
+        padding: 80px 20px;
+    }
+}

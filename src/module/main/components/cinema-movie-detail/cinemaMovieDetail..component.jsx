@@ -1,30 +1,72 @@
-import React, { Component } from 'react';
+import { makeStyles, Typography } from "@material-ui/core";
+import React from "react";
+import { Link } from "react-router-dom";
+import film from "../../../../assets/images/payoo.jpg";
 
-class CinemaMovieDetail extends Component {
-    render() {
-        return (
-            <div className="details big-details">
-                <div className="wrapInfo d-flex ">
-                  <div className="cinemaImage">
-                    <img src="./images/csnm.png" alt="wonderwoman" />
-                  </div>
-                  <div className="titleInfo ">
-                    <span className="bg-green">P</span>
-                    <p className="movieTitle">Cuộc Sống Nhiệm Màu - Soul - </p>
-                    <p className="info">100 phút - TIX 9 - IMDb 8</p>
-                  </div>
-                </div>
-                <div className="typeTiming">
-                  <div className="version">2D Digital</div>
-                  <div className="session">
-                    <a href="#"><span className="start-time">13:00</span> ~ 14:40</a>
-                    <a href="#"><span className="start-time">16:55</span> ~ 18:35</a>
-                    <a href="#"><span className="start-time">21:05</span> ~ 22:45</a>
-                  </div>
-                </div>
-              </div>
-        );
-    }
+const useStyles = makeStyles((theme) => ({
+  coverTextTiming: {
+    padding: "5px",
+    display: "inline-block",
+  },
+  textTiming: {
+    color: "#43a047",
+    "&:hover": {
+      color: "green",
+      textDecoration: "none",
+    },
+  },
+  bigDetail: {
+    padding: "10px 0",
+    borderBottom: "1px solid #e2e2e2",
+  },
+  imgFilm: {
+    marginRight: "15px",
+    width: "50px",
+    height: "50px",
+  },
+  titleInfo: {
+    width: "100%",
+    paddingTop: "5px",
+  },
+  movieTitle: {
+    fontSize: "18px",
+    fontWeight: "bold",
+    marginBottom: "0",
+    lineHeight: "22px",
+  },
+  info: {
+    marginBottom: "0",
+    fontSize: "14px",
+    color: "#9b9b9b",
+  },
+  filmDetail: {
+    display: "flex",
+  },
+  typeTiming: {
+    paddingTop: "8px",
+  },
+}));
+export default function CinemaMovieDetail(props) {
+  const classes = useStyles();
+  return (
+    <div className={classes.bigDetail}>
+      <div className={classes.filmDetail}>
+        <img src={film} alt="wonderwoman" className={classes.imgFilm} />
+        <div className={classes.titleInfo}>
+          <p className={classes.movieTitle}>Cuộc Sống Nhiệm Màu - Soul - </p>
+          <p className={classes.info}>100 phút - TIX 9 - IMDb 8</p>
+        </div>
+      </div>
+      <div className={classes.typeTiming}>
+        <div className="session">
+          <span>2D DIGITAL</span>
+          <Typography variant="h5" className={classes.coverTextTiming}>
+            <Link to="/" className={classes.textTiming}>
+              10:10
+            </Link>
+          </Typography>
+        </div>
+      </div>
+    </div>
+  );
 }
-
-export default CinemaMovieDetail;

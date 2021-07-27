@@ -7,6 +7,7 @@ import MovieShowTimeList from "../movie-showtime-list/movie-showtime-list.compon
 import { useDispatch } from "react-redux";
 import { getCinemaGroupAction } from "../../../../store/actions/cinema.action";
 import { useSelector } from "react-redux";
+import Format from "date-format";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -52,6 +53,14 @@ export default function MovieDetailBottom(props) {
   };
 
   const [ngayThang, setNgayThang] = useState(new Date());
+  const handleChoiceDay = (ngay) => {
+    const lichChieuRap = lichChieu.filter(
+      (lichChieu) =>
+        Format("dd/MM/yyyy", new Date(lichChieu.ngayChieuGioChieu)) === ngay
+    );
+    setLichChieuRap(lichChieuRap);
+    setNgayThang(ngayThang);
+  };
 
   return (
     <Container className={classes.container}>
@@ -66,7 +75,7 @@ export default function MovieDetailBottom(props) {
         <Divider orientation="vertical" flexItem />
 
         <Grid item lg={9} md={9} sm={9} xs={12} className={classes.col2}>
-          <DaysOfWeek />
+          <DaysOfWeek handleChoiceDay={handleChoiceDay} />
           <MovieShowTimeList lichChieuRap={lichChieuRap} />
         </Grid>
       </Grid>
