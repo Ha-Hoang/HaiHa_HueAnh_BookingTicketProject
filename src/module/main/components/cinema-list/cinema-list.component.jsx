@@ -25,15 +25,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function CinemaList(props) {
   const classes = useStyles();
+  // const { cinemaDetail } = props;
+  // console.log("cinemaList: ", cinemaDetail);
+  const { lstCumRap = [] } = props.cinemaDetail;
+  console.log("lstCumRap: ", lstCumRap);
 
   return (
     <div className="tab-content">
       <div>
         <Grid container>
           <Grid item md={4} className={classes.cinema}>
-            <div>
-              <Cinema />
-            </div>
+            {lstCumRap.map((cine, index) => {
+              return (
+                <div key={index}>
+                  <Cinema cine={cine} />
+                </div>
+              );
+            })}
           </Grid>
           <Grid item md={8} className={classes.cinemaDetailList}>
             <CinemaMovieDetailList />
