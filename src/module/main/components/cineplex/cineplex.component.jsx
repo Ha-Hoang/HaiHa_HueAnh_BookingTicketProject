@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LogoCineplex from "../logo-cineplex/logo-cineplex.component";
 import { useSelector, useDispatch } from "react-redux";
 import { getCinemaListAction } from "../../../../store/actions/cinema.action";
@@ -15,6 +15,13 @@ const useStyles = makeStyles((theme) => ({
       opacity: "1",
     },
   },
+  liLogoActive: {
+    padding: "20px 0",
+    borderBottom: "1px solid #e2e2e2",
+    transition: "all 0.5s",
+    cursor: "pointer",
+    opacity: "1",
+  },
   ulLogo: {
     listStyle: "none",
     paddingLeft: "0",
@@ -26,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Cineplex(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { maHeThongRap } = props;
 
   useEffect(() => {
     dispatch(getCinemaListAction());
@@ -34,7 +42,15 @@ export default function Cineplex(props) {
   const renderLogoCineplex = () => {
     return cinemaList.map((item, index) => {
       return (
-        <li className={classes.liLogo} key={index}>
+        <li
+          className={
+            item.maHeThongRap === maHeThongRap
+              ? classes.liLogoActive
+              : classes.liLogo
+          }
+          key={index}
+          onClick={() => props.handleChoiceCinema(item.maHeThongRap)}
+        >
           <LogoCineplex item={item} />
         </li>
       );
