@@ -1,10 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Grid, makeStyles } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getCinemaDetailAction,
-  getCinemaGroupAction,
-} from "../../../../store/actions/cinema.action";
+import { getCinemaDetailAction } from "../../../../store/actions/cinema.action";
 import CinemaList from "../cinema-list/cinema-list.component";
 import Cineplex from "../cineplex/cineplex.component";
 
@@ -28,6 +26,7 @@ export default function CinemaApp(props) {
 
   const [maHeThongRap, setMaHeThongRap] = useState("BHDStar");
   const [cinemaDetail, setCinemaDetail] = useState({});
+  
   const dispatch = useDispatch();
   let cinema = useSelector((state) => state.cinema.cinemaDetail);
 
@@ -46,17 +45,22 @@ export default function CinemaApp(props) {
     const newCinemaDetail = cinema.find(
       (cine) => cine.maHeThongRap === maHeThongRap
     );
+  
     setMaHeThongRap(maHeThongRap);
     setCinemaDetail(newCinemaDetail);
   };
+
   return (
     <section className={classes.wrapper}>
       <Grid container>
         <Grid item md={1} className={classes.cineplex}>
-          <Cineplex handleChoiceCinema={handleChoiceCinema} maHeThongRap={maHeThongRap}/>
+          <Cineplex
+            handleChoiceCinema={handleChoiceCinema}
+            maHeThongRap={maHeThongRap}
+          />
         </Grid>
         <Grid item md={11} className={classes.cinemaList}>
-          <CinemaList cinemaDetail={cinemaDetail}/>
+          <CinemaList cinemaDetail={cinemaDetail} />
         </Grid>
       </Grid>
     </section>

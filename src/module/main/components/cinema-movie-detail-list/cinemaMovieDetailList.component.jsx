@@ -1,22 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import CinemaMovieDetail from "../cinema-movie-detail/cinemaMovieDetail..component";
 
-class CinemaMovieDetailList extends Component {
-  render() {
-    return (
-      <div>
-        <div>
-          <CinemaMovieDetail />
-          <CinemaMovieDetail />
-          <CinemaMovieDetail />
-          <CinemaMovieDetail />
-          <CinemaMovieDetail />
-          <CinemaMovieDetail />
-          <CinemaMovieDetail />
-        </div>
-      </div>
-    );
-  }
-}
+export default function CinemaMovieDetailList(props) {
+  const { danhSachPhim } = props.schedule;
 
-export default CinemaMovieDetailList;
+  const renderCinemaMovieDetail = () => {
+    return danhSachPhim?.map((lst, index) => {
+      return (
+        <React.Fragment key={index}>
+          <CinemaMovieDetail lst={lst} />
+        </React.Fragment>
+      );
+    });
+  };
+
+  return (
+    <div style={{ padding: "10px 10px" }}>
+      <div>{renderCinemaMovieDetail()}</div>
+    </div>
+  );
+}
