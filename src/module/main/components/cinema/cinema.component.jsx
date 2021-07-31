@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import bhd from "../../../../assets/images/bhd-star-vincom-le-van-viet.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -15,9 +15,19 @@ const useStyles = makeStyles((theme) => ({
     opacity: "0.3",
     transition: "all 0.5s",
     padding: "13px",
+    cursor: "pointer",
     "&:hover": {
       opacity: "1",
     },
+  },
+  detailActive: {
+    paddingBottom: "5px",
+    borderBottom: "1px solid #e2e2e2",
+    display: "flex",
+    opacity: "1",
+    transition: "all 0.5s",
+    padding: "13px",
+    cursor: "pointer",
   },
   imageCinema: {
     width: "54px",
@@ -47,24 +57,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Cinema(props) {
   const classes = useStyles();
-  const { cine } = props;
-  console.log("cine: ", cine);
-
+  const { cine, maCumRap } = props;
 
   return (
-    <a href="/" className={classes.navLink} style={{ textDecoration: "none" }}>
-      <div className={classes.detail}>
-        <div>
-          <img src={bhd} className={classes.imageCinema} alt="bhd" />
-        </div>
-        <div className={classes.describe}>
-          <p className={classes.title}>
-            <span>{cine.tenCumRap}</span>
-          </p>
-          <p className={classes.address}>{cine.diaChi}</p>
-          <p className={classes.moreInfo}>[chi tiết]</p>
-        </div>
+    <div
+      className={
+        cine.maCumRap === maCumRap ? classes.detailActive : classes.detail
+      }
+      onClick={() => props.handleChoiceSchedule(cine.maCumRap)}
+    >
+      <div>
+        <img src={bhd} className={classes.imageCinema} alt="bhd" />
       </div>
-    </a>
+      <div className={classes.describe}>
+        <p className={classes.title}>
+          <span>{cine.tenCumRap}</span>
+        </p>
+        <p className={classes.address}>{cine.diaChi}</p>
+        <p className={classes.moreInfo}>[chi tiết]</p>
+      </div>
+    </div>
   );
 }
