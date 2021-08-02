@@ -26,7 +26,7 @@ export default function CinemaApp(props) {
 
   const [maHeThongRap, setMaHeThongRap] = useState("BHDStar");
   const [cinemaDetail, setCinemaDetail] = useState({});
-  
+
   const dispatch = useDispatch();
   let cinema = useSelector((state) => state.cinema.cinemaDetail);
 
@@ -35,17 +35,17 @@ export default function CinemaApp(props) {
   }, []);
 
   useEffect(() => {
-    if(Object.keys(cinemaDetail).length === 0){
+    if (Object.keys(cinemaDetail).length === 0) {
       const newCinemaDetail = cinema[0] || {};
       setCinemaDetail(newCinemaDetail);
     }
-  }, [cinema])
+  }, [cinema]);
 
   const handleChoiceCinema = (maHeThongRap) => {
     const newCinemaDetail = cinema.find(
       (cine) => cine.maHeThongRap === maHeThongRap
     );
-  
+
     setMaHeThongRap(maHeThongRap);
     setCinemaDetail(newCinemaDetail);
   };
