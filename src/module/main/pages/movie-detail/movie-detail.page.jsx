@@ -32,6 +32,7 @@ class MovieDetail extends Component {
 
   render() {
     const { movieDetail, loading } = this.props;
+    console.log("movieDetail: ", movieDetail);
     const { classes } = this.props;
 
     if (loading) {
@@ -147,6 +148,7 @@ class MovieDetail extends Component {
   }
   componentDidMount() {
     const { movieCode } = this.props.match.params;
+    console.log("movieCode: ", movieCode);
     this.props.dispatch(getMovieDetailAction(movieCode));
   }
 }
