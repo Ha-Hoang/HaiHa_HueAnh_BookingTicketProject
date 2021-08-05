@@ -1,5 +1,9 @@
+/* eslint-disable no-undef */
 import React, { Component } from "react";
-import { getCinemaDetailAction } from "../../../../store/actions/cinema.action";
+import {
+  getCinemaDetailAction,
+  getCinemaGroupAction,
+} from "../../../../store/actions/cinema.action";
 import CinemaDetailBottom from "../../components/cinema-detail-bottom/cinema-detail-bottom.component";
 import CinemaDetailTop from "../../components/cinema-detail-top/cinema-detail-top.component";
 import { connect } from "react-redux";
@@ -10,7 +14,15 @@ class CinemaDetail extends Component {
     return (
       <div>
         <CinemaDetailTop />
-        <div id="cinemaDetailBottom">
+        <div
+          id="cinemaDetailBottom"
+          style={{
+            paddingTop: "43px",
+            "@media (maxWidth: 768px)": {
+              paddingTop: "0px",
+            },
+          }}
+        >
           <CinemaDetailBottom />
         </div>
       </div>
@@ -22,4 +34,9 @@ class CinemaDetail extends Component {
   }
 }
 
-export default connect()(withRouter(CinemaDetail));
+const mapStateToProps = (state) => {
+  return {
+    cinemaDetail: state.cinema.cinemaDetail,
+  };
+};
+export default connect(mapStateToProps)(withRouter(CinemaDetail));
