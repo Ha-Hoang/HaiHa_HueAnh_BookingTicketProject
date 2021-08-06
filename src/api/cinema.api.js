@@ -14,3 +14,10 @@ export const getCinemaGroupAPI = (maHeThongRap) => {
     method: GET,
   });
 };
+
+export const getCinemaDetailAPI = () => {
+  return axios({
+    url: `${baseUrl}/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP01`,
+    method: GET,
+  });
+};
