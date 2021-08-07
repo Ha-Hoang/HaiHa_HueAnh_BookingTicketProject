@@ -4,6 +4,13 @@ import "./home.scss";
 import { arrow, data } from "./data";
 import MovieList from "../../components/movielist/movieList";
 import CinemaApp from "../../components/cinema-app/cinema-app.component";
+import playvid from "../../../../assets/images/play-video.png";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import CardMedia from "@material-ui/core/CardMedia";
+import close from "../../../../assets/images/close.png";
+import Application from "../../components/application/application.component";
 
 export default class Home extends Component {
   constructor(props) {
@@ -49,35 +56,83 @@ export default class Home extends Component {
       arrows: false,
       responsive: [
         {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 1,
-          },
-        },
-        {
           breakpoint: 600,
           settings: {
-            slidesToShow: 1,
-          },
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-          },
-        },
-      ],
+            dots: false
+          }
+        }
+      ]
     };
     return (
       <div>
-        <div className="slickSlider">
+        <div className="slickSlider" style={{ position: "relative" }}>
           <Slider ref={(c) => (this.slider = c)} {...settings}>
             {this.state.slideArray.map((slide, index) => (
-              <div key={index} className="slide_item-poster">
-                <img src={slide} width="100%" alt="" />
+              <div key={index}>
+                <img
+                  src={slide}
+                  style={{
+                    width: "100%",
+                  }}
+                  alt=""
+                />
               </div>
             ))}
           </Slider>
+
+          <div className="hoverPoster">
+            <button type="button" onClick={this.handleOpen}>
+              <img src={playvid} alt="playvideo" />
+            </button>
+            <Modal
+              aria-labelledby="transition-modal-title"
+              aria-describedby="transition-modal-description"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              open={this.state.open}
+              onClose={this.handleClose}
+              closeAfterTransition
+              BackdropComponent={Backdrop}
+              BackdropProps={{
+                timeout: 500,
+              }}
+            >
+              <Fade in={this.state.open}>
+                <div
+                  style={{
+                    width: "900px",
+                    height: "500px",
+                    position: "relative",
+                  }}
+                >
+                  <button
+                    onClick={this.closeModal}
+                    style={{
+                      position: "absolute",
+                      right: "-20px",
+                      transform: "translateY(-20px)",
+                      backgroundColor: "transparent",
+                      border: "none",
+                      cursor: "pointer",
+                      "&:focus": {
+                        outline: "none",
+                      },
+                    }}
+                  >
+                    <img src={close} alt="close"></img>
+                  </button>
+                  <CardMedia
+                    component="iframe"
+                    src="https://www.youtube.com/embed/Eu9G8nO5-Ug"
+                    style={{ width: "100%", height: "100%" }}
+                  />
+                </div>
+              </Fade>
+            </Modal>
+          </div>
           <div className="button">
             <button className="button-previous" onClick={this.previous}>
               <img src={this.state.arrowArray[0]} alt="" />
@@ -91,8 +146,18 @@ export default class Home extends Component {
           {" "}
           <MovieList />
         </section>
-        <section className="cinema-app">
+        <section
+          className="cinema-app"
+          id="cinemaGroup"
+          style={{ paddingTop: "60px" }}
+        >
           <CinemaApp />
+        </section>
+        <section
+          id="application"
+          style={{ paddingTop: "60px" }}
+        >
+          <Application />
         </section>
       </div>
     );

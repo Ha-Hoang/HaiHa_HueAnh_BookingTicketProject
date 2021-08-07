@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #e2e2e2",
     padding: "0",
     borderRight: "none",
+    "@media (max-width: 960px)": {
+      border: "none",
+    },
   },
   cinemaList: {
     border: "1px solid #e2e2e2",
@@ -18,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
   wrapper: {
     maxWidth: "940px",
     margin: "auto",
+    "@media (max-width: 600px)": {
+      padding: "0 20px",
+    },
   },
 }));
 
