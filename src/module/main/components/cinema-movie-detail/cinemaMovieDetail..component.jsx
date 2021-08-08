@@ -1,6 +1,6 @@
 import { makeStyles, Typography } from "@material-ui/core";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Format from "date-format";
 
 const useStyles = makeStyles((theme) => ({
@@ -50,12 +50,22 @@ export default function CinemaMovieDetail(props) {
   const classes = useStyles();
   const { lst } = props;
   const { lstLichChieuTheoPhim } = props.lst;
+  const history = useHistory();
 
   const renderTimeList = () => {
     return lstLichChieuTheoPhim.map((lstLichChieu, index) => {
       return (
-        <Typography variant="h5" className={classes.coverTextTiming} key={index}>
-          <Link to="/" className={classes.textTiming}>
+        <Typography
+          variant="h5"
+          className={classes.coverTextTiming}
+          key={index}
+        >
+          <Link
+            onClick={() => {
+              history.push("/bookingticket/:schedulecode");
+            }}
+            className={classes.textTiming}
+          >
             {Format("hh:mm", new Date(lstLichChieu.ngayChieuGioChieu))}
           </Link>
         </Typography>
