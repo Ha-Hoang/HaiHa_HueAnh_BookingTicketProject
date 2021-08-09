@@ -10,10 +10,9 @@ import { Link } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 
 const signIpUser = yup.object().shape({
-  taiKhoan : yup.string().required("Nhap tai Khoan"),
-  matKhau : yup.string().required("Nhap mat khau"),
-
-})
+  taiKhoan: yup.string().required("Nhap tai Khoan"),
+  matKhau: yup.string().required("Nhap mat khau"),
+});
 class SignIn extends Component {
   constructor(props) {
     super(props);
@@ -23,14 +22,14 @@ class SignIn extends Component {
     this.props.dispatch(signInAction(value));
   };
   render() {
-    
     return (
       <section
         className="sign-in px-4 py-5 mx-auto modal"
         style={{ backgroundImage: `url(${bgSignIn})` }}
       >
         <div className="sign-in__container">
-          <NavLink to="/"
+          <NavLink
+            to="/"
             type="button"
             class="close"
             data-dismiss="modal"
@@ -46,8 +45,7 @@ class SignIn extends Component {
             />
           </div>
           <Formik
-            initialValues={{taiKhoan: "",
-              matKhau: "",}}
+            initialValues={{ taiKhoan: "", matKhau: "" }}
             validationSchema={signIpUser}
             onSubmit={this.handleSubmit}
             render={(props) => (
@@ -61,7 +59,11 @@ class SignIn extends Component {
                     onChange={props.handleChange}
                   />
                   <ErrorMessage name="taiKhoan">
-                    {(mess) => <div className="" style={{color: "red"}}>{mess}</div> }
+                    {(mess) => (
+                      <div className="" style={{ color: "red" }}>
+                        {mess}
+                      </div>
+                    )}
                   </ErrorMessage>
                 </div>
                 <div className="form-group">
@@ -73,7 +75,11 @@ class SignIn extends Component {
                     onChange={props.handleChange}
                   />
                   <ErrorMessage name="matKhau">
-                    {(mess) => <div className="" style={{color: "red"}}>{mess}</div> }
+                    {(mess) => (
+                      <div className="" style={{ color: "red" }}>
+                        {mess}
+                      </div>
+                    )}
                   </ErrorMessage>
                 </div>
                 <div className="row justify-content-center my-3 px-3">
