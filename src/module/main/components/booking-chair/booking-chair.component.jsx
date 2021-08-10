@@ -4,9 +4,10 @@ import ChairList from "../chair-list/chair-list.component";
 import InfoCinema from "../info-cinema/info-cinema.component";
 
 export default function BookingChair(props) {
+  const { bookinglst } = props;
   return (
     <Container style={{ maxWidth: "975px" }}>
-      <InfoCinema />
+      <InfoCinema bookinglst={bookinglst} />
       <ChairList />
     </Container>
   );

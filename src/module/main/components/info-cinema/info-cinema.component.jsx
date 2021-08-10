@@ -30,15 +30,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function InfoCinema(props) {
   const classes = useStyles();
+  const { bookinglst } = props;
+
   return (
     <div className={classes.detailCinema}>
       <div className={classes.avatar}>
-        <Avatar className={classes.avatarCinema} alt="bhd" src={galaxy} />
+        <Avatar
+          className={classes.avatarCinema}
+          alt="bhd"
+          src={bookinglst.hinhAnh}
+        />
       </div>
       <div>
-        <p className={classes.textCinemaName}>Galaxy Quang Trung</p>
+        <p className={classes.textCinemaName}>{bookinglst.tenCumRap}</p>
         <p className={classes.textTiming}>
-          <span>8/8</span> - <span>13:00</span> - <span>RẠP 5</span>
+          <span>{bookinglst.ngayChieu}</span> - <span>{bookinglst.gioChieu}</span>{" "}
+          - <span style={{ textTransform: "uppercase" }}>{bookinglst.tenRap}</span>
         </p>
       </div>
     </div>
