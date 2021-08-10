@@ -28,11 +28,12 @@ const useStyles = makeStyles((theme) => ({
 export default function DaysOfWeek(props) {
   const classes = useStyles();
   const { handleChoiceDay } = props;
+  const { thu } = props;
 
   return (
     <div className={classes.root}>
       <ul className={classes.ul}>
-        <Day handleChoiceDay={handleChoiceDay} />
+        <Day handleChoiceDay={handleChoiceDay} thu={thu} />
       </ul>
     </div>
   );
