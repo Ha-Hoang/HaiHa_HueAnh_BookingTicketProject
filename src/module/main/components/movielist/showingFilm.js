@@ -2,7 +2,7 @@ import React from "react";
 import playVideo from "../../../../assets/images/play-video.png";
 import star1 from "../../../../assets/images/star1.png";
 import star12 from "../../../../assets/images/star1.2.png";
-import close from "../../../../assets/images/close.png"
+import close from "../../../../assets/images/close.png";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
     transform: "translateY(-20px)",
     backgroundColor: "transparent",
     border: "none",
+    cursor: "pointer",
   },
 }));
 
@@ -78,10 +79,7 @@ export default function ShowingFilm(props) {
                 <Fade in={open}>
                   <div className={classes.paper}>
                     <button onClick={closeModal} className={classes.close}>
-                      <img
-                        src={close}
-                        alt="close"
-                      ></img>
+                      <img src={close} alt="close"></img>
                     </button>
                     <CardMedia
                       component="iframe"
