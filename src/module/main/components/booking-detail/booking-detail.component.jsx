@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 export default function BookingDetail(props) {
   const classes = useStyles();
   const { bookinglst } = props;
+  
   return (
     <div className={classes.bookingDetail}>
       <BookingTotal bookinglst={bookinglst} />

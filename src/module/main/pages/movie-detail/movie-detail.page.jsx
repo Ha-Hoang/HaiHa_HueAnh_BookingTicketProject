@@ -29,7 +29,7 @@ class MovieDetail extends Component {
   closeModal = () => {
     this.setState({ open: false });
   };
-  
+
   render() {
     const { movieDetail, loading } = this.props;
     const { classes } = this.props;
@@ -46,98 +46,101 @@ class MovieDetail extends Component {
             image={movieDetail.hinhAnh}
             className={classes.imgBackground}
           />
-          <div maxwidth="lg" className={classes.movieContent}>
-            <Grid container>
-              <Grid
-                item
-                lg={4}
-                md={4}
-                sm={12}
-                xs={12}
-                className={classes.itemContent}
-              >
-                <div className={classes.itemPoster}>
-                  <img
-                    className={classes.poster}
-                    src={movieDetail.hinhAnh}
-                    alt=""
-                  />
-                  <div className={classes.hoverPoster}>
-                    <button
-                      className={classes.button}
-                      type="button"
-                      onClick={this.handleOpen}
-                    >
-                      <img
-                        className={classes.imgPlayVid}
-                        src={playVideo}
-                        alt="playvideo"
-                      />
-                    </button>
-                    <Modal
-                      aria-labelledby="transition-modal-title"
-                      aria-describedby="transition-modal-description"
-                      className={classes.modal}
-                      open={this.state.open}
-                      onClose={this.handleClose}
-                      closeAfterTransition
-                      BackdropComponent={Backdrop}
-                      BackdropProps={{
-                        timeout: 500,
-                      }}
-                    >
-                      <Fade in={this.state.open}>
-                        <div className={classes.paper}>
-                          <button
-                            onClick={this.closeModal}
-                            className={classes.close}
-                          >
-                            <img
-                              src="https://tix.vn/app/assets/img/icons/close.png"
-                              alt="tix"
-                            ></img>
-                          </button>
-                          <CardMedia
-                            component="iframe"
-                            src={movieDetail.trailer}
-                            className={classes.iframe}
-                          />
-                        </div>
-                      </Fade>
-                    </Modal>
+            <div maxwidth="lg" className={classes.movieContent}>
+              <Grid container>
+                <Grid
+                  item
+                  lg={4}
+                  md={4}
+                  sm={12}
+                  xs={12}
+                  className={classes.itemContent}
+                >
+                  <div className={classes.itemPoster}>
+                    <img
+                      className={classes.poster}
+                      src={movieDetail.hinhAnh}
+                      alt=""
+                    />
+                    <div className={classes.hoverPoster}>
+                      <button
+                        className={classes.button}
+                        type="button"
+                        onClick={this.handleOpen}
+                      >
+                        <img
+                          className={classes.imgPlayVid}
+                          src={playVideo}
+                          alt="playvideo"
+                        />
+                      </button>
+                      <Modal
+                        aria-labelledby="transition-modal-title"
+                        aria-describedby="transition-modal-description"
+                        className={classes.modal}
+                        open={this.state.open}
+                        onClose={this.handleClose}
+                        closeAfterTransition
+                        BackdropComponent={Backdrop}
+                        BackdropProps={{
+                          timeout: 500,
+                        }}
+                      >
+                        <Fade in={this.state.open}>
+                          <div className={classes.paper}>
+                            <button
+                              onClick={this.closeModal}
+                              className={classes.close}
+                            >
+                              <img
+                                src="https://tix.vn/app/assets/img/icons/close.png"
+                                alt="tix"
+                              ></img>
+                            </button>
+                            <CardMedia
+                              component="iframe"
+                              src={movieDetail.trailer}
+                              className={classes.iframe}
+                            />
+                          </div>
+                        </Fade>
+                      </Modal>
+                    </div>
                   </div>
-                </div>
+                </Grid>
+                <Grid
+                  item
+                  lg={8}
+                  md={8}
+                  sm={12}
+                  xs={12}
+                  className={classes.textInfo}
+                >
+                  <Typography
+                    variant="h4"
+                    className={classes.textTransformMovie}
+                  >
+                    {movieDetail.tenPhim}
+                  </Typography>
+                  <span className={classes.textTransform}>
+                    {movieDetail.moTa}
+                  </span>
+                  <Typography variant="h6" style={{ paddingTop: "10px" }}>
+                    Bí Danh: {movieDetail.biDanh}
+                  </Typography>
+                  <Typography variant="h6">
+                    Ngày Khởi Chiếu:{" "}
+                    {Format("dd/MM/yyyy", new Date(movieDetail.ngayKhoiChieu))}
+                  </Typography>
+                  <Typography variant="h6">
+                    Đánh Giá: {movieDetail.danhGia}
+                  </Typography>
+                  <Link to="show-time" spy={true} smooth={true} duration={500}>
+                    <button className={classes.buttonBuyTicket}>Mua vé</button>
+                  </Link>
+                </Grid>
               </Grid>
-              <Grid
-                item
-                lg={8}
-                md={8}
-                sm={12}
-                xs={12}
-                className={classes.textInfo}
-              >
-                <Typography variant="h4" className={classes.textTransformMovie}>
-                  {movieDetail.tenPhim}
-                </Typography>
-                <span className={classes.textTransform}>
-                  {movieDetail.moTa}
-                </span>
-                <Typography variant="h6" style={{ paddingTop: "10px" }}>
-                  Bí Danh: {movieDetail.biDanh}
-                </Typography>
-                <Typography variant="h6">
-                  Ngày Khởi Chiếu:{" "}
-                  {Format("dd/MM/yyyy", new Date(movieDetail.ngayKhoiChieu))}
-                </Typography>
-                <Typography variant="h6">
-                  Đánh Giá: {movieDetail.danhGia}
-                </Typography>
-                <Link to="show-time" spy={true} smooth={true} duration={500}>
-                  <button className={classes.buttonBuyTicket}>Mua vé</button>
-                </Link>
-              </Grid>
-            </Grid>
-          </div>
+            </div>
         </section>
         <section className={classes.showTime} id="show-time">
           <MovieDetailBottom />

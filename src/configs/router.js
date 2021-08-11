@@ -4,7 +4,6 @@ import MovieDetail from "../module/main/pages/movie-detail/movie-detail.page";
 import Home from "../module/main/pages/home/home.page";
 import Dashboard from "../module/admin/pages/dashboard/dashboard.page";
 import UserManagement from "../module/admin/pages/user-managements/user-management.page";
-import CinemaDetail from "../module/main/pages/cinema-detail/cinema-detail.page";
 import BookingTicket from "../module/main/pages/booking-ticket/booking-ticket.page";
 export const routerMain = [
   {
@@ -21,11 +20,6 @@ export const routerMain = [
     path: "/moviedetail/:movieCode",
     exact: true,
     Component: MovieDetail,
-  },
-  {
-    path: "/cinemagroupdetail/:cinemagroupcode",
-    exact: true,
-    Component: CinemaDetail,
   },
   {
     path: "/bookingticket/:schedulecode",

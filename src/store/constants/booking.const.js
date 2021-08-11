@@ -1,1 +1,3 @@
 export const GET_BOOKING_LIST = "GET_BOOKING_LIST";
+export const GET_CHAIR_LIST = "GET_CHAIR_LIST";
+export const CHOICE_CHAIR = "CHOICE_CHAIR";

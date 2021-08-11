@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 export default function InfoCinema(props) {
   const classes = useStyles();
   const { bookinglst } = props;
+  console.log("info cinema:",bookinglst);
 
   return (
     <div className={classes.detailCinema}>
