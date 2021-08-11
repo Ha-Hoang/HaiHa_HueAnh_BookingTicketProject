@@ -35,10 +35,36 @@ const useStyles = makeStyles((theme) => ({
   total: {
     paddingTop: "12px",
   },
+  bookingchair: {
+    paddingRight: "5px",
+    display: "inline-block",
+  },
 }));
 export default function BookingTotal(props) {
   const classes = useStyles();
   const { bookinglst } = props;
+  const { chairInfo } = props;
+
+  const renderChairBooking = () => {
+    return chairInfo.map((chairbooking, index) => {
+      return (
+        <span key={index} className={classes.bookingchair}>
+          {chairbooking.tenGhe}
+        </span>
+      );
+    });
+  };
+
+  const renderTotal = () => {
+    return chairInfo
+      .reduce((total, bookingChair, index) => {
+        return (total += bookingChair.giaVe);
+      }, 0)
+      .toLocaleString("vi-VN", {
+        style: "currency",
+        currency: "VND",
+      });
+  };
 
   return (
     <div className={classes.mainBookingTotal}>
@@ -55,10 +81,11 @@ export default function BookingTotal(props) {
       </div>
       <Grid container className={classes.total}>
         <Grid item md={6} xs={6} className={classes.textChair}>
-          Ghế <span></span>
+          Ghế {renderChairBooking()}
         </Grid>
+
         <Grid item md={6} xs={6} className={classes.textPrice}>
-          75.000đ
+          {renderTotal()}
         </Grid>
       </Grid>
     </div>

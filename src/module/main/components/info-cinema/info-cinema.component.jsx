@@ -1,7 +1,6 @@
 import React from "react";
 import { Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import galaxy from "../../../../assets/images/galaxycine.png";
 
 const useStyles = makeStyles((theme) => ({
   avatarCinema: {
@@ -31,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
 export default function InfoCinema(props) {
   const classes = useStyles();
   const { bookinglst } = props;
-  console.log("info cinema:",bookinglst);
 
   return (
     <div className={classes.detailCinema}>
