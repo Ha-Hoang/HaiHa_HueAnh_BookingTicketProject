@@ -6,10 +6,11 @@ import InfoCinema from "../info-cinema/info-cinema.component";
 export default function BookingChair(props) {
   const { bookinglst } = props;
   const { chairlst } = props;
+  const { handleChoiceChair } = props;
   return (
     <Container style={{ maxWidth: "975px" }}>
       <InfoCinema bookinglst={bookinglst} />
-      <ChairList chairlst={chairlst} />
+      <ChairList chairlst={chairlst} handleChoiceChair={handleChoiceChair} />
     </Container>
   );
 }

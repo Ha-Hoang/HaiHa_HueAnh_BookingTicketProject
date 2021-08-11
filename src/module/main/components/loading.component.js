@@ -6,32 +6,23 @@ export default class Loading extends Component {
     return (
       <div
         style={{
-          position: "absolute",
+          position: "fixed",
           backgroundColor: "white",
           width: "100%",
           height: "100%",
-          zIndex: "4",
+          zIndex: "99",
+          top: 0,
+          left: 0,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <div
-          style={{
-            position: "absolute",
-            top: "0px",
-            bottom: "0px",
-            left: "0px",
-            right: "0px",
-            margin: "auto",
-            width: "120px",
-            height: "100px",
-            zIndex: "5",
-          }}
-        >
-          <img
-            src={logo}
-            className="animate__animated animate__pulse animate__infinite"
-            alt=""
-          />
-        </div>
+        <img
+          src={logo}
+          className="animate__animated animate__pulse animate__infinite"
+          alt=""
+        />
       </div>
     );
   }

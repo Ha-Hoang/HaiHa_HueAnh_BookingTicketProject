@@ -1,7 +1,5 @@
 import { Button, makeStyles } from "@material-ui/core";
 import React from "react";
-import { useDispatch } from "react-redux";
-import { choiceChairAction } from "../../../../store/actions/booking.action";
 
 const useStyle = makeStyles((theme) => ({
   textScreen: {
@@ -45,13 +43,7 @@ const useStyle = makeStyles((theme) => ({
 export default function ChairList(props) {
   const classes = useStyle();
   const { chairlst } = props;
-  const dispatch = useDispatch();
-
-  const handleChoiceChair = (chair) => {
-    dispatch(choiceChairAction(chair));
-  };
-  console.log(handleChoiceChair);
-
+  
   return (
     <div className={classes.mainChairList}>
       <h5 className={classes.textScreen}>Màn hình</h5>
@@ -59,7 +51,7 @@ export default function ChairList(props) {
         {chairlst.map((chair, index) => {
           return (
             <Button
-              onClick={() => handleChoiceChair(chair)}
+              onClick={() => props.handleChoiceChair(chair)}
               disabled={chair.daDat}
               color={chair.loaiGhe === "Vip" ? "secondary" : "default"}
               className={

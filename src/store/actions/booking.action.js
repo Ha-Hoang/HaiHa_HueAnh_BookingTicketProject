@@ -1,4 +1,4 @@
-import { getListBookingAPI } from "../../api/booking.api";
+import { getListBookingAPI, postBookingInfoAPI } from "../../api/booking.api";
 import {
   CHOICE_CHAIR,
   GET_BOOKING_LIST,
@@ -48,3 +48,19 @@ export const choiceChairAction = (chair) => {
     payload: chair,
   };
 };
+
+export const postBookingInfoAction = (maLichChieu, danhSachVe) => {
+  return async (dispatch) => {
+    try {
+      dispatch(startLoadingAction());
+
+      const res = await postBookingInfoAPI(maLichChieu, danhSachVe);
+      console.log(res.data);
+
+      dispatch(stopLoadingAction());
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
