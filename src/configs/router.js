@@ -5,6 +5,9 @@ import Home from "../module/main/pages/home/home.page";
 import Dashboard from "../module/admin/pages/dashboard/dashboard.page";
 import UserManagement from "../module/admin/pages/user-managements/user-management.page";
 import BookingTicket from "../module/main/pages/booking-ticket/booking-ticket.page";
+import ShowtimeManagement from "../module/admin/pages/showtime-management/showtime-management.page";
+import FilmManagement from "../module/admin/pages/film-managements/film-managements.page";
+
 export const routerMain = [
   {
     path: "/signin",
@@ -30,7 +33,7 @@ export const routerMain = [
     path: "/",
     exact: true,
     Component: Home,
-  },
+  }
 ];
 
 export const routerAdmin = [
@@ -43,5 +46,15 @@ export const routerAdmin = [
     path: "/admin/user-management",
     exact: true,
     Component: UserManagement,
+  },
+  {
+    path: "/admin/film-management",
+    exact: true,
+    Component: FilmManagement,
+  },
+  {
+    path: "/admin/showtime-management",
+    exact: true,
+    Component: ShowtimeManagement,
   },
 ];
