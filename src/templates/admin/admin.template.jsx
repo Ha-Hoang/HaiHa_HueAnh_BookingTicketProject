@@ -72,6 +72,9 @@ const useStyles = makeStyles((theme) => ({
   activeColor: {
     color: "#fa5238",
   },
+  navLinkDashboard: {
+    "&:hover": { textDecoration: "none" },
+  },
 }));
 
 function AdminTemplate(props) {
@@ -96,9 +99,15 @@ function AdminTemplate(props) {
   const drawer = (
     <div>
       <div className={classes.toolbar} style={{ padding: "15px" }}>
-        <img src={tix} alt="tix" style={{ width: "50px", height: "50px" }} />
-        <NavLink to="/admin">
-          <span style={{ fontSize: "23px", color: "white", padding: "0 10px" }}>
+        <img src={tix} alt="tix" style={{ width: "40px", height: "40px" }} />
+        <NavLink to="/admin" className={classes.navLinkDashboard}>
+          <span
+            style={{
+              fontSize: "18px",
+              color: "white",
+              padding: "0 10px",
+            }}
+          >
             Dashboard
           </span>
         </NavLink>
@@ -151,11 +160,25 @@ function AdminTemplate(props) {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(signInAction());
+  // }, []);
+
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            className={classes.menuButton}
+          >
+            <MenuIcon />
+          </IconButton>
           <NavLink to="/signin">
             <Button>Đăng nhập</Button>
           </NavLink>
