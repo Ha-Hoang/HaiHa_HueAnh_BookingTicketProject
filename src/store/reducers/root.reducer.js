@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { authReducer } from "./auth.reducer";
 import { bookingReducer } from "./booking.reducer";
 import { cinemaReducer } from "./cinema.reducer";
 import { CommonReducer } from "./common.reducer";
@@ -9,4 +10,5 @@ export const rootReducer = combineReducers({
   common: CommonReducer,
   cinema: cinemaReducer,
   booking: bookingReducer,
+  auth: authReducer,
 });
