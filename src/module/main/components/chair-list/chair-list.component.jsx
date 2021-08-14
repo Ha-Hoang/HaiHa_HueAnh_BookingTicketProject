@@ -1,5 +1,6 @@
 import { Button, makeStyles } from "@material-ui/core";
 import React from "react";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
 
 const useStyle = makeStyles((theme) => ({
   textScreen: {
@@ -38,12 +39,22 @@ const useStyle = makeStyles((theme) => ({
       backgroundColor: "green",
     },
   },
+  // userChon: {
+  //   backgroundColor: "purple",
+  //   margin: "5px",
+  //   "&:focus": {
+  //     outline: "none",
+  //   },
+  // },
 }));
 
 export default function ChairList(props) {
   const classes = useStyle();
   const { chairlst } = props;
-  
+  // const taiKhoan = localStorage.getItem("taiKhoan");
+  // JSON.stringify(taiKhoan);
+  // console.log(taiKhoan);
+
   return (
     <div className={classes.mainChairList}>
       <h5 className={classes.textScreen}>Màn hình</h5>

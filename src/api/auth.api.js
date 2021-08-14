@@ -3,7 +3,7 @@ import { baseUrl, POST } from "../configs/api"
 
 export const signInAPI = (user) =>{
     return axios({
-        method: "POST",
+        method: POST,
         url: `${baseUrl}/QuanLyNguoiDung/DangNhap`,
         data: user,
     })

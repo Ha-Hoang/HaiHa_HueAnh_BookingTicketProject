@@ -55,7 +55,7 @@ export const postBookingInfoAction = (maLichChieu, danhSachVe) => {
       dispatch(startLoadingAction());
 
       const res = await postBookingInfoAPI(maLichChieu, danhSachVe);
-      console.log(res.data);
+      alert(res.data);
 
       dispatch(stopLoadingAction());
     } catch (err) {
@@ -63,4 +63,3 @@ export const postBookingInfoAction = (maLichChieu, danhSachVe) => {
     }
   };
 };
-

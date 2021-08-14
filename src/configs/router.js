@@ -7,6 +7,7 @@ import UserManagement from "../module/admin/pages/user-managements/user-manageme
 import BookingTicket from "../module/main/pages/booking-ticket/booking-ticket.page";
 import ShowtimeManagement from "../module/admin/pages/showtime-management/showtime-management.page";
 import FilmManagement from "../module/admin/pages/film-managements/film-managements.page";
+import AddFilm from "../module/admin/pages/film-managements/add-film/add-film.page";
 
 export const routerMain = [
   {
@@ -51,6 +52,11 @@ export const routerAdmin = [
     path: "/admin/film-management",
     exact: true,
     Component: FilmManagement,
+  },
+  {
+    path: "/admin/film-management/add-film",
+    exact: true,
+    Component: AddFilm,
   },
   {
     path: "/admin/showtime-management",
