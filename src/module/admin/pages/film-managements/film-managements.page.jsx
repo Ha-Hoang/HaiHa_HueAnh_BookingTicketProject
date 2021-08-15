@@ -94,14 +94,18 @@ export default function FilmManagement() {
       headerName: "",
       sortable: false,
       width: 180,
-      renderCell: () => {
+      renderCell: (params) => {
         return (
           <>
-            <NavLink to="/" style={{ color: "black" }}>
+            <NavLink
+              key={1}
+              to={`/admin/film-management/edit-film/${params?.row.maPhim}`}
+              style={{ color: "black" }}
+            >
               {" "}
               <EditIcon />
             </NavLink>
-            <NavLink to="/" style={{ color: "black" }}>
+            <NavLink key={2} to="/" style={{ color: "black" }}>
               {" "}
               <DeleteIcon />
             </NavLink>

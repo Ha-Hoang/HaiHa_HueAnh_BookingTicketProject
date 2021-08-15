@@ -8,6 +8,7 @@ import BookingTicket from "../module/main/pages/booking-ticket/booking-ticket.pa
 import ShowtimeManagement from "../module/admin/pages/showtime-management/showtime-management.page";
 import FilmManagement from "../module/admin/pages/film-managements/film-managements.page";
 import AddFilm from "../module/admin/pages/film-managements/add-film/add-film.page";
+import EditFilm from "../module/admin/pages/film-managements/edit-film/edit-film.page";
 
 export const routerMain = [
   {
@@ -57,6 +58,11 @@ export const routerAdmin = [
     path: "/admin/film-management/add-film",
     exact: true,
     Component: AddFilm,
+  },
+  {
+    path: "/admin/film-management/edit-film/:filmcode",
+    exact: true,
+    Component: EditFilm,
   },
   {
     path: "/admin/showtime-management",
