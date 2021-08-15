@@ -120,7 +120,9 @@ export default function FilmManagement() {
   return (
     <div style={{ height: 400, width: "100%" }}>
       <h5>Quản lý phim</h5>
-      <Button>+Thêm phim</Button>
+      <NavLink to="/admin/film-management/add-film">
+        <Button>+Thêm phim</Button>
+      </NavLink>
       <Paper component="form" className={classes.rootSearch}>
         <InputBase
           className={classes.input}

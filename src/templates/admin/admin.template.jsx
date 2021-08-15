@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
+    backgroundColor: "#009be5",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -65,12 +66,12 @@ const useStyles = makeStyles((theme) => ({
   textSideBar: {
     color: "#bbb",
     "&:hover": {
-      color: "#ff8664",
+      color: "#4fc3f7",
       textDecoration: "none",
     },
   },
   activeColor: {
-    color: "#fa5238",
+    color: "#4fc3f7",
   },
   navLinkDashboard: {
     "&:hover": { textDecoration: "none" },
