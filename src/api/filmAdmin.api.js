@@ -1,5 +1,5 @@
 import axios from "axios";
-import { baseUrl, POST } from "../configs/api";
+import { baseUrl, POST, DELETE } from "../configs/api";
 
 export const postFilmInfoApi = (formData) => {
   return axios({
@@ -20,3 +20,14 @@ export const UpdateFilmInfoApi = (formData) => {
     },
   });
 };
+
+export const deleteFilmInfoApi = (maPhim) => {
+  const token = JSON.parse(localStorage.getItem("token"));
+  return axios({
+    url: `${baseUrl}/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
+    method: DELETE,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+}

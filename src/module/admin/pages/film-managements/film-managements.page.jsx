@@ -7,6 +7,7 @@ import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 import { Button } from "@material-ui/core";
 import { getMovieListAction } from "../../../../store/actions/movie.action";
+import { deleteFilmInfoAction } from "../../../../store/actions/filmAdmin.action";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import EditIcon from "@material-ui/icons/Edit";
@@ -105,10 +106,15 @@ export default function FilmManagement() {
               {" "}
               <EditIcon />
             </NavLink>
-            <NavLink key={2} to="/" style={{ color: "black" }}>
+            <span key={2} style={{ color: "black", cursor: "pointer" }} onClick={()=>{
+              if(window.confirm("Bạn có chắc muốn xóa phim" + params.row.tenPhim )) {
+                //gọi action
+                dispatch(deleteFilmInfoAction(params.row.maPhim))
+              }
+            }}>
               {" "}
               <DeleteIcon />
-            </NavLink>
+            </span>
           </>
         );
       },
@@ -120,6 +126,7 @@ export default function FilmManagement() {
     dispatch(getMovieListAction());
   }, []);
   const rows = useSelector((state) => state.movie.movieList);
+ 
 
   return (
     <div style={{ height: 400, width: "100%" }}>
@@ -131,12 +138,13 @@ export default function FilmManagement() {
         <InputBase
           className={classes.input}
           placeholder="Nhập tên phim..."
-          // inputProps={{ "aria-label": "search google maps" }}
+          
+          
         />
         <IconButton
-          type="submit"
           className={classes.iconButton}
           aria-label="search"
+     
         >
           <SearchIcon />
         </IconButton>

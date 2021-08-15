@@ -74,23 +74,13 @@ export default function AddFilm() {
       //tạo đối tượng formData, đưa giá trị formik qua form data
       let formData = new FormData();
       for (let key in values) {
-        formData.append(key, values[key]);
+        // formData.append(key, values[key]);
         if (key !== "hinhAnh") {
           formData.append(key, values[key]);
         } else {
           formData.append("file", values.hinhAnh, values.hinhAnh.name);
         }
       }
-
-      console.log("formdata", formData.get("ngayKhoiChieu"));
-      console.log("formdata", formData.get("maPhim"));
-      console.log("formdata", formData.get("tenPhim"));
-      console.log("formdata", formData.get("biDanh"));
-      console.log("formdata", formData.get("trailer"));
-      console.log("formdata", formData.get("hinhAnh"));
-      console.log("formdata", formData.get("moTa"));
-      console.log("formdata", formData.get("maNhom"));
-      console.log("formdata", formData.get("danhGia"));
 
       //gọi api
       dispatch(postFilmInfoAction(formData));
