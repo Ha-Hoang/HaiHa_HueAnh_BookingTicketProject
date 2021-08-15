@@ -1,4 +1,4 @@
-import { postFilmInfoApi, UpdateFilmInfoApi } from "../../api/filmAdmin.api";
+import { postFilmInfoApi, UpdateFilmInfoApi, deleteFilmInfoApi } from "../../api/filmAdmin.api";
 import { getMovieListAction } from "./movie.action";
 import { history } from "../../App";
 
@@ -18,11 +18,29 @@ export const updateFilmInfoAction = (formData) => {
   return async (dispatch) => {
     try {
       const res = await UpdateFilmInfoApi(formData);
-      alert("Cập nhật phim thành công !");
       console.log(res.data);
+      alert("Cập nhật phim thành công !");
+      
+ 
+ dispatch(getMovieListAction())
+   
+      history.push("/admin/film-management");
+    } catch (err) {
+      console.log(err.response?.data);
+    }
+  };
+};
 
-      // dispatch(getMovieListAction());
-      // history.push("/admin/film-management");
+export const deleteFilmInfoAction = (maPhim) => {
+  return async (dispatch) => {
+    try {
+      const res = await deleteFilmInfoApi(maPhim);
+      console.log(res.data);
+      alert("Xóa phim thành công !");
+      
+      //sau khi xóa lấy lại ds phim mới
+      dispatch(getMovieListAction())
+
     } catch (err) {
       console.log(err.response?.data);
     }

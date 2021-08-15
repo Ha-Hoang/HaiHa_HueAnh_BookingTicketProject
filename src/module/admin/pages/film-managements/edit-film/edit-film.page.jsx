@@ -9,7 +9,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import EditIcon from "@material-ui/icons/Edit";
 import { useFormik, Form } from "formik";
 import Format from "date-format";
 import moment from "moment";
@@ -83,7 +83,7 @@ export default function EditFilm() {
       danhGia: filmInfo?.danhGia,
     },
     onSubmit: (values) => {
-      console.log(values);
+      console.log("submit", values);
       //tạo đối tượng formData, đưa giá trị formik qua form data
       let formData = new FormData();
       for (let key in values) {
@@ -96,15 +96,7 @@ export default function EditFilm() {
         }
       }
 
-      // console.log("formdata", formData.get("ngayKhoiChieu"));
-      // console.log("formdata", formData.get("maPhim"));
-      // console.log("formdata", formData.get("tenPhim"));
-      // console.log("formdata", formData.get("biDanh"));
-      // console.log("formdata", formData.get("trailer"));
-      // console.log("formdata", formData.get("hinhAnh"));
-      // console.log("formdata", formData.get("moTa"));
-      // console.log("formdata", formData.get("maNhom"));
-      // console.log("formdata", formData.get("danhGia"));
+      console.log("formdata", formData.get("ngayKhoiChieu"));
 
       //gọi api
       dispatch(updateFilmInfoAction(formData));
@@ -156,7 +148,7 @@ export default function EditFilm() {
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <AddCircleOutlineIcon />
+          <EditIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
           Cập Nhật Phim
@@ -291,7 +283,7 @@ export default function EditFilm() {
             color="primary"
             className={classes.submit}
           >
-            Thêm phim
+            Cập nhật phim
           </Button>
         </form>
       </div>
