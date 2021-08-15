@@ -10,6 +10,9 @@ import { useDispatch } from "react-redux";
 import { signInAction } from "./store/actions/auth.action";
 import { SIGN_IN } from "./store/constants/auth.const";
 import Guard from "./HOC/guard.hoc";
+import { createBrowserHistory } from "history";
+
+export const history = createBrowserHistory();
 
 function App() {
   function renderRouterMain() {

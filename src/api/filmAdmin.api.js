@@ -8,3 +8,15 @@ export const postFilmInfoApi = (formData) => {
     data: formData,
   });
 };
+
+export const UpdateFilmInfoApi = (formData) => {
+  const token = JSON.parse(localStorage.getItem("token"));
+  return axios({
+    url: `${baseUrl}/QuanLyPhim/CapNhatPhimUpload`,
+    method: POST,
+    data: formData,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
