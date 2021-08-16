@@ -99,7 +99,7 @@ export default function Header() {
                 </Link>
                 <Link
                   activeClass="active"
-                  to=""
+                  to="cinemaGroup"
                   spy={true}
                   smooth={true}
                   duration={500}
@@ -121,7 +121,7 @@ export default function Header() {
                 </Link>
                 <Link
                   activeClass="active"
-                  to=""
+                  to="application"
                   spy={true}
                   smooth={true}
                   duration={500}

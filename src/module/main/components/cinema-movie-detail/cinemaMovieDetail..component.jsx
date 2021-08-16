@@ -54,8 +54,15 @@ export default function CinemaMovieDetail(props) {
   const renderTimeList = () => {
     return lstLichChieuTheoPhim.map((lstLichChieu, index) => {
       return (
-        <Typography variant="h5" className={classes.coverTextTiming} key={index}>
-          <Link to="/" className={classes.textTiming}>
+        <Typography
+          variant="h5"
+          className={classes.coverTextTiming}
+          key={index}
+        >
+          <Link
+            to={`/bookingticket/${lstLichChieu.maLichChieu}`}
+            className={classes.textTiming}
+          >
             {Format("hh:mm", new Date(lstLichChieu.ngayChieuGioChieu))}
           </Link>
         </Typography>

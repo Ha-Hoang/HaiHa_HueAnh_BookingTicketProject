@@ -2,13 +2,13 @@ export const style = {
   movieDetail: {
     position: "relative",
     width: "100%",
-    height: "600px",
+    height: "650px",
     background: "linear-gradient(to top, rgb(10, 32, 41), transparent 100%)",
     "@media (max-width: 992px)": {
-      height: "750px",
+      height: "800px",
     },
     "@media (max-width: 768px)": {
-      height: "800px",
+      height: "900px",
     },
   },
   imgBackground: {
@@ -60,6 +60,7 @@ export const style = {
     transform: "translateY(-20px)",
     backgroundColor: "transparent",
     border: "none",
+    cursor: "pointer",
     "&:focus": {
       outline: "none",
     },

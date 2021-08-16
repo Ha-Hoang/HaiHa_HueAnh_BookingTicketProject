@@ -1,6 +1,5 @@
 import { makeStyles } from "@material-ui/core";
 import React from "react";
-import { useHistory } from "react-router-dom";
 import bhd from "../../../../assets/images/bhd-star-vincom-le-van-viet.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -50,15 +49,10 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     textOverflow: "ellipsis",
     marginBottom: "0px",
-  },
-  moreInfo: {
-    color: "red",
-    fontSize: "13px",
-  },
+  }
 }));
 export default function Cinema(props) {
   const classes = useStyles();
-  const history = useHistory();
   const { cine, maCumRap } = props;
 
   return (
@@ -76,16 +70,6 @@ export default function Cinema(props) {
           <span>{cine.tenCumRap}</span>
         </p>
         <p className={classes.address}>{cine.diaChi}</p>
-       
-          <p
-            className={classes.moreInfo}
-            onClick={() => {
-              history.push(`/cinemagroupdetail/${cine.maCumRap}`);
-            }}
-          >
-            [chi tiết]
-          </p>
- 
       </div>
     </div>
   );

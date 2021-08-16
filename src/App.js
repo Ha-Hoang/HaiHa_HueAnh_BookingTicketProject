@@ -2,7 +2,7 @@ import "./App.css";
 import "../node_modules/slick-carousel/slick/slick.css";
 import "../node_modules/slick-carousel/slick/slick-theme.css";
 import "../node_modules/animate.css/animate.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { routerAdmin, routerMain } from "./configs/router";
 import MainTemplate from "./templates/main/main.template";
 import AdminTemplate from "./templates/admin/admin.template";
@@ -10,6 +10,10 @@ import AdminTemplate from "./templates/admin/admin.template";
 
 
 
+import { useDispatch } from "react-redux";
+import { signInAction } from "./store/actions/auth.action";
+import { SIGN_IN } from "./store/constants/auth.const";
+import Guard from "./HOC/guard.hoc";
 
 function App() {
   function renderRouterMain() {
@@ -29,9 +33,11 @@ function App() {
       const { path, exact, Component } = router;
       return (
         <Route path={path} exact={exact} key={index}>
-          <AdminTemplate>
-            <Component />
-          </AdminTemplate>
+          <Guard>
+            <AdminTemplate>
+              <Component />
+            </AdminTemplate>
+          </Guard>
         </Route>
       );
     });
@@ -39,18 +45,32 @@ function App() {
   
   
   
+
+  // if(getLocalStorage){
+  //   dispatch(signInAction(SIGN_IN), JSON.parse(getLocalStorage));
+  // }
+  // const dispatch = useDispatch();
+
+  // function getLocal(){
+  //   const getLocalStorage = localStorage.getItem('getLocal');
+  //   if(getLocalStorage){
+  //     return dispatch(signInAction(SIGN_IN), JSON.parse(getLocalStorage));
+  //   }
+  // }
+
   return (
     <>
-      
       <BrowserRouter>
         <Switch>
           {renderRouterMain()}
           {renderRouterAdmin()}
+          <Route path="">
+            <Redirect to="/" />
+          </Route>
         </Switch>
       </BrowserRouter>
     </>
   );
-
 }
 
 export default App;

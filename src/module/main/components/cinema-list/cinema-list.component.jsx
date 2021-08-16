@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: "700px",
     overflowX: "hidden",
     overflowY: "auto",
+    width: "100%",
     "&::-webkit-scrollbar": {
       width: "3px",
       backgroundColor: "#e8e3e3",
