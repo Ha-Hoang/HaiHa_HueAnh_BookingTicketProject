@@ -1,0 +1,2 @@
+export const GET_PERSONAL_INFO = "GET_PERSONAL_INFO"; 
+export const UPDATE_INFO = "UPDATE_INFO";
