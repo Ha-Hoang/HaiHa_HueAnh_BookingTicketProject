@@ -6,20 +6,19 @@ import bgSignIn from "../../../../assets/images/bg-sign-in.jpg";
 import signInLogo from "../../../../assets/images/sign-in-logo.png";
 import { signInAction } from "../../../../store/actions/auth.action";
 import "./sign-in.styles.scss";
-import { Link } from "@material-ui/core";
-import { NavLink } from "react-router-dom";
+
+import { NavLink, withRouter } from "react-router-dom";
 
 const signIpUser = yup.object().shape({
   taiKhoan: yup.string().required("Nhap tai Khoan"),
   matKhau: yup.string().required("Nhap mat khau"),
 });
 class SignIn extends Component {
-  constructor(props) {
-    super(props);
-  }
+  
   handleSubmit = (value) => {
     console.log("submit");
-    this.props.dispatch(signInAction(value));
+    const {dispatch,history} = this.props;
+    dispatch(signInAction(value, history));
   };
   render() {
     return (
@@ -93,7 +92,7 @@ class SignIn extends Component {
                 <div className="bottom text-center mb-5">
                   <p className="sm-text mx-auto mb-3">
                     Bạn chưa có tài khoản?
-                    <button className="btn btn-white ml-2">Đăng ký</button>
+                    <NavLink to="/signup" className="btn btn-white ml-2">Đăng ký</NavLink>
                   </p>
                 </div>
               </Form>
@@ -104,4 +103,4 @@ class SignIn extends Component {
     );
   }
 }
-export default connect()(SignIn);
+export default connect()(withRouter(SignIn));

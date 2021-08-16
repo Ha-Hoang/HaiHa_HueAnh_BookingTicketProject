@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
   },
 }));
-
 export default function Cineplex(props) {
   const classes = useStyles();
   const dispatch = useDispatch();

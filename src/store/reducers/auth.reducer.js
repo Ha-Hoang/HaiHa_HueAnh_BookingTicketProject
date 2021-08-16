@@ -1,8 +1,8 @@
 import { SIGN_IN} from "../constants/auth.const"
 
 const initialState = {
-    userLogin : null,
-    userSignUp : null,
+    userLogin : {},
+    
 }
 
 export const authReducer =  (state = initialState, action) => {
@@ -11,7 +11,6 @@ export const authReducer =  (state = initialState, action) => {
     case SIGN_IN:
         state.userLogin  = payload;
         return { ...state};
-    
     default:
         return state;
     }
