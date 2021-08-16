@@ -61,6 +61,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header() {
+  const showUser = useSelector((state) => {
+    return state.auth.userLogin;
+  }) 
   const classes = useStyles();
   //Breakpoints
   const theme = useTheme();
@@ -130,6 +133,7 @@ export default function Header() {
               </Toolbar>
               <Toolbar>
                 {
+                  showUser.hoTen ? <NavLink to="/personalInfo">Hi, {showUser.hoTen}</NavLink> :
                   <>
                     <NavLink to="/signin" exact className={classes.textNavLink}>
                       <Button color="inherit" className={classes.textButton}>

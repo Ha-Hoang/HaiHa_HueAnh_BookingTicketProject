@@ -2,12 +2,12 @@
 import { signInAPI, signUpAPI } from "../../api/auth.api"
 import { SIGN_IN } from "../constants/auth.const"
 
-export const signInAction = (user) =>{
+export const signInAction = (user, history) =>{
     return async (dispatch) =>{
         try {
             const res = await signInAPI(user);
            
-            // lưu vào local storegrage
+            // lưu vào localstorage
             const {taiKhoan, maLoaiNguoiDung, accessToken , ...userLogin} = res.data;
             localStorage.setItem("taiKhoan", JSON.stringify(taiKhoan));
             localStorage.setItem("maLoaiNguoiDung", JSON.stringify(maLoaiNguoiDung));
@@ -17,6 +17,8 @@ export const signInAction = (user) =>{
                 type: SIGN_IN,
                 payload: userLogin,
             });
+            history.push("/");
+            // console.log(userLogin);
         } catch (error) {
             console.log(error);
         }

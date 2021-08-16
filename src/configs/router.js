@@ -5,7 +5,13 @@ import Home from "../module/main/pages/home/home.page";
 import Dashboard from "../module/admin/pages/dashboard/dashboard.page";
 import UserManagement from "../module/admin/pages/user-managements/user-management.page";
 import CinemaDetail from "../module/main/pages/cinema-detail/cinema-detail.page";
+import PersonalInfo from "../module/main/pages/personal-info/personal-info.page";
 export const routerMain = [
+  {
+    path: "/personalInfo",
+    exact: true,
+    Component: PersonalInfo,
+  },
   {
     path: "/signin",
     exact: true,
@@ -31,6 +37,7 @@ export const routerMain = [
     exact: true,
     Component: Home,
   },
+
 ];
 
 export const routerAdmin = [
