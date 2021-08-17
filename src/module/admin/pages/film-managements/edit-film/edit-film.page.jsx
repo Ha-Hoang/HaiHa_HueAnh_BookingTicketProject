@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -9,12 +9,15 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import EditIcon from "@material-ui/icons/Edit";
 import { useFormik, Form } from "formik";
 import Format from "date-format";
 import moment from "moment";
-import { useDispatch } from "react-redux";
-import { postFilmInfoAction } from "../../../../../store/actions/filmAdmin.action";
+import { useDispatch, useSelector } from "react-redux";
+import { updateFilmInfoAction } from "../../../../../store/actions/filmAdmin.action";
+import { getMovieDetailAction } from "../../../../../store/actions/movie.action";
+import { useParams } from "react-router-dom";
+import Loading from "../../../../main/components/loading.component";
 
 function Copyright() {
   return (
@@ -53,51 +56,64 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddFilm() {
+export default function EditFilm() {
   const classes = useStyles();
   const dispatch = useDispatch();
+
+  //Lấy movieDetail về component
+  const { filmcode } = useParams();
+  useEffect(() => {
+    dispatch(getMovieDetailAction(filmcode));
+  }, []);
+  const filmInfo = useSelector((state) => state.movie.movieDetail);
+  console.log("Store", filmInfo);
+
   //formik
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      maPhim: 0,
-      tenPhim: "",
-      biDanh: "",
-      trailer: "",
-      hinhAnh: {},
-      moTa: "",
-      ngayKhoiChieu: "",
+      maPhim: filmInfo?.maPhim,
+      tenPhim: filmInfo?.tenPhim,
+      biDanh: filmInfo?.biDanh,
+      trailer: filmInfo?.trailer,
+      hinhAnh: null,
+      moTa: filmInfo?.moTa,
+      ngayKhoiChieu: filmInfo?.ngayKhoiChieu,
       maNhom: "GP01",
-      danhGia: 0,
+      danhGia: filmInfo?.danhGia,
     },
     onSubmit: (values) => {
-      console.log(values);
+      console.log("submit", values);
       //tạo đối tượng formData, đưa giá trị formik qua form data
       let formData = new FormData();
       for (let key in values) {
-        // formData.append(key, values[key]);
         if (key !== "hinhAnh") {
           formData.append(key, values[key]);
         } else {
-          formData.append("file", values.hinhAnh, values.hinhAnh.name);
+          if (values.hinhAnh !== null) {
+            formData.append("file", values.hinhAnh, values.hinhAnh.name);
+          }
         }
       }
 
+      console.log("formdata", formData.get("ngayKhoiChieu"));
+
       //gọi api
-      dispatch(postFilmInfoAction(formData));
+      dispatch(updateFilmInfoAction(formData));
     },
   });
 
   //ngayKhoiChieu
   const handleDateChange = (e) => {
-    let ngayKhoiChieu = moment(e.target.value).format("DD/MM/YYYY");
+    let ngayKhoiChieu = moment(e.target.value);
     formik.setFieldValue("ngayKhoiChieu", ngayKhoiChieu);
-    console.log(ngayKhoiChieu);
+    console.log("ngayKhoiChieu", ngayKhoiChieu);
   };
 
   //hinhAnh
   const [imgSrc, setImgSrc] = useState("");
 
-  const handleChangeFile = (e) => {
+  const handleChangeFile = async (e) => {
     //lấy file từ e
     let file = e.target.files[0];
     console.log(file);
@@ -108,6 +124,8 @@ export default function AddFilm() {
       file.type === "image/gif" ||
       file.type === "image/jpg"
     ) {
+      //lưu formik
+      await formik.setFieldValue("hinhAnh", file);
       //tạo đối tượng để đọc file
       let reader = new FileReader();
       reader.readAsDataURL(file);
@@ -115,19 +133,25 @@ export default function AddFilm() {
       reader.onload = (e) => {
         setImgSrc(e.target.result); //base64
       };
-      formik.setFieldValue("hinhAnh", file);
+    
     }
   };
+
+  //loading
+  const loading = useSelector((state) => state.common.loading);
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <Container component="main">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <AddCircleOutlineIcon />
+          <EditIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Thêm phim
+          Cập Nhật Phim
         </Typography>
         <form
           className={classes.form}
@@ -138,8 +162,11 @@ export default function AddFilm() {
             <Grid item xs={12} sm={6}>
               <TextField
                 label="Mã Phim"
+                disabled
                 name="maPhim"
                 onChange={formik.handleChange}
+                value={formik.values.maPhim}
+                type="number"
                 variant="outlined"
                 required
                 fullWidth
@@ -150,6 +177,10 @@ export default function AddFilm() {
                 label="Ngày Khởi Chiếu"
                 name="ngayKhoiChieu"
                 onChange={handleDateChange}
+                value={Format(
+                  "yyyy-MM-dd",
+                  new Date(formik.values.ngayKhoiChieu)
+                )}
                 defaultValue="2020-05-24"
                 variant="outlined"
                 type="date"
@@ -165,6 +196,7 @@ export default function AddFilm() {
                 label="Tên Phim"
                 name="tenPhim"
                 onChange={formik.handleChange}
+                value={formik.values.tenPhim}
                 variant="outlined"
                 required
                 fullWidth
@@ -175,6 +207,8 @@ export default function AddFilm() {
                 label="Đánh Giá"
                 name="danhGia"
                 onChange={formik.handleChange}
+                value={formik.values.danhGia}
+                type="number"
                 variant="outlined"
                 required
                 fullWidth
@@ -185,6 +219,7 @@ export default function AddFilm() {
                 label="Bí danh"
                 name="biDanh"
                 onChange={formik.handleChange}
+                value={formik.values.biDanh}
                 variant="outlined"
                 required
                 fullWidth
@@ -195,6 +230,7 @@ export default function AddFilm() {
                 label="Trailer"
                 name="trailer"
                 onChange={formik.handleChange}
+                value={formik.values.trailer}
                 variant="outlined"
                 required
                 fullWidth
@@ -216,6 +252,7 @@ export default function AddFilm() {
                 label="Mô tả"
                 name="moTa"
                 onChange={formik.handleChange}
+                value={formik.values.moTa}
                 multiline
                 rows={10}
                 variant="outlined"
@@ -233,7 +270,7 @@ export default function AddFilm() {
               />
               <br />
               <img
-                src={imgSrc}
+                src={imgSrc === "" ? filmInfo.hinhAnh : imgSrc}
                 style={{ width: 80, height: 80 }}
                 alt="imgsrc"
               />
@@ -246,7 +283,7 @@ export default function AddFilm() {
             color="primary"
             className={classes.submit}
           >
-            Thêm phim
+            Cập nhật phim
           </Button>
         </form>
       </div>
