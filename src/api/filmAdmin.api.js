@@ -31,3 +31,15 @@ export const deleteFilmInfoApi = (maPhim) => {
     },
   })
 }
+
+export const showTimeApi = (thongTinLichChieu) => {
+  const token = JSON.parse(localStorage.getItem("token"));
+  return axios({
+    url: `${baseUrl}/QuanLyDatVe/TaoLichChieu`,
+    method: POST,
+    data: thongTinLichChieu,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
