@@ -11,7 +11,9 @@ import ShowtimeManagement from "../module/admin/pages/film-managements/showtime-
 import FilmManagement from "../module/admin/pages/film-managements/film-managements.page";
 import AddFilm from "../module/admin/pages/film-managements/add-film/add-film.page";
 import EditFilm from "../module/admin/pages/film-managements/edit-film/edit-film.page";
+import AddUser from "../module/admin/pages/user-managements/add-user/add-user.page";
 import Showtime from "../module/admin/pages/film-managements/showtime-film/showtime-film.page";
+import EditUser from "../module/admin/pages/user-managements/edit-user/edit-user.page";
 
 export const routerMain = [
   {
@@ -77,4 +79,15 @@ export const routerAdmin = [
     exact: true,
     Component: Showtime,
   },
+  {
+    path: "/admin/user-management/add-user",
+    exact: true,
+    Component: AddUser,
+  },
+  {
+    path: "/admin/user-management/edit-user/:taiKhoan",
+    exact: true,
+    Component: EditUser,
+  },
+ 
 ];
