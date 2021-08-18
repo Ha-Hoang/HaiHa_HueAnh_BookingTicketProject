@@ -140,19 +140,6 @@ function AdminTemplate(props) {
             Films
           </NavLink>
         </ListItem>
-        <ListItem>
-          <ListItemIcon className={classes.iconSideBar}>
-            <TheatersIcon />
-          </ListItemIcon>
-          <NavLink
-            to="/admin/showtime-management"
-            exact
-            className={classes.textSideBar}
-            activeClassName={classes.activeColor}
-          >
-            Showtime
-          </NavLink>
-        </ListItem>
       </List>
     </div>
   );

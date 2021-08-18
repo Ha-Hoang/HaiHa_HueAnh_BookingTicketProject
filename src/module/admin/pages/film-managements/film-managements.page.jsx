@@ -5,7 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
-import { Button } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 import { getMovieListAction } from "../../../../store/actions/movie.action";
 import { deleteFilmInfoAction } from "../../../../store/actions/filmAdmin.action";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Format from "date-format";
 import { NavLink } from "react-router-dom";
+import EventIcon from "@material-ui/icons/Event";
 
 const useStyles = makeStyles((theme) => ({
   rootSearch: {
@@ -101,20 +102,31 @@ export default function FilmManagement() {
             <NavLink
               key={1}
               to={`/admin/film-management/edit-film/${params?.row.maPhim}`}
-              style={{ color: "black" }}
+              style={{ color: "blue" }}
             >
               {" "}
               <EditIcon />
             </NavLink>
-            <span key={2} style={{ color: "black", cursor: "pointer" }} onClick={()=>{
-              if(window.confirm("Bạn có chắc muốn xóa phim" + params.row.tenPhim )) {
-                //gọi action
-                dispatch(deleteFilmInfoAction(params.row.maPhim))
-              }
-            }}>
+            <span
+              key={2}
+              style={{ color: "black", cursor: "pointer" }}
+              onClick={() => {
+                if (
+                  window.confirm(
+                    "Bạn có chắc muốn xóa phim" + params.row.tenPhim
+                  )
+                ) {
+                  //gọi action
+                  dispatch(deleteFilmInfoAction(params.row.maPhim));
+                }
+              }}
+            >
               {" "}
               <DeleteIcon />
             </span>
+            <NavLink key={3} to={`/admin/film-management/show-time/${params?.row.maPhim}`} style={{ color: "red" }}>
+              <EventIcon />
+            </NavLink>
           </>
         );
       },
@@ -126,7 +138,6 @@ export default function FilmManagement() {
     dispatch(getMovieListAction());
   }, []);
   const rows = useSelector((state) => state.movie.movieList);
- 
 
   return (
     <div style={{ height: 400, width: "100%" }}>
@@ -135,17 +146,8 @@ export default function FilmManagement() {
         <Button>+Thêm phim</Button>
       </NavLink>
       <Paper component="form" className={classes.rootSearch}>
-        <InputBase
-          className={classes.input}
-          placeholder="Nhập tên phim..."
-          
-          
-        />
-        <IconButton
-          className={classes.iconButton}
-          aria-label="search"
-     
-        >
+        <TextField className={classes.input} type="search" placeholder="Nhập tên phim..." />
+        <IconButton className={classes.iconButton} aria-label="search">
           <SearchIcon />
         </IconButton>
       </Paper>

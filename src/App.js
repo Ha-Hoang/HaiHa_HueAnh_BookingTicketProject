@@ -10,6 +10,9 @@ import AdminTemplate from "./templates/admin/admin.template";
 
 
 
+import { useDispatch } from "react-redux";
+import { signInAction } from "./store/actions/auth.action";
+import { SIGN_IN } from "./store/constants/auth.const";
 import Guard from "./HOC/guard.hoc";
 import { createBrowserHistory } from "history";
 
@@ -42,9 +45,6 @@ function App() {
       );
     });
   }
-  
-  
-  
 
   // if(getLocalStorage){
   //   dispatch(signInAction(SIGN_IN), JSON.parse(getLocalStorage));
