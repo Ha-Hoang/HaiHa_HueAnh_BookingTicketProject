@@ -8,7 +8,8 @@ export const signInAction = (user, history) =>{
             const res = await signInAPI(user);
            
             // lưu vào localstorage
-            const {taiKhoan, maLoaiNguoiDung, accessToken , ...userLogin} = res.data;
+            const {hoTen, taiKhoan, maLoaiNguoiDung, accessToken , ...userLogin} = res.data;
+            localStorage.setItem("hoTen", JSON.stringify(hoTen));
             localStorage.setItem("taiKhoan", JSON.stringify(taiKhoan));
             localStorage.setItem("maLoaiNguoiDung", JSON.stringify(maLoaiNguoiDung));
             localStorage.setItem("token", JSON.stringify(accessToken));

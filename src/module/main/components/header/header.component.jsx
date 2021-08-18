@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { CardMedia } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import logo from "../../../../assets/images/web-logo.png";
@@ -12,7 +12,8 @@ import { useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core";
 import { Link } from "react-scroll";
 import HeaderResponsive from "./header.responsive";
-import { useSelector } from "react-redux";
+
+import { NavDropdown } from "react-bootstrap";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,18 +59,47 @@ const useStyles = makeStyles((theme) => ({
     height: 30,
     marginRight: 5,
   },
+  username: {
+    "&:hover": {
+      textDecoration: "none",
+    },
+    color: "black",
+  },
 }));
 
 export default function Header() {
-  const showUser = useSelector((state) => {
-    return state.auth.userLogin;
-  }) 
+
   const classes = useStyles();
   //Breakpoints
   const theme = useTheme();
 
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
 
+  const history = useHistory();
+
+  const username = JSON.parse(localStorage.getItem("hoTen"));
+  const maLoaiNguoiDung = JSON.parse(localStorage.getItem("maLoaiNguoiDung"));
+
+  const handleLogout = () => {
+    localStorage.clear();
+    history.push("/");
+  };
+
+  const [show, setShow] = useState(false);
+
+  const showDropdown = (e) => {
+    setShow(!show);
+  };
+
+  const hideDropdown = (e) => {
+    setShow(false);
+  };
+  const changeInfoPage = () => {
+    history.push("/personalInfo");
+  };
+  const changeAdminPage= () =>{
+    history.push("/admin")
+  }
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -132,8 +162,30 @@ export default function Header() {
                 </Link>
               </Toolbar>
               <Toolbar>
-                {
-                  showUser.hoTen ? <NavLink to="/personalInfo">Hi, {showUser.hoTen}</NavLink> :
+                {username ? (
+                  <>
+                    <NavDropdown
+                      title={username}
+                      show={show}
+                      onMouseEnter={showDropdown}
+                      onMouseLeave={hideDropdown}
+                    >
+                      {maLoaiNguoiDung === "QuanTri" ? (
+                        <>
+                          <NavDropdown.Item onClick={changeAdminPage}>Admin</NavDropdown.Item>
+                        </>
+                      ) : null}
+                      <NavDropdown.Item onClick={changeInfoPage}>
+                        {" "}
+                        My account
+                      </NavDropdown.Item>
+
+                      <NavDropdown.Item onClick={handleLogout}>
+                        Logout
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  </>
+                ) : (
                   <>
                     <NavLink to="/signin" exact className={classes.textNavLink}>
                       <Button color="inherit" className={classes.textButton}>
@@ -150,7 +202,7 @@ export default function Header() {
                       </Button>
                     </NavLink>
                   </>
-                }
+                )}
               </Toolbar>
             </>
           )}

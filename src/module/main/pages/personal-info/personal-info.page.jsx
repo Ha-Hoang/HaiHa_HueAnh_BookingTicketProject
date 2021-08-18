@@ -44,6 +44,7 @@ class PersonalInfo extends Component {
         show: false,
       },
     });
+    window.location.reload()
   };
   handleSubmit = (value) => {
     this.props.dispatch(updateInfoAction(value));
@@ -53,9 +54,7 @@ class PersonalInfo extends Component {
     const { personal,loading } = this.props;
     const { classes } = this.props;
     const maLoaiNguoiDung = JSON.parse(localStorage.getItem("maLoaiNguoiDung"));
-    if (loading) {
-      return <Loading/>;
-    }
+
     return (
       <div className="">
         <Container maxWidth="lg">
@@ -89,7 +88,7 @@ class PersonalInfo extends Component {
               <ModalHeader>Cập nhật tài khoản</ModalHeader>
               <Formik
                 initialValues={{
-                                  taiKhoan: personal.taiKhoan,
+                    taiKhoan: personal.taiKhoan,
                     matKhau: personal.matKhau,
                     email: personal.email,
                     soDT: personal.soDT,
