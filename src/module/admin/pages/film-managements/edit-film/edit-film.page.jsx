@@ -78,10 +78,11 @@ export default function EditFilm() {
       trailer: filmInfo?.trailer,
       hinhAnh: null,
       moTa: filmInfo?.moTa,
-      ngayKhoiChieu: filmInfo?.ngayKhoiChieu,
+      ngayKhoiChieu: filmInfo?.ngayKhoiChieu,     
       maNhom: "GP01",
       danhGia: filmInfo?.danhGia,
     },
+    
     onSubmit: (values) => {
       console.log("submit", values);
       //tạo đối tượng formData, đưa giá trị formik qua form data
@@ -103,6 +104,7 @@ export default function EditFilm() {
     },
   });
 
+  console.log(formik.values.ngayKhoiChieu);
   //ngayKhoiChieu
   const handleDateChange = (e) => {
     let ngayKhoiChieu = moment(e.target.value);
@@ -133,7 +135,6 @@ export default function EditFilm() {
       reader.onload = (e) => {
         setImgSrc(e.target.result); //base64
       };
-    
     }
   };
 
@@ -181,7 +182,6 @@ export default function EditFilm() {
                   "yyyy-MM-dd",
                   new Date(formik.values.ngayKhoiChieu)
                 )}
-                defaultValue="2020-05-24"
                 variant="outlined"
                 type="date"
                 fullWidth

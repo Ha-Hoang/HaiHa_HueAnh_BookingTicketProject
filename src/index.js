@@ -7,19 +7,24 @@ import reportWebVitals from "./reportWebVitals";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap";
 import "../node_modules/jquery/dist/jquery.slim";
-import "../node_modules/popper.js/dist/popper"
+import "../node_modules/popper.js/dist/popper";
 
 import { theme } from "./assets/css/theme/my-theme";
 import { ThemeProvider } from "@material-ui/core";
 
 import { Provider } from "react-redux";
 import { store } from "./store/config-store";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import MomentUtils from '@date-io/moment';
+import DateFnsUtils from '@date-io/date-fns';
 
 ReactDOM.render(
   <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </MuiPickersUtilsProvider>
   </Provider>,
 
   document.getElementById("root")
