@@ -13,6 +13,7 @@ import AddFilm from "../module/admin/pages/film-managements/add-film/add-film.pa
 import EditFilm from "../module/admin/pages/film-managements/edit-film/edit-film.page";
 import AddUser from "../module/admin/pages/user-managements/add-user/add-user.page";
 import Showtime from "../module/admin/pages/film-managements/showtime-film/showtime-film.page";
+import EditUser from "../module/admin/pages/user-managements/edit-user/edit-user.page";
 
 export const routerMain = [
   {
@@ -82,6 +83,11 @@ export const routerAdmin = [
     path: "/admin/user-management/add-user",
     exact: true,
     Component: AddUser,
-  }
+  },
+  {
+    path: "/admin/user-management/edit-user/:taiKhoan",
+    exact: true,
+    Component: EditUser,
+  },
  
 ];

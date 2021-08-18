@@ -7,7 +7,10 @@ import { style } from "./personal-info.style";
 import { connect } from "react-redux";
 import Loading from "../../components/loading.component";
 
-import { getPersonalInfoAction,updateInfoAction} from "../../../../store/actions/personal-info.action";
+import {
+  getPersonalInfoAction,
+  updateInfoAction,
+} from "../../../../store/actions/personal-info.action";
 import BookingHistoryList from "../../components/booking-history-list/booking-history-list-component";
 import { Container, Grid, Typography, withStyles } from "@material-ui/core";
 
@@ -44,14 +47,14 @@ class PersonalInfo extends Component {
         show: false,
       },
     });
-    window.location.reload()
+    
   };
   handleSubmit = (value) => {
     this.props.dispatch(updateInfoAction(value));
   };
 
   render() {
-    const { personal,loading } = this.props;
+    const { personal, loading } = this.props;
     const { classes } = this.props;
     const maLoaiNguoiDung = JSON.parse(localStorage.getItem("maLoaiNguoiDung"));
 
@@ -85,26 +88,27 @@ class PersonalInfo extends Component {
               Cập nhật
             </Button>
             <Modal show={this.state.showModal.show}>
-              <ModalHeader>Cập nhật tài khoản</ModalHeader>
+              <ModalHeader>
+                <Typography variant="h4">Cập nhật tài khoản</Typography>
+              </ModalHeader>
               <Formik
                 initialValues={{
-                    taiKhoan: personal.taiKhoan,
-                    matKhau: personal.matKhau,
-                    email: personal.email,
-                    soDT: personal.soDT,
-                    maNhom: personal.maNhom,
-                    maLoaiNguoiDung: maLoaiNguoiDung,
-                    hoTen: personal.hoTen,
+                  taiKhoan: personal.taiKhoan,
+                  matKhau: personal.matKhau,
+                  email: personal.email,
+                  soDT: personal.soDT,
+                  maNhom: personal.maNhom,
+                  maLoaiNguoiDung: maLoaiNguoiDung,
+                  hoTen: personal.hoTen,
                 }}
                 validationSchema={validateUpdateUser}
                 onSubmit={this.handleSubmit}
                 render={(props) => (
-                  <Form>
+                  <Form className="container">
                     <div>
-                      <label htmlFor="" className={classes.lbUpdate}>
+                      <label className={classes.lbUpdate}>
                         Tài khoản
                       </label>
-
                       <Field
                         id="standard-basic"
                         className={classes.sizeInput}
@@ -181,7 +185,6 @@ class PersonalInfo extends Component {
                         )}
                       </ErrorMessage>
                     </div>
-
                     <div>
                       <label htmlFor="" className={classes.lbUpdate}>
                         Họ tên
@@ -202,22 +205,32 @@ class PersonalInfo extends Component {
                         )}
                       </ErrorMessage>
                     </div>
-                    <Button onClick={props.handleSubmit}>Lưu</Button>
+                    <div style={{float: "right"}} >
+                    <Button
+                      onClick={props.handleSubmit}
+                      style={{ margin: "15px" }}
+                    >
+                      Lưu
+                    </Button>
+
+                    <Button
+                      onClick={() => {
+                        this.handleClose();
+                      }}
+                    >
+                      Thoát
+                    </Button>
+                    </div>
+                    
                   </Form>
                 )}
               />
-              <div>
-                <Button
-                  onClick={() => {
-                    this.handleClose();
-                  }}
-                >
-                  Thoát
-                </Button>
-              </div>
             </Modal>
           </section>
-          <section className="booking-history" style={{ marginTop: "20px", marginBottom:"80px" }}>
+          <section
+            className="booking-history"
+            style={{ marginTop: "20px", marginBottom: "80px" }}
+          >
             <Typography className={classes.info_label}>
               Lịch sử đặt vé
             </Typography>

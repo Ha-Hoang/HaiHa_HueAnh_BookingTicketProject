@@ -7,12 +7,11 @@ export const style = {
         fontWeight: "bold"
     },
     lbUpdate: {
-        display: "block",
-        paddingLeft: "20px"
+        fontSize:"20px"
     },
     sizeInput: {
         display: "block",
-        width: "80%",
+        width: "100%",
         padding: "20px",
         fontSize: "18px",
         margin: "0 auto",

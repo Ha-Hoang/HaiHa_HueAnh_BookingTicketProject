@@ -3,13 +3,16 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import InputLabel from "@material-ui/core/InputLabel";
 
-import React from "react";
+import React, { useState } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import { useDispatch } from "react-redux";
-import { signUpAction } from "../../../../../store/actions/auth.action";
+import { useDispatch, useSelector } from "react-redux";
+
 import { addUserAdminAction } from "../../../../../store/actions/userAdmin.action";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { getPersonalInfoAction } from "../../../../../store/actions/personal-info.action";
 
 const useStyles = makeStyles({
   formGroup: {
@@ -46,14 +49,27 @@ const useStyles = makeStyles({
 });
 export default function AddUser() {
   const classes = useStyles();
+  const { taiKhoan } = useParams();
+  const value = {
+    taiKhoan: taiKhoan
+  }
+  // console.log(taiKhoan);
+  
+  useEffect(()=>{
+    dispatch(getPersonalInfoAction(value));
+  },[])
+
+  const user = useSelector((state) =>{
+    return state.personal.personalInfo;
+  })
   const initialValues = {
-    taiKhoan: "",
-    matKhau: "",
-    email: "",
-    soDT: "",
-    maNhom: "GP01",
-    maLoaiNguoiDung: "KhachHang",
-    hoTen: "",
+    taiKhoan: user.taiKhoan,
+    matKhau: user.matKhau,
+    email: user.email,
+    soDT: user.soDT,
+    maNhom: user.maNhom,
+    maLoaiNguoiDung: user.maloaiNguoiDung,
+    hoTen: user.hoTen,
   };
   const validationSchema = yup.object().shape({
     taiKhoan: yup.string().required("Không được để trống"),
@@ -68,7 +84,7 @@ export default function AddUser() {
     // console.log("value", value);
     dispatch(addUserAdminAction(value));
   };
-
+  
   return (
     <Formik
       initialValues={initialValues}
@@ -78,7 +94,7 @@ export default function AddUser() {
       {(formik) => {
         return (
           <Form className="container">
-            <Typography variant="h4" style={{textAlign:"center", marginBottom:"20px"}}>Thêm người dùng</Typography>
+            <Typography variant="h4" style={{textAlign:"center", marginBottom:"20px"}}>Sửa người dùng</Typography>
             <Grid container>
               <Grid item lg={6} md={6} sm={6} xs={12}>
                 <div className={classes.formGroup}>
@@ -207,7 +223,7 @@ export default function AddUser() {
                 variant="contained"
                 onClick={formik.handleSubmit}
               >
-                Thêm
+                Lưu
               </Button>
             </div>
           </Form>
