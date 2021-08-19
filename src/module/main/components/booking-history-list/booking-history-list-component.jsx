@@ -69,8 +69,6 @@ export default function BookingHistoryList() {
           <StyledTableCell align="center">{bookingHistory.danhSachGhe.map((ghe,index)=>{
               return <span> {ghe.tenGhe}</span>
           })}</StyledTableCell>
-
-          
         </StyledTableRow>
       );
     }); 
@@ -88,9 +86,6 @@ export default function BookingHistoryList() {
             <StyledTableCell align="center">Giá vé</StyledTableCell>
             <StyledTableCell align="center">Số lượng</StyledTableCell>
             <StyledTableCell align="center">Tên ghế</StyledTableCell>
-
-            
-
           </TableRow>
         </TableHead>
         <TableBody>{renderBookingHistory()}</TableBody>

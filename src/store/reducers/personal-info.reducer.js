@@ -16,7 +16,7 @@ export const personalInfoReducer = (state = initialState, action) =>{
             return state;
 
     }
-}
+} 
 export const updateInfoReducer = (state=initialState, action)=>{
     const {type, payload} = action;
     switch (type) {
