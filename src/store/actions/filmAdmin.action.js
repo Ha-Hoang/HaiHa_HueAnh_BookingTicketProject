@@ -1,3 +1,4 @@
+import { useHistory } from "react-router-dom";
 import {
   postFilmInfoApi,
   UpdateFilmInfoApi,
@@ -5,7 +6,6 @@ import {
   showTimeApi,
 } from "../../api/filmAdmin.api";
 import { getMovieListAction } from "./movie.action";
-import { history } from "../../App";
 
 export const postFilmInfoAction = (formData) => {
   return async (dispatch) => {
@@ -15,6 +15,7 @@ export const postFilmInfoAction = (formData) => {
       console.log(res.data);
     } catch (err) {
       console.log(err.response.data);
+      alert(err.response?.data);
     }
   };
 };
@@ -44,6 +45,7 @@ export const deleteFilmInfoAction = (maPhim) => {
       dispatch(getMovieListAction());
     } catch (err) {
       console.log(err.response?.data);
+      alert(err.response?.data);
     }
   };
 };

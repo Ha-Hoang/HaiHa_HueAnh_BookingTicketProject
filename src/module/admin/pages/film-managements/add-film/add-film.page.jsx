@@ -15,6 +15,7 @@ import Format from "date-format";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { postFilmInfoAction } from "../../../../../store/actions/filmAdmin.action";
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -56,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 export default function AddFilm() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  
+  const history = useHistory();
   //formik
   const formik = useFormik({
     initialValues: {
@@ -70,7 +71,7 @@ export default function AddFilm() {
       maNhom: "GP01",
       danhGia: 0,
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       console.log(values);
       //tạo đối tượng formData, đưa giá trị formik qua form data
       let formData = new FormData();
@@ -84,7 +85,8 @@ export default function AddFilm() {
       }
 
       //gọi api
-      dispatch(postFilmInfoAction(formData));
+      await dispatch(postFilmInfoAction(formData));
+      history.push("/admin/film-management");
     },
   });
 

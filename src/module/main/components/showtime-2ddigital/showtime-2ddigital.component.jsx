@@ -24,13 +24,11 @@ export default function ShowTime2dDigital(props) {
 
   return lichChieu.map((time, index) => {
     return (
-      <>
         <Typography key={index} className={classes.coverText} variant="h5">
           <Link to="/" className={classes.textTime}>
             {Format("hh:mm", new Date(time.ngayChieuGioChieu))}
           </Link>
         </Typography>
-      </>
     );
   });
 }
