@@ -199,18 +199,6 @@ export default function HeaderResponsive() {
           </Link>
           <Link
             activeClass="active"
-            to=""
-            spy={true}
-            smooth={true}
-            duration={500}
-          >
-            <ListItem button key="Tin tức">
-              <ListItemIcon></ListItemIcon>
-              <ListItemText primary="Tin tức" />
-            </ListItem>
-          </Link>
-          <Link
-            activeClass="active"
             to="application"
             spy={true}
             smooth={true}

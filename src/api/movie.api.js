@@ -1,7 +1,13 @@
 import axios from "axios";
 import { baseUrl, GET } from "../configs/api";
 
-export const getListMovieAPI = () => {
+export const getListMovieAPI = (tenPhim = "") => {
+  if (tenPhim.trim() !== "") {
+    return axios({
+      url: `${baseUrl}/QuanLyPhim/LayDanhSachPhim?maNhom=GP01&tenPhim=${tenPhim}`,
+      method: GET,
+    });
+  }
   return axios({
     url: `${baseUrl}/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`,
     method: GET,
