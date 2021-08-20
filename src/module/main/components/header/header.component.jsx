@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -14,6 +14,8 @@ import { Link } from "react-scroll";
 import HeaderResponsive from "./header.responsive";
 
 import { NavDropdown } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { getUserInfoAction } from "../../../../store/actions/user.action";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header() {
+  const dispatch = useDispatch();
 
   const classes = useStyles();
   //Breakpoints
@@ -71,6 +74,8 @@ export default function Header() {
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
 
   const history = useHistory();
+
+  
 
   const username = JSON.parse(localStorage.getItem("hoTen"));
   const maLoaiNguoiDung = JSON.parse(localStorage.getItem("maLoaiNguoiDung"));
@@ -95,6 +100,11 @@ export default function Header() {
   const changeAdminPage= () =>{
     history.push("/admin")
   }
+
+  useEffect(() => {
+    dispatch(getUserInfoAction())
+  }, [])
+
   return (
     <div className={classes.root}>
       <AppBar position="static">

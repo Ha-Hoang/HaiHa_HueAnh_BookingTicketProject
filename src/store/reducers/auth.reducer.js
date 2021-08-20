@@ -11,6 +11,10 @@ export const authReducer =  (state = initialState, action) => {
     case SIGN_IN:
         state.userLogin  = payload;
         return { ...state};
+    case "GET_INFO_ACTION":
+        console.log(payload)
+        state.userLogin  = payload;
+        return { ...state}; 
     default:
         return state;
     }
