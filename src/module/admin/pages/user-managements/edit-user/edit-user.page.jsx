@@ -90,7 +90,7 @@ export default function AddUser() {
   const handleSubmit = (value) => {
     dispatch(updateInfoAction(value));
   };
-  console.log(initialValues)
+  
 
   //loading
   const loading = useSelector((state) => state.common.loading);

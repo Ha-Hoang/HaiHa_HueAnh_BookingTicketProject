@@ -1,7 +1,5 @@
-import { addUserAdminAPI, deleteUserAPI, getListUserAdminAPI, getTypeofUserAPI, searchUserAPI } from "../../api/userAdmin.api";
+import { addUserAdminAPI, deleteUserAPI, getListUserAdminAPI} from "../../api/userAdmin.api";
 import { GET_LIST_USER_ADMIN } from "../constants/userAdmin.const";
-import { startLoadingAction, stopLoadingAction } from "./common.action";
-
 export const getListUserAdminAction = (maNhom,taiKhoan="") => {
   return async (dispatch) => {
     try {

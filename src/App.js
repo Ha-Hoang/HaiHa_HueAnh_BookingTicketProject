@@ -40,9 +40,8 @@ function App() {
     });
   }
 
-  // if(getLocalStorage){
-  //   dispatch(signInAction(SIGN_IN), JSON.parse(getLocalStorage));
-  // }
+  
+
   const dispatch = useDispatch();
   useEffect(()=>{
     const getLocalStorage = localStorage.getItem('user');

@@ -95,7 +95,7 @@ export default function UserManagement() {
 
 
   const handleDelete = (taiKhoan) =>{
-      //gọi action
+      
       if((
         window.confirm("Bạn có chắc muốn xóa tài khoản " + taiKhoan)
       ))

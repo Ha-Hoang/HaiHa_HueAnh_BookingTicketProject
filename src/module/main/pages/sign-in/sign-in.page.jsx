@@ -52,7 +52,7 @@ class SignIn extends Component {
             initialValues={{ taiKhoan: "", matKhau: "" }}
             validationSchema={signIpUser}
             onSubmit={this.handleSubmit}
-            render={(props) => (
+            >{(props) => (
               <Form className="">
                 <div className="form-group">
                   <Field
@@ -90,6 +90,7 @@ class SignIn extends Component {
                   <button
                     onClick={props.handleSubmit}
                     className="btn-block btn-color"
+                    type="submit"
                   >
                     Đăng nhập
                   </button>
@@ -102,7 +103,7 @@ class SignIn extends Component {
                 </div>
               </Form>
             )}
-          />
+            </Formik>
         </div>
       </section>
     );

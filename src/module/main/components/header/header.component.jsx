@@ -58,8 +58,8 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       textDecoration: "none",
     },
-    color: "black",
   },
+  
 }));
 
 export default function Header() {
@@ -155,9 +155,9 @@ export default function Header() {
                       onMouseLeave={hideDropdown}
                     >
                       {maLoaiNguoiDung === "QuanTri" ? (
-                        <>
+                        
                           <NavDropdown.Item onClick={changeAdminPage}>Admin</NavDropdown.Item>
-                        </>
+                        
                       ) : null}
                       <NavDropdown.Item onClick={changeInfoPage}>
                         {" "}
