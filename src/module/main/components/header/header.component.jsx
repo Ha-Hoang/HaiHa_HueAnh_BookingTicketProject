@@ -135,17 +135,6 @@ export default function Header() {
                 </Link>
                 <Link
                   activeClass="active"
-                  to=""
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                >
-                  <Typography className={classes.textNavLink && classes.hover}>
-                    Tin tức
-                  </Typography>
-                </Link>
-                <Link
-                  activeClass="active"
                   to="application"
                   spy={true}
                   smooth={true}

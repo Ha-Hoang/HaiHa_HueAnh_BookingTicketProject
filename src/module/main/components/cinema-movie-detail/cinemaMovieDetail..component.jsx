@@ -73,7 +73,15 @@ export default function CinemaMovieDetail(props) {
   return (
     <div className={classes.bigDetail}>
       <div className={classes.filmDetail}>
-        <img src={lst.hinhAnh} alt="lst.hinhAnh" className={classes.imgFilm} />
+        <img
+          src={lst.hinhAnh}
+          alt="lst.hinhAnh"
+          className={classes.imgFilm}
+          onError={(e) => {
+            e.target.onError = null;
+            e.target.src = "https://picsum.photos/50/50";
+          }}
+        />
         <div className={classes.titleInfo}>
           <p className={classes.movieTitle}>{lst.tenPhim}</p>
           <p className={classes.info}>100 phút - TIX 9 - IMDb 8</p>

@@ -1,7 +1,13 @@
 import axios from "axios"
 import { baseUrl, DELETE, GET , POST} from "../configs/api"
 
-export const getListUserAdminAPI = (maNhom) =>{
+export const getListUserAdminAPI = (maNhom,taiKhoan="") =>{
+    if(taiKhoan.trim() !== ""){
+        return axios({
+            method: GET,
+            url: `${baseUrl}/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${maNhom}&tuKhoa=${taiKhoan}`,
+        })
+    }
     return axios({
         method: GET,
         url: `${baseUrl}/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${maNhom}`
@@ -25,20 +31,5 @@ export const deleteUserAPI = (taiKhoan,token) =>{
         headers: {
             Authorization: `Bearer ${token}`,
         },
-    })
-}
-
-export const getTypeofUserAPI = () =>{
-    return axios({
-        method: GET,
-        url: `${baseUrl}/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung`,
-    
-    })
-}
-
-export const searchUserAPI = (maNhom,taiKhoan) =>{
-    return axios({
-        method: GET,
-        url: `${baseUrl}/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${maNhom}&tuKhoa=${taiKhoan}`,
     })
 }

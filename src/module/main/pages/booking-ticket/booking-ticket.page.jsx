@@ -61,9 +61,10 @@ export default function BookingTicket(props) {
   const chairInfo = chairlst.filter((chair) => chair.dangChon);
 
   //click đặt vé
-  const handleBookingFunction = () => {
+  const handleBookingFunction = async () => {
     const ticketChoosing = chairlst.filter((chair) => chair.dangChon);
-    dispatch(postBookingInfoAction(schedulecode, ticketChoosing));
+    await dispatch(postBookingInfoAction(schedulecode, ticketChoosing));
+    window.location.reload();
   };
 
   return (

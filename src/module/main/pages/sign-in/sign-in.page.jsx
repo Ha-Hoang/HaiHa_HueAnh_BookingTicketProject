@@ -8,6 +8,7 @@ import { signInAction } from "../../../../store/actions/auth.action";
 import "./sign-in.styles.scss";
 
 import { NavLink, withRouter } from "react-router-dom";
+import Loading from "../../components/loading.component";
 
 const signIpUser = yup.object().shape({
   taiKhoan: yup.string().required("Nhap tai Khoan"),
@@ -21,6 +22,10 @@ class SignIn extends Component {
     dispatch(signInAction(value, history));
   };
   render() {
+    const { loading } = this.props;
+    if (loading) {
+      return <Loading/>;
+    }
     return (
       <section
         className="sign-in px-4 py-5 mx-auto modal"

@@ -12,7 +12,7 @@ export const getPersonalInfoAction = (user) =>{
                 type: GET_PERSONAL_INFO,
                 payload: res.data,
             })
-            console.log("res" , res.data)
+            
             dispatch(stopLoadingAction());
         } catch (error) {
             console.log(error);
@@ -30,11 +30,9 @@ export const updateInfoAction = (user) =>{
                 type: UPDATE_INFO,
                 payload: res.data,
             })
-            
-            alert("thanh cong");
-            console.log(res.data)
-            
-            
+            dispatch(getPersonalInfoAction(user))
+            alert("Cập nhật thành công");
+
         } catch (error) {
             console.log(error);
         }

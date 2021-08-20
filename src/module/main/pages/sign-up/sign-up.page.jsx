@@ -5,6 +5,7 @@ import "./sign-up.styles.scss";
 import { signUpAction } from "../../../../store/actions/auth.action";
 import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
+import Loading from "../../components/loading.component";
 const signUpUser = yup.object().shape({
   taiKhoan : yup.string().required("Nhap tai Khoan"),
   matKhau : yup.string().required("Nhap mat khau"),
@@ -19,6 +20,10 @@ class SignUp extends Component {
     this.props.dispatch(signUpAction(value, this.props.history));
   };
   render() {
+    const { loading } = this.props;
+    if (loading) {
+      return <Loading/>;
+    }
     return (
       <section className="registration-form">
         <div className="sign-up">

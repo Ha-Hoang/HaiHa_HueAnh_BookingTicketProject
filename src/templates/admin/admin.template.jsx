@@ -8,21 +8,18 @@ import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-
 import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
-
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import MovieIcon from "@material-ui/icons/Movie";
-import TheatersIcon from "@material-ui/icons/Theaters";
-import { CardMedia, Divider } from "@material-ui/core";
+
+import { Divider } from "@material-ui/core";
 import tix from "../../assets/images/web-logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-
 
 const drawerWidth = 240;
 
@@ -83,6 +80,9 @@ function AdminTemplate(props) {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const history = useHistory();
+
+  const username = JSON.parse(localStorage.getItem("hoTen"));
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -90,6 +90,8 @@ function AdminTemplate(props) {
 
   const handleClose = () => {
     setAnchorEl(null);
+    localStorage.clear();
+    history.push("/");
   };
 
   const handleDrawerToggle = () => {
@@ -147,11 +149,6 @@ function AdminTemplate(props) {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(signInAction());
-  // }, []);
-  
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -166,25 +163,29 @@ function AdminTemplate(props) {
           >
             <MenuIcon />
           </IconButton>
-          <NavLink to="/signin">
-            <Button>Đăng nhập</Button>
-          </NavLink>
-          <Button
-            aria-controls="simple-menu"
-            aria-haspopup="true"
-            onClick={handleClick}
-          >
-            Hi,
-          </Button>
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
-          </Menu>
+          {username ? (
+            <>
+              <Button
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={handleClick}
+                style={{ position: "absolute", right: "0" }}
+              >
+                Hi! {username}
+              </Button>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
+              </Menu>
+            </>
+          ) : (
+            ""
+          )}
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">

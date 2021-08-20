@@ -183,12 +183,6 @@ export default function HeaderResponsive() {
               Đăng Nhập
             </Button>
           </NavLink>
-          <NavLink to="/signup" exact className={classes.textNavLink}>
-            <Button color="inherit" className={classes.textButton}>
-              <Avatar src="/broken-image.jpg" className={classes.avatar} />
-              Đăng ký
-            </Button>
-          </NavLink>
             </>
           )
             
@@ -227,18 +221,6 @@ export default function HeaderResponsive() {
             <ListItem button key="Cụm rạp">
               <ListItemIcon></ListItemIcon>
               <ListItemText primary="Cụm rạp" />
-            </ListItem>
-          </Link>
-          <Link
-            activeClass="active"
-            to=""
-            spy={true}
-            smooth={true}
-            duration={500}
-          >
-            <ListItem button key="Tin tức">
-              <ListItemIcon></ListItemIcon>
-              <ListItemText primary="Tin tức" />
             </ListItem>
           </Link>
           <Link
