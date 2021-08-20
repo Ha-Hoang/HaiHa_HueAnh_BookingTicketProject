@@ -171,35 +171,42 @@ export default function HeaderResponsive() {
               <ChevronRightIcon />
             )}
           </IconButton>
-          { username? (
-            <> 
-            <Typography>{username}</Typography>
-            </>
-          ):(
+          {username ? (
             <>
-            <NavLink to="/signin" exact className={classes.textNavLink}>
-            <Button color="inherit" className={classes.textButton}>
-              <Avatar src="/broken-image.jpg" className={classes.avatar} />
-              Đăng Nhập
-            </Button>
-          </NavLink>
+              <Typography>{username}</Typography>
+            </>
+          ) : (
+            <>
+
+              <NavLink to="/signin" exact className={classes.textNavLink}>
+                <Button color="inherit" className={classes.textButton}>
+                  <Avatar src="/broken-image.jpg" className={classes.avatar} />
+                  Đăng Nhập
+                </Button>
+              </NavLink>
 
             </>
-          )
-            
-          }
+          )}
         </div>
         <Divider />
         <List>
-        {username? (<>
-          {maLoaiNguoiDung === "QuanTri"? (
-              <>
-              <NavLink to ="/admin"><ListItem button>Admin</ListItem></NavLink></> 
-            ):null}
-            <NavLink to ="/personalInfo"><ListItem button>My profile</ListItem></NavLink>
-            <NavLink to ="/signin" onClick={handleLogout}><ListItem button>Logout</ListItem></NavLink>
-             </>
-        ): null}
+          {username ? (
+            <>
+              {maLoaiNguoiDung === "QuanTri" ? (
+                <>
+                  <NavLink to="/admin">
+                    <ListItem button>Admin</ListItem>
+                  </NavLink>
+                </>
+              ) : null}
+              <NavLink to="/personalInfo">
+                <ListItem button>My profile</ListItem>
+              </NavLink>
+              <NavLink to="/signin" onClick={handleLogout}>
+                <ListItem button>Logout</ListItem>
+              </NavLink>
+            </>
+          ) : null}
           <Link
             activeClass="active"
             to="movieList"
