@@ -73,7 +73,7 @@ export default function AddUser() {
 
   const dispatch = useDispatch()
   const handleSubmit = (value) => {
-    // console.log("value", value);
+    
     dispatch(addUserAdminAction(value));
   };
 
