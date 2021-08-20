@@ -13,18 +13,19 @@ export const signInAction = (user, history) =>{
             localStorage.setItem("taiKhoan", JSON.stringify(taiKhoan));
             localStorage.setItem("maLoaiNguoiDung", JSON.stringify(maLoaiNguoiDung));
             localStorage.setItem("token", JSON.stringify(accessToken));
-
+            localStorage.setItem("user",JSON.stringify(res.data));
             dispatch({
                 type: SIGN_IN,
                 payload: userLogin,
             });
             history.push("/");
-            // console.log(userLogin);
+            
         } catch (error) {
             console.log(error);
         }
     }
 }
+
 
 export const signUpAction = (user, history) =>{
     return async (dispatch) =>{

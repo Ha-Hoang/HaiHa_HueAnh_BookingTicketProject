@@ -183,12 +183,6 @@ export default function HeaderResponsive() {
               Đăng Nhập
             </Button>
           </NavLink>
-          <NavLink to="/signup" exact className={classes.textNavLink}>
-            <Button color="inherit" className={classes.textButton}>
-              <Avatar src="/broken-image.jpg" className={classes.avatar} />
-              Đăng ký
-            </Button>
-          </NavLink>
             </>
           )
             
