@@ -20,3 +20,10 @@ export const getMovieDetailAPI = (maPhim) => {
     method: GET,
   });
 };
+
+export const getScheduleInfoAPI = (maPhim) => {
+  return axios({
+    url: `${baseUrl}/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
+    method: GET,
+  });
+};

@@ -11,6 +11,7 @@ import Fade from "@material-ui/core/Fade";
 import CardMedia from "@material-ui/core/CardMedia";
 import close from "../../../../assets/images/close.png";
 import Application from "../../components/application/application.component";
+import HomeTool from "../../components/home-tool/home-tool.component";
 
 export default class Home extends Component {
   constructor(props) {
@@ -58,10 +59,10 @@ export default class Home extends Component {
         {
           breakpoint: 600,
           settings: {
-            dots: false
-          }
-        }
-      ]
+            dots: false,
+          },
+        },
+      ],
     };
     return (
       <div>
@@ -142,6 +143,9 @@ export default class Home extends Component {
             </button>
           </div>
         </div>
+        <section style={{ maxWidth: "1000px", margin: "auto", paddingTop: "50px" }}>
+          <HomeTool />
+        </section>
         <section>
           {" "}
           <MovieList />
@@ -153,10 +157,7 @@ export default class Home extends Component {
         >
           <CinemaApp />
         </section>
-        <section
-          id="application"
-          style={{ paddingTop: "60px" }}
-        >
+        <section id="application" style={{ paddingTop: "60px" }}>
           <Application />
         </section>
       </div>
