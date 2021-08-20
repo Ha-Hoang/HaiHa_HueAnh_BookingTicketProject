@@ -60,7 +60,6 @@ export default function Showtime(props) {
     cinemaGroup: [],
     cinemaGroupCode: [],
   });
-  console.log("state.cinemaGroup", state.cinemaGroup);
 
   const [valueCinema, setValueCinema] = useState("");
   const [valueCinemaGroup, setValueCinemaGroup] = useState("");
@@ -95,13 +94,10 @@ export default function Showtime(props) {
   const handleCinemaGroupChange = async (e) => {
     setValueCinemaGroup(e.target.value);
 
-    console.log(e.target.value);
-
     const groupcode = state.cinemaGroup.find(
       (cine) => cine.maCumRap === e.target.value
     );
 
-    console.log("maRap", groupcode?.danhSachRap);
     setState({
       ...state,
       cinemaGroupCode: groupcode?.danhSachRap,
@@ -111,7 +107,6 @@ export default function Showtime(props) {
   const handleCinemaGroupCode = (e) => {
     setValueGroupCode(e.target.value);
     formik.setFieldValue("maRap", e.target.value);
-    console.log(e.target.value);
   };
 
   const [selectedDate, setSelectedDate] = useState(
@@ -124,12 +119,10 @@ export default function Showtime(props) {
       "ngayChieuGioChieu",
       moment(value).format("DD/MM/YYYY hh:mm:ss")
     );
-    console.log(moment(value).format("DD/MM/YYYY hh:mm:ss"));
   };
 
   const handleTicketChange = (e) => {
     formik.setFieldValue("giaVe", Number(e.target.value));
-    console.log(Number(e.target.value));
   };
 
   return (
@@ -234,7 +227,6 @@ export default function Showtime(props) {
               label="Mã Nhóm"
               name="maNhom"
               value="GP01"
-              // onChange={handleGroupCodeChange}
               variant="outlined"
               required
               fullWidth

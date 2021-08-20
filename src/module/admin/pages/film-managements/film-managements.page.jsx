@@ -141,7 +141,6 @@ export default function FilmManagement() {
   const rows = useSelector((state) => state.movie.movieList);
 
   const handleSearch = (e) => {
-    console.log(e.target.value);
     dispatch(getMovieListAction(e.target.value))
   };
 

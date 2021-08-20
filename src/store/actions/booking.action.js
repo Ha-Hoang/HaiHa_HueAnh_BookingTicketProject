@@ -52,12 +52,8 @@ export const choiceChairAction = (chair) => {
 export const postBookingInfoAction = (maLichChieu, danhSachVe) => {
   return async (dispatch) => {
     try {
-      dispatch(startLoadingAction());
-
       const res = await postBookingInfoAPI(maLichChieu, danhSachVe);
       alert(res.data);
-
-      dispatch(stopLoadingAction());
     } catch (err) {
       console.log(err);
     }

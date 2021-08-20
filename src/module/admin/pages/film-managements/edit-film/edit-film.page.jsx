@@ -66,7 +66,6 @@ export default function EditFilm() {
     dispatch(getMovieDetailAction(filmcode));
   }, []);
   const filmInfo = useSelector((state) => state.movie.movieDetail);
-  console.log("Store", filmInfo);
   const history = useHistory();
 
   //formik
@@ -85,7 +84,6 @@ export default function EditFilm() {
     },
     
     onSubmit: async (values) => {
-      console.log("submit", values);
       //tạo đối tượng formData, đưa giá trị formik qua form data
       let formData = new FormData();
       for (let key in values) {
@@ -98,20 +96,15 @@ export default function EditFilm() {
         }
       }
 
-      console.log("formdata", formData.get("ngayKhoiChieu"));
-
       //gọi api
       await dispatch(updateFilmInfoAction(formData));
       history.push("/admin/film-management");
     },
   });
 
-  console.log("ngayKhoiChieuCu", formik.values.ngayKhoiChieu);
-
   const handleDateChange = (e) => {
     let ngayKhoiChieu = moment(e.target.value);
     formik.setFieldValue("ngayKhoiChieu", ngayKhoiChieu);
-    console.log("ngayKhoiChieu", ngayKhoiChieu);
   };
 
   //hinhAnh
@@ -120,7 +113,6 @@ export default function EditFilm() {
   const handleChangeFile = async (e) => {
     //lấy file từ e
     let file = e.target.files[0];
-    console.log(file);
 
     if (
       file.type === "image/png" ||
