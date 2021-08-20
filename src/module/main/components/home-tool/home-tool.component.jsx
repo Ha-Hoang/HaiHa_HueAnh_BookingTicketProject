@@ -88,7 +88,6 @@ export default function HomeTool(props) {
         ...state,
         cinemaGroup: res.data.lichChieu,
       });
-      console.log(res.data.lichChieu);
     } catch (err) {
       console.log(err);
     }
@@ -116,7 +115,6 @@ export default function HomeTool(props) {
         ...state,
         time: res.data.thongTinPhim,
       });
-      console.log(res.data);
       
     } catch (err) {
       console.log(err);

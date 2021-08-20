@@ -59,7 +59,15 @@ export default function ShowingFilm(props) {
       <div className="tab-pane container active">
         <div className="showing_item">
           <div className="item_poster">
-            <img className="poster" src={movie.hinhAnh} alt="" />
+            <img
+              className="poster"
+              src={movie.hinhAnh}
+              onError={(e) => {
+                e.target.onError = null;
+                e.target.src = "https://picsum.photos/50/50";
+              }}
+              alt=""
+            />
             <div className="hover_poster">
               <button type="button" onClick={handleOpen}>
                 <img src={playVideo} alt="playvideo" />
