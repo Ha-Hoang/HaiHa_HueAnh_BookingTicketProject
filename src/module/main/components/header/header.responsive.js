@@ -17,7 +17,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Avatar, Button, CardMedia } from "@material-ui/core";
 import logo from "../../../../assets/images/web-logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { Link } from "react-scroll";
 
 const drawerWidth = 240;
@@ -107,6 +107,7 @@ const useStyles = makeStyles((theme) => ({
 export default function HeaderResponsive() {
   const classes = useStyles();
   const theme = useTheme();
+  const history = useHistory();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -117,6 +118,12 @@ export default function HeaderResponsive() {
     setOpen(false);
   };
 
+  const username = JSON.parse(localStorage.getItem("hoTen"));
+  const maLoaiNguoiDung = JSON.parse(localStorage.getItem("maLoaiNguoiDung"));
+  const handleLogout = () => {
+    localStorage.clear();
+    history.push("/");
+  };
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -164,15 +171,40 @@ export default function HeaderResponsive() {
               <ChevronRightIcon />
             )}
           </IconButton>
-          <NavLink to="/signin" exact className={classes.textNavLink}>
+          { username? (
+            <> 
+            <Typography>{username}</Typography>
+            </>
+          ):(
+            <>
+            <NavLink to="/signin" exact className={classes.textNavLink}>
             <Button color="inherit" className={classes.textButton}>
               <Avatar src="/broken-image.jpg" className={classes.avatar} />
               Đăng Nhập
             </Button>
           </NavLink>
+          <NavLink to="/signup" exact className={classes.textNavLink}>
+            <Button color="inherit" className={classes.textButton}>
+              <Avatar src="/broken-image.jpg" className={classes.avatar} />
+              Đăng ký
+            </Button>
+          </NavLink>
+            </>
+          )
+            
+          }
         </div>
         <Divider />
         <List>
+        {username? (<>
+          {maLoaiNguoiDung === "QuanTri"? (
+              <>
+              <NavLink to ="/admin"><ListItem button>Admin</ListItem></NavLink></> 
+            ):null}
+            <NavLink to ="/personalInfo"><ListItem button>My profile</ListItem></NavLink>
+            <NavLink to ="/signin" onClick={handleLogout}><ListItem button>Logout</ListItem></NavLink>
+             </>
+        ): null}
           <Link
             activeClass="active"
             to="movieList"

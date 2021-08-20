@@ -30,7 +30,9 @@ export const updateInfoAction = (user) =>{
             })
             
             alert("thanh cong");
-            window.location.reload();
+            console.log(res.data)
+            
+            
         } catch (error) {
             console.log(error);
         }

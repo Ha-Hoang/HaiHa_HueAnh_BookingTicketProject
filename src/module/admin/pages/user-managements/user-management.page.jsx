@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { NavLink, useParams } from "react-router-dom";
 import { Button, FormControl, Select,Typography,} from "@material-ui/core";
-import { IconButton, InputBase, makeStyles, Paper } from "@material-ui/core";
+import { makeStyles, Paper } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import SearchIcon from "@material-ui/icons/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import TablePagination from '@material-ui/core/TablePagination'
-import { getListUserAdminAction } from "../../../../store/actions/userAdmin.action";
+import TextField from '@material-ui/core/TextField';
+
+import { deleteUserAction, getListUserAdminAction, searchUserAction } from "../../../../store/actions/userAdmin.action";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -78,8 +79,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
-
 export default function UserManagement() {
   const classes = useStyles();
   
@@ -90,7 +89,7 @@ export default function UserManagement() {
   });
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -110,14 +109,24 @@ export default function UserManagement() {
     dispatch(getListUserAdminAction("GP01"));
   }, []);
 
+
+  const handleDelete = (taiKhoan) =>{
+      //gọi action
+      dispatch(deleteUserAction(taiKhoan));
+                         
+  }
+
+  const handleChangeSearch = (e) =>{
+    dispatch(searchUserAction(maNhom,e.target.value));
+    console.log(e.target.value);
+  }
+
   const renderListUser = () => {
     return row?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((user, index) => {
       return (
         <StyledTableRow key={index}>
-          <StyledTableCell align="center">{index + 1}</StyledTableCell>
-          
+          <StyledTableCell align="center">{index + 1}</StyledTableCell>       
             <StyledTableCell align="center">{user.taiKhoan}</StyledTableCell>
-         
           <StyledTableCell align="center">
             {user.matKhau}
           </StyledTableCell>
@@ -127,17 +136,15 @@ export default function UserManagement() {
           <StyledTableCell align="center">
             {user.email}
           </StyledTableCell>
-          
           <StyledTableCell align="center">
-              {user.soDt  
-              }
+              {user.soDt}
           </StyledTableCell>
           <StyledTableCell >
           <div style={{display: "flex", alignItem:"center", justifyContent:"center"}}>
               <NavLink to={`/admin/user-management/edit-user/${user.taiKhoan}`} style={{padding: "0"}}>
               <EditIcon />
               </NavLink>
-              <Button style={{padding: "0"}}><DeleteIcon/></Button>
+              <Button onClick={() =>{handleDelete(user.taiKhoan)}}><DeleteIcon/></Button>
               </div>
           </StyledTableCell>
         </StyledTableRow>
@@ -151,10 +158,8 @@ export default function UserManagement() {
         <Button>+Thêm người dùng</Button>
       </NavLink>
       <Paper component="form" className={classes.rootSearch}>
-        <InputBase className={classes.input} placeholder="Tìm kiếm.." />
-        <IconButton className={classes.iconButton} aria-label="search">
-          <SearchIcon />
-        </IconButton>
+        <TextField type="search" placeholder="Nhập tài khoản" onChange={handleChangeSearch}/>
+       
       </Paper>
       <div style={{ display: "flex", marginBottom: "20px" }}>
         <Typography style={{ paddingRight: "20px" }}>Mã nhóm</Typography>
@@ -178,8 +183,8 @@ export default function UserManagement() {
         </FormControl>
         </div>
       <TableContainer component={Paper} className={classes.container}>
-      <Table className={classes.table} aria-label="customized table">
-        <TableHead>
+      <Table stickyHeader className={classes.table} aria-label="customized table">
+        <TableHead >
           <TableRow>
             <StyledTableCell align="center">Số thứ tự</StyledTableCell>
             <StyledTableCell align="center">Tài khoản</StyledTableCell>
@@ -194,7 +199,7 @@ export default function UserManagement() {
       </Table>
     </TableContainer>
     <TablePagination
-
+        rowsPerPageOptions={[5, 15, 30]}
         component="div"
          count={row.length}
         rowsPerPage={rowsPerPage}

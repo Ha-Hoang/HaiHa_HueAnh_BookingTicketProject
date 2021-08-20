@@ -87,7 +87,7 @@ class PersonalInfo extends Component {
             >
               Cập nhật
             </Button>
-            <Modal show={this.state.showModal.show}>
+            <Modal  show={this.state.showModal.show}>
               <ModalHeader>
                 <Typography variant="h4">Cập nhật tài khoản</Typography>
               </ModalHeader>
