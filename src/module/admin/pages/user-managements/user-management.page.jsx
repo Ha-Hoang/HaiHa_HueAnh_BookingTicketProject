@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import TablePagination from '@material-ui/core/TablePagination'
 import TextField from '@material-ui/core/TextField';
-
+import Loading from "../../../main/components/loading.component";
 import { deleteUserAction, getListUserAdminAction, searchUserAction } from "../../../../store/actions/userAdmin.action";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -151,6 +151,10 @@ export default function UserManagement() {
       );
     }); 
   };
+  const loading = useSelector((state) => state.common.loading);
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div style={{ height: 400, width: "100%" }}>
       <h5>Quản lý người dùng</h5>

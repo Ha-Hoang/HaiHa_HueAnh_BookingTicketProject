@@ -8,7 +8,7 @@ import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { useDispatch, useSelector } from "react-redux";
-
+import Loading from "../../../../main/components/loading.component";
 import { addUserAdminAction } from "../../../../../store/actions/userAdmin.action";
 import { NavLink, useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -58,18 +58,16 @@ export default function AddUser() {
   const classes = useStyles();
   const { taiKhoan } = useParams();
   
-  
-  useEffect(()=>{
-    let value = {
-      taiKhoan : taiKhoan,
+  const value = {
+      taiKhoan : taiKhoan
   }
+  useEffect(()=>{
     dispatch(getPersonalInfoAction(value));
   },[])
 
   const user = useSelector((state) =>{
     return state.personal.personalInfo;
   })
-
 
   const initialValues = {
     taiKhoan: user.taiKhoan,
@@ -92,14 +90,20 @@ export default function AddUser() {
   const handleSubmit = (value) => {
     dispatch(updateInfoAction(value));
   };
+  console.log(initialValues)
 
-  
+  //loading
+  const loading = useSelector((state) => state.common.loading);
+  if (loading) {
+    return <Loading />;
+  }
   return (
       <div>
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit}git
+      enableReinitialize={true}
     >
       {(formik) => {
         return (
