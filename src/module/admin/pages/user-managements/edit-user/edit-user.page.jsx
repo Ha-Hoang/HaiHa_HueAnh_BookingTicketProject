@@ -10,9 +10,9 @@ import Button from "@material-ui/core/Button";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addUserAdminAction } from "../../../../../store/actions/userAdmin.action";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { getPersonalInfoAction } from "../../../../../store/actions/personal-info.action";
+import { getPersonalInfoAction, updateInfoAction } from "../../../../../store/actions/personal-info.action";
 
 const useStyles = makeStyles({
   formGroup: {
@@ -46,29 +46,38 @@ const useStyles = makeStyles({
   required: {
     color: "red",
   },
+  textNavLink: {
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "none",
+    },
+    fontSize:"20px"
+  },
 });
 export default function AddUser() {
   const classes = useStyles();
   const { taiKhoan } = useParams();
-  const value = {
-    taiKhoan: taiKhoan
-  }
-  // console.log(taiKhoan);
+  
   
   useEffect(()=>{
+    let value = {
+      taiKhoan : taiKhoan,
+  }
     dispatch(getPersonalInfoAction(value));
   },[])
 
   const user = useSelector((state) =>{
     return state.personal.personalInfo;
   })
+
+
   const initialValues = {
     taiKhoan: user.taiKhoan,
     matKhau: user.matKhau,
     email: user.email,
     soDT: user.soDT,
     maNhom: user.maNhom,
-    maLoaiNguoiDung: user.maloaiNguoiDung,
+    maLoaiNguoiDung: "KhachHang",
     hoTen: user.hoTen,
   };
   const validationSchema = yup.object().shape({
@@ -81,11 +90,12 @@ export default function AddUser() {
 
   const dispatch = useDispatch()
   const handleSubmit = (value) => {
-    // console.log("value", value);
-    dispatch(addUserAdminAction(value));
+    dispatch(updateInfoAction(value));
   };
+
   
   return (
+      <div>
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
@@ -226,9 +236,12 @@ export default function AddUser() {
                 Lưu
               </Button>
             </div>
+    <NavLink to="/admin/user-management" className={classes.textNavLink}> Trở lại</NavLink>
+
           </Form>
         );
       }}
     </Formik>
+    </div>
   );
 }

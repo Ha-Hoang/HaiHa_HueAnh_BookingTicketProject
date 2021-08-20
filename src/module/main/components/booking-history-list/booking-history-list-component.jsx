@@ -76,7 +76,7 @@ export default function BookingHistoryList() {
 
   return (
     <TableContainer component={Paper} className={classes.container}>
-      <Table className={classes.table} aria-label="customized table">
+      <Table stickyHeader className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell align="center">Số thứ tự</StyledTableCell>

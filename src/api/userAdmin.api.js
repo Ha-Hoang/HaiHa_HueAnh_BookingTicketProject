@@ -1,5 +1,5 @@
 import axios from "axios"
-import { baseUrl, GET , POST} from "../configs/api"
+import { baseUrl, DELETE, GET , POST} from "../configs/api"
 
 export const getListUserAdminAPI = (maNhom) =>{
     return axios({
@@ -17,4 +17,28 @@ export const addUserAdminAPI = (user,token) =>{
         },
     })
 }
+export const deleteUserAPI = (taiKhoan,token) =>{
+    return axios({
+        method: DELETE,
+        url: `${baseUrl}/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+        data: taiKhoan,
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    })
+}
 
+export const getTypeofUserAPI = () =>{
+    return axios({
+        method: GET,
+        url: `${baseUrl}/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung`,
+    
+    })
+}
+
+export const searchUserAPI = (maNhom,taiKhoan) =>{
+    return axios({
+        method: GET,
+        url: `${baseUrl}/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${maNhom}&tuKhoa=${taiKhoan}`,
+    })
+}

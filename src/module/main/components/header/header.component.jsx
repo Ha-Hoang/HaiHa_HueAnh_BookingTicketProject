@@ -54,11 +54,6 @@ const useStyles = makeStyles((theme) => ({
       cursor: "pointer",
     },
   },
-  avatar: {
-    width: 30,
-    height: 30,
-    marginRight: 5,
-  },
   username: {
     "&:hover": {
       textDecoration: "none",
