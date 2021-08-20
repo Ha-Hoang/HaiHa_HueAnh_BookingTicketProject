@@ -41,3 +41,24 @@ export const getMovieDetailAction = (maPhim) => {
   };
 };
 
+export const getScheduleInfolAction = (maPhim) => {
+  return async (dispatch) => {
+    try {
+      //start loading
+      dispatch(startLoadingAction());
+
+      //tác vụ mất tgian
+      const res = await getScheduleInfoAPI(maPhim);
+      dispatch({
+        type: GET_SCHEDULE_INFO,
+        payload: res.data,
+      });
+
+      //stop loading
+      dispatch(stopLoadingAction());
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+

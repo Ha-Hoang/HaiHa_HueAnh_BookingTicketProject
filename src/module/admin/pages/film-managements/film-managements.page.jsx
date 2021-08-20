@@ -139,6 +139,13 @@ export default function FilmManagement() {
   }, []);
   const rows = useSelector((state) => state.movie.movieList);
 
+
+
+  const handleSearch = (e) => {
+    dispatch(getMovieListAction(e.target.value))
+  };
+
+
   return (
     <div style={{ height: 400, width: "100%" }}>
       <h5>Quản lý phim</h5>
