@@ -1,5 +1,5 @@
-import { getListMovieAPI, getMovieDetailAPI } from "../../api/movie.api";
-import { GET_MOVIE_DETAIL, GET_MOVIE_LIST } from "../constants/movie.const";
+import { getListMovieAPI, getMovieDetailAPI, getScheduleInfoAPI } from "../../api/movie.api";
+import { GET_MOVIE_DETAIL, GET_MOVIE_LIST, GET_SCHEDULE_INFO } from "../constants/movie.const";
 import { startLoadingAction, stopLoadingAction } from "./common.action";
 
 export const getMovieListAction = (tenPhim = "") => {
