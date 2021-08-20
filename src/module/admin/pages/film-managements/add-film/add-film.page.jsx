@@ -71,12 +71,9 @@ export default function AddFilm() {
       maNhom: "GP01",
       danhGia: 0,
     },
-    onSubmit: async (values) => {
-      console.log(values);
-      //tạo đối tượng formData, đưa giá trị formik qua form data
+    onSubmit: async (values) => {  
       let formData = new FormData();
       for (let key in values) {
-        // formData.append(key, values[key]);
         if (key !== "hinhAnh") {
           formData.append(key, values[key]);
         } else {
@@ -94,7 +91,6 @@ export default function AddFilm() {
   const handleDateChange = (e) => {
     let ngayKhoiChieu = moment(e.target.value).format("DD/MM/YYYY");
     formik.setFieldValue("ngayKhoiChieu", ngayKhoiChieu);
-    console.log(ngayKhoiChieu);
   };
 
   //hinhAnh
@@ -103,7 +99,6 @@ export default function AddFilm() {
   const handleChangeFile = (e) => {
     //lấy file từ e
     let file = e.target.files[0];
-    console.log(file);
 
     if (
       file.type === "image/png" ||
@@ -111,12 +106,10 @@ export default function AddFilm() {
       file.type === "image/gif" ||
       file.type === "image/jpg"
     ) {
-      //tạo đối tượng để đọc file
       let reader = new FileReader();
       reader.readAsDataURL(file);
-      //onload bắt url
       reader.onload = (e) => {
-        setImgSrc(e.target.result); //base64
+        setImgSrc(e.target.result);
       };
       formik.setFieldValue("hinhAnh", file);
     }
