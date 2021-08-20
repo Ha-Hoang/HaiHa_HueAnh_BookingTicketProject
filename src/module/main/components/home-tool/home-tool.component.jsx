@@ -152,7 +152,7 @@ export default function HomeTool(props) {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={12} sm={2}>
+        <Grid item xs={12} sm={3}>
           <FormControl className={classes.formControl} fullWidth>
             <InputLabel
               id="demo-simple-select-label"
@@ -183,7 +183,7 @@ export default function HomeTool(props) {
               id="demo-simple-select-label"
               style={{ color: "black" }}
             >
-              Ngày xem
+              Ngày/giờ xem
             </InputLabel>
             <Select
               fullWidth
@@ -195,29 +195,10 @@ export default function HomeTool(props) {
               {state.date?.map((day, index) => {
                 return (
                   <MenuItem value={day.maLichChieu} key={index}>
-                    {Format("dd/MM/yyyy", new Date(day.ngayChieuGioChieu))}
+                    {Format("dd/MM/yyyy hh:mm", new Date(day.ngayChieuGioChieu))}
                   </MenuItem>
                 );
               })}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={12} sm={2}>
-          <FormControl className={classes.formControl} fullWidth>
-            <InputLabel
-              id="demo-simple-select-label"
-              style={{ color: "black" }}
-            >
-              Suất chiếu
-            </InputLabel>
-            <Select
-              fullWidth
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={valueTime}
-              onChange={handleTimeChange}
-            >
-              <MenuItem value={state.time.gioChieu}>{state.time.gioChieu}</MenuItem>
             </Select>
           </FormControl>
         </Grid>
