@@ -1,4 +1,4 @@
-import { START_LOADING, STOP_LOADING } from "../constants/common.const";
+import {  START_LOADING, STOP_LOADING } from "../constants/common.const";
 
 const initialState = {
   loading: false,
@@ -14,7 +14,10 @@ export const CommonReducer = (state = initialState, { type, payload }) => {
       state.loading = false;
       return { ...state };
     }
+    
     default:
       return state;
   }
 };
+
+

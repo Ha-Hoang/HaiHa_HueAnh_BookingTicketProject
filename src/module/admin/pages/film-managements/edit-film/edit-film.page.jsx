@@ -16,7 +16,7 @@ import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFilmInfoAction } from "../../../../../store/actions/filmAdmin.action";
 import { getMovieDetailAction } from "../../../../../store/actions/movie.action";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Loading from "../../../../main/components/loading.component";
 
 function Copyright() {
@@ -66,7 +66,7 @@ export default function EditFilm() {
     dispatch(getMovieDetailAction(filmcode));
   }, []);
   const filmInfo = useSelector((state) => state.movie.movieDetail);
-  console.log("Store", filmInfo);
+  const history = useHistory();
 
   //formik
   const formik = useFormik({
@@ -83,8 +83,7 @@ export default function EditFilm() {
       danhGia: filmInfo?.danhGia,
     },
     
-    onSubmit: (values) => {
-      console.log("submit", values);
+    onSubmit: async (values) => {
       //tạo đối tượng formData, đưa giá trị formik qua form data
       let formData = new FormData();
       for (let key in values) {
@@ -97,19 +96,15 @@ export default function EditFilm() {
         }
       }
 
-      console.log("formdata", formData.get("ngayKhoiChieu"));
-
       //gọi api
-      dispatch(updateFilmInfoAction(formData));
+      await dispatch(updateFilmInfoAction(formData));
+      history.push("/admin/film-management");
     },
   });
 
-  console.log(formik.values.ngayKhoiChieu);
-  //ngayKhoiChieu
   const handleDateChange = (e) => {
     let ngayKhoiChieu = moment(e.target.value);
     formik.setFieldValue("ngayKhoiChieu", ngayKhoiChieu);
-    console.log("ngayKhoiChieu", ngayKhoiChieu);
   };
 
   //hinhAnh
@@ -118,7 +113,6 @@ export default function EditFilm() {
   const handleChangeFile = async (e) => {
     //lấy file từ e
     let file = e.target.files[0];
-    console.log(file);
 
     if (
       file.type === "image/png" ||

@@ -15,6 +15,7 @@ import Format from "date-format";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { postFilmInfoAction } from "../../../../../store/actions/filmAdmin.action";
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -56,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 export default function AddFilm() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  
+  const history = useHistory();
   //formik
   const formik = useFormik({
     initialValues: {
@@ -70,12 +71,9 @@ export default function AddFilm() {
       maNhom: "GP01",
       danhGia: 0,
     },
-    onSubmit: (values) => {
-      console.log(values);
-      //tạo đối tượng formData, đưa giá trị formik qua form data
+    onSubmit: async (values) => {  
       let formData = new FormData();
       for (let key in values) {
-        // formData.append(key, values[key]);
         if (key !== "hinhAnh") {
           formData.append(key, values[key]);
         } else {
@@ -84,7 +82,8 @@ export default function AddFilm() {
       }
 
       //gọi api
-      dispatch(postFilmInfoAction(formData));
+      await dispatch(postFilmInfoAction(formData));
+      history.push("/admin/film-management");
     },
   });
 
@@ -92,7 +91,6 @@ export default function AddFilm() {
   const handleDateChange = (e) => {
     let ngayKhoiChieu = moment(e.target.value).format("DD/MM/YYYY");
     formik.setFieldValue("ngayKhoiChieu", ngayKhoiChieu);
-    console.log(ngayKhoiChieu);
   };
 
   //hinhAnh
@@ -101,7 +99,6 @@ export default function AddFilm() {
   const handleChangeFile = (e) => {
     //lấy file từ e
     let file = e.target.files[0];
-    console.log(file);
 
     if (
       file.type === "image/png" ||
@@ -109,12 +106,10 @@ export default function AddFilm() {
       file.type === "image/gif" ||
       file.type === "image/jpg"
     ) {
-      //tạo đối tượng để đọc file
       let reader = new FileReader();
       reader.readAsDataURL(file);
-      //onload bắt url
       reader.onload = (e) => {
-        setImgSrc(e.target.result); //base64
+        setImgSrc(e.target.result);
       };
       formik.setFieldValue("hinhAnh", file);
     }

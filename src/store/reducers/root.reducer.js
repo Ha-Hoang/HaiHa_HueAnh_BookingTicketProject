@@ -14,6 +14,5 @@ export const rootReducer = combineReducers({
   auth: authReducer,
   personal: personalInfoReducer,
   booking: bookingReducer,
-  auth: authReducer,
   userAdmin: userAdminReducer,
 });

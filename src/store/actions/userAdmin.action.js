@@ -1,15 +1,15 @@
-import { addUserAdminAPI, getListUserAdminAPI } from "../../api/userAdmin.api";
+import { addUserAdminAPI, deleteUserAPI, getListUserAdminAPI} from "../../api/userAdmin.api";
 import { GET_LIST_USER_ADMIN } from "../constants/userAdmin.const";
-
-export const getListUserAdminAction = (maNhom) => {
+export const getListUserAdminAction = (maNhom,taiKhoan="") => {
   return async (dispatch) => {
     try {
-      const res = await getListUserAdminAPI(maNhom);
+      
+      const res = await getListUserAdminAPI(maNhom,taiKhoan);
       dispatch({
         type: GET_LIST_USER_ADMIN,
         payload: res.data,
       });
-      console.log("user", res.data);
+      
     } catch (error) {
       console.log(error);
     }
@@ -22,6 +22,22 @@ export const addUserAdminAction = (user) => {
       const token = JSON.parse(localStorage.getItem("token"));
       const res = await addUserAdminAPI(user, token);
       alert("Them thanh cong");
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const deleteUserAction = (user) => {
+  return async (dispatch) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const res = await deleteUserAPI(user,token);
+      alert("Xóa tài khoản thành công !");
+      dispatch(getListUserAdminAction())
+      
+    } catch (error) {
+      alert(error.response?.data);
+    }
   };
 };

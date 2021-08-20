@@ -1,14 +1,13 @@
 import { Button, makeStyles } from "@material-ui/core";
 import React from "react";
-import AccountBoxIcon from "@material-ui/icons/AccountBox";
 
 const useStyle = makeStyles((theme) => ({
   textScreen: {
     textAlign: "center",
     fontWeight: "600",
+    color: "black",
   },
   mainChairList: {
-    paddingTop: "12px",
     maxWidth: "700px",
     margin: "auto",
   },
@@ -18,10 +17,13 @@ const useStyle = makeStyles((theme) => ({
   },
   textBtnChair: {
     paddingLeft: "5px",
-    color: "#5a5a5a",
+    color: "#fff",
   },
   btnNote: {
     padding: "20px 0",
+    backgroundColor: "#5f5e5ee0",
+    border: "1px solid transparent",
+    borderRadius: "13px",
   },
   btnChair: {
     margin: "5px",
@@ -39,26 +41,46 @@ const useStyle = makeStyles((theme) => ({
       backgroundColor: "green",
     },
   },
-  // userChon: {
-  //   backgroundColor: "purple",
-  //   margin: "5px",
-  //   "&:focus": {
-  //     outline: "none",
-  //   },
-  // },
+  effectScreen: {
+    borderBottom: "50px solid #d6c929",
+    borderLeft: "25px solid transparent",
+    borderRight: "25px solid transparent",
+    height: "0",
+    width: "100%",
+    opacity: "0.5",
+    filter: "drop-shadow(0px 128px 63px #d6c929)",
+    "&::-webkit-filter": "drop-shadow(0px 128px 63px rgba(8,8,8,0.38))",
+    "&::-moz-filter": "drop-shadow(0px 128px 63px rgba(8,8,8,0.38))",
+  },
+  classGuestChair: {
+    backgroundColor: "#88af2a",
+    margin: "5px",
+    "&:focus": {
+      outline: "none",
+    },
+  },
+  btnDaDat: {
+    "&:disabled": {
+      backgroundColor: "grey",
+      color: "rgba(0, 0, 0, 0.26)",
+      boxShadow: "none",
+    },
+
+    margin: "5px",
+  },
 }));
 
 export default function ChairList(props) {
   const classes = useStyle();
   const { chairlst } = props;
-  // const taiKhoan = localStorage.getItem("taiKhoan");
-  // JSON.stringify(taiKhoan);
-  // console.log(taiKhoan);
 
   return (
     <div className={classes.mainChairList}>
-      <h5 className={classes.textScreen}>Màn hình</h5>
-      <div style={{ padding: "30px" }}>
+      <div className={classes.effectScreen}>
+        <h5 className={classes.textScreen}>Màn hình</h5>
+      </div>
+
+      <div style={{ padding: "17px" }}>
         {chairlst.map((chair, index) => {
           return (
             <Button
@@ -66,7 +88,11 @@ export default function ChairList(props) {
               disabled={chair.daDat}
               color={chair.loaiGhe === "Vip" ? "secondary" : "default"}
               className={
-                chair.dangChon ? classes.btnChairActive : classes.btnChair
+                chair.dangChon
+                  ? classes.btnChairActive
+                  : classes.btnChair && chair.daDat
+                  ? classes.btnDaDat
+                  : classes.btnChair
               }
               variant="contained"
               key={index}

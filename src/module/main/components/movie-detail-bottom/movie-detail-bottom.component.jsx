@@ -59,7 +59,6 @@ export default function MovieDetailBottom(props) {
     setLichChieuRap(lichChieuRap);
 
     setThu(thu);
-    console.log(thu);
   };
 
   return (

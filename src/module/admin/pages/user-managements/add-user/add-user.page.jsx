@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 import { useDispatch } from "react-redux";
 import { signUpAction } from "../../../../../store/actions/auth.action";
 import { addUserAdminAction } from "../../../../../store/actions/userAdmin.action";
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles({
   formGroup: {
@@ -32,7 +33,7 @@ const useStyles = makeStyles({
     color: "black"
   },
   btnSubmit: {
-    padding: "15px 50px",
+    padding: "10px 40px",
     fontSize: "20px",
   },
   errorMessage: {
@@ -42,6 +43,13 @@ const useStyles = makeStyles({
   },
   required: {
     color: "red",
+  },
+  textNavLink: {
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "none",
+    },
+    fontSize:"20px"
   },
 });
 export default function AddUser() {
@@ -65,11 +73,12 @@ export default function AddUser() {
 
   const dispatch = useDispatch()
   const handleSubmit = (value) => {
-    // console.log("value", value);
+    
     dispatch(addUserAdminAction(value));
   };
 
   return (
+    <div>
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
@@ -202,6 +211,7 @@ export default function AddUser() {
               </Grid>
             </Grid>
             <div className={classes.btn}>
+
               <Button
                 className={classes.btnSubmit}
                 variant="contained"
@@ -209,10 +219,16 @@ export default function AddUser() {
               >
                 Thêm
               </Button>
+
             </div>
+    <NavLink to="/admin/user-management" className={classes.textNavLink}> Trở lại</NavLink>
+
           </Form>
         );
       }}
+      
     </Formik>
+
+    </div>
   );
 }

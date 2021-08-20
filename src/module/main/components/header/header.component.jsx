@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -14,6 +14,7 @@ import { Link } from "react-scroll";
 import HeaderResponsive from "./header.responsive";
 
 import { NavDropdown } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,21 +55,16 @@ const useStyles = makeStyles((theme) => ({
       cursor: "pointer",
     },
   },
-  avatar: {
-    width: 30,
-    height: 30,
-    marginRight: 5,
-  },
   username: {
     "&:hover": {
       textDecoration: "none",
     },
-    color: "black",
   },
 }));
 
 export default function Header() {
 
+  const [userLogin, setUserLogin] = useState(null);
   const classes = useStyles();
   //Breakpoints
   const theme = useTheme();
@@ -76,12 +72,11 @@ export default function Header() {
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
 
   const history = useHistory();
-
-  const username = JSON.parse(localStorage.getItem("hoTen"));
   const maLoaiNguoiDung = JSON.parse(localStorage.getItem("maLoaiNguoiDung"));
 
   const handleLogout = () => {
     localStorage.clear();
+    setUserLogin(null);
     history.push("/");
   };
 
@@ -97,9 +92,17 @@ export default function Header() {
   const changeInfoPage = () => {
     history.push("/personalInfo");
   };
-  const changeAdminPage= () =>{
-    history.push("/admin")
-  }
+  const changeAdminPage = () => {
+    history.push("/admin");
+  };
+
+  useEffect(() => {
+    let user = null;
+    if (localStorage.getItem("user")) {
+      user = JSON.parse(localStorage.getItem("user"));
+    }
+    setUserLogin(user);
+  }, []);
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -140,17 +143,6 @@ export default function Header() {
                 </Link>
                 <Link
                   activeClass="active"
-                  to=""
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                >
-                  <Typography className={classes.textNavLink && classes.hover}>
-                    Tin tức
-                  </Typography>
-                </Link>
-                <Link
-                  activeClass="active"
                   to="application"
                   spy={true}
                   smooth={true}
@@ -162,18 +154,18 @@ export default function Header() {
                 </Link>
               </Toolbar>
               <Toolbar>
-                {username ? (
+                {userLogin ? (
                   <>
                     <NavDropdown
-                      title={username}
+                      title={userLogin.hoTen}
                       show={show}
                       onMouseEnter={showDropdown}
                       onMouseLeave={hideDropdown}
                     >
                       {maLoaiNguoiDung === "QuanTri" ? (
-                        <>
-                          <NavDropdown.Item onClick={changeAdminPage}>Admin</NavDropdown.Item>
-                        </>
+                        <NavDropdown.Item onClick={changeAdminPage}>
+                          Admin
+                        </NavDropdown.Item>
                       ) : null}
                       <NavDropdown.Item onClick={changeInfoPage}>
                         {" "}

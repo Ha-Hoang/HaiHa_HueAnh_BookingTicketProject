@@ -1,6 +1,5 @@
 import { GET_PERSONAL_INFO, UPDATE_INFO } from "../constants/personal-info.const";
 
-
 const initialState = {
     personalInfo: {},
 };
@@ -11,7 +10,8 @@ export const personalInfoReducer = (state = initialState, action) =>{
         case GET_PERSONAL_INFO:
             state.personalInfo = payload;
             return {...state}
-    
+        
+
         default:
             return state;
 

@@ -26,8 +26,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MovieShowTimeList(props) {
   const { lichChieuRap } = props;
+  console.log(lichChieuRap);
   const classes = useStyles();
   const cinemaGroup = useSelector((state) => state.cinema.cinemaGroup);
+  console.log(cinemaGroup);
 
   return (
     <div className={classes.showDetail}>

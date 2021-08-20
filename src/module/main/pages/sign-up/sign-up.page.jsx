@@ -5,6 +5,8 @@ import "./sign-up.styles.scss";
 import { signUpAction } from "../../../../store/actions/auth.action";
 import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
+import Loading from "../../components/loading.component";
+import { Button } from "@material-ui/core";
 const signUpUser = yup.object().shape({
   taiKhoan : yup.string().required("Nhap tai Khoan"),
   matKhau : yup.string().required("Nhap mat khau"),
@@ -19,6 +21,10 @@ class SignUp extends Component {
     this.props.dispatch(signUpAction(value, this.props.history));
   };
   render() {
+    const { loading } = this.props;
+    if (loading) {
+      return <Loading/>;
+    }
     return (
       <section className="registration-form">
         <div className="sign-up">
@@ -34,7 +40,7 @@ class SignUp extends Component {
             }}
             validationSchema={signUpUser}
             onSubmit={this.handleSubmit}
-            render={(props) => (
+            >{(props) => (
               <Form>
                 <div className="registration">
                   <h1 className="registration__name">Đăng kí</h1>
@@ -130,13 +136,13 @@ class SignUp extends Component {
                   </ErrorMessage>
                 </div>
                 <div className="form-group ">
-                  <button
+                  <Button
                   onClick={props.handleSubmit}
-                    type="button"
+                    
                     className="btn btn-block create-account mx-auto mb-3"
                   >
                     Đăng kí
-                  </button>
+                  </Button>
                 </div>
                 <div className="bottom text-center mb-5">
                   <p className="sm-text mx-auto mb-3">
@@ -146,7 +152,7 @@ class SignUp extends Component {
                 </div>
               </Form>
             )}
-          />
+          </Formik>
           
         </div>
       </section>

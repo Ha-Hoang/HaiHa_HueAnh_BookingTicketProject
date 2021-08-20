@@ -52,12 +52,14 @@ class PersonalInfo extends Component {
   handleSubmit = (value) => {
     this.props.dispatch(updateInfoAction(value));
   };
-
+  
   render() {
     const { personal, loading } = this.props;
     const { classes } = this.props;
     const maLoaiNguoiDung = JSON.parse(localStorage.getItem("maLoaiNguoiDung"));
-
+    if (loading) {
+      return <Loading />;
+    }
     return (
       <div className="">
         <Container maxWidth="lg">
@@ -87,7 +89,7 @@ class PersonalInfo extends Component {
             >
               Cập nhật
             </Button>
-            <Modal show={this.state.showModal.show}>
+            <Modal  show={this.state.showModal.show}>
               <ModalHeader>
                 <Typography variant="h4">Cập nhật tài khoản</Typography>
               </ModalHeader>
@@ -207,18 +209,19 @@ class PersonalInfo extends Component {
                     </div>
                     <div style={{float: "right"}} >
                     <Button
-                      onClick={props.handleSubmit}
+                     onClick={() => {
+                        this.handleClose();
+                      }}
                       style={{ margin: "15px" }}
                     >
-                      Lưu
+                      Thoát
                     </Button>
 
                     <Button
-                      onClick={() => {
-                        this.handleClose();
-                      }}
+                     onClick={props.handleSubmit}
+                      
                     >
-                      Thoát
+                      Lưu
                     </Button>
                     </div>
                     
