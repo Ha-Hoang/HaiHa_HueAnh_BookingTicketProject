@@ -1,6 +1,5 @@
-import { getListMovieAPI, getMovieDetailAPI } from "../../api/movie.api";
-import { searchUserAdminAPI } from "../../api/userAdmin.api";
-import { GET_MOVIE_DETAIL, GET_MOVIE_LIST } from "../constants/movie.const";
+import { getListMovieAPI, getMovieDetailAPI, getScheduleInfoAPI } from "../../api/movie.api";
+import { GET_MOVIE_DETAIL, GET_MOVIE_LIST, GET_SCHEDULE_INFO } from "../constants/movie.const";
 import { startLoadingAction, stopLoadingAction } from "./common.action";
 
 export const getMovieListAction = (tenPhim = "") => {
@@ -31,6 +30,27 @@ export const getMovieDetailAction = (maPhim) => {
       const res = await getMovieDetailAPI(maPhim);
       dispatch({
         type: GET_MOVIE_DETAIL,
+        payload: res.data,
+      });
+
+      //stop loading
+      dispatch(stopLoadingAction());
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const getScheduleInfolAction = (maPhim) => {
+  return async (dispatch) => {
+    try {
+      //start loading
+      dispatch(startLoadingAction());
+
+      //tác vụ mất tgian
+      const res = await getScheduleInfoAPI(maPhim);
+      dispatch({
+        type: GET_SCHEDULE_INFO,
         payload: res.data,
       });
 
