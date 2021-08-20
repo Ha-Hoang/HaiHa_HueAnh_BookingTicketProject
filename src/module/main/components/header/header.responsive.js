@@ -177,12 +177,14 @@ export default function HeaderResponsive() {
             </>
           ) : (
             <>
+
               <NavLink to="/signin" exact className={classes.textNavLink}>
                 <Button color="inherit" className={classes.textButton}>
                   <Avatar src="/broken-image.jpg" className={classes.avatar} />
                   Đăng Nhập
                 </Button>
               </NavLink>
+
             </>
           )}
         </div>

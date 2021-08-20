@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import TablePagination from '@material-ui/core/TablePagination'
 import TextField from '@material-ui/core/TextField';
 import Loading from "../../../main/components/loading.component";
-import { deleteUserAction, getListUserAdminAction, searchUserAction } from "../../../../store/actions/userAdmin.action";
+import { deleteUserAction, getListUserAdminAction} from "../../../../store/actions/userAdmin.action";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -59,23 +59,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     maxHeight: 500,
   },
-  rootSearch: {
-    padding: "2px 4px",
-    display: "flex",
-    alignItems: "center",
-    width: "100%",
-    margin: "20px 0",
-  },
-  input: {
-    flex: 1,
-  },
-  iconButton: {
-    padding: 10,
-  },
-  divider: {
-    height: 28,
-    margin: 4,
-  },
+  
 }));
 
 
@@ -111,14 +95,18 @@ export default function UserManagement() {
 
 
   const handleDelete = (taiKhoan) =>{
-      //gọi action
+      
+      if((
+        window.confirm("Bạn có chắc muốn xóa tài khoản " + taiKhoan)
+      ))
+      {
       dispatch(deleteUserAction(taiKhoan));
+      }
                          
   }
 
   const handleChangeSearch = (e) =>{
-    dispatch(searchUserAction(maNhom,e.target.value));
-    console.log(e.target.value);
+    dispatch(getListUserAdminAction(maNhom,e.target.value));
   }
 
   const renderListUser = () => {
@@ -162,8 +150,7 @@ export default function UserManagement() {
         <Button>+Thêm người dùng</Button>
       </NavLink>
       <Paper component="form" className={classes.rootSearch}>
-        <TextField type="search" placeholder="Nhập tài khoản" onChange={handleChangeSearch}/>
-       
+        <TextField type="search" placeholder="Nhập tài khoản..." className={classes.input} onChange={handleChangeSearch}/>
       </Paper>
       <div style={{ display: "flex", marginBottom: "20px" }}>
         <Typography style={{ paddingRight: "20px" }}>Mã nhóm</Typography>
@@ -205,7 +192,7 @@ export default function UserManagement() {
     <TablePagination
         rowsPerPageOptions={[5, 15, 30]}
         component="div"
-         count={row.length}
+        count={row.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}

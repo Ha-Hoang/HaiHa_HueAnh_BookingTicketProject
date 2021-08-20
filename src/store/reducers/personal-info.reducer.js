@@ -1,6 +1,4 @@
 import { GET_PERSONAL_INFO, UPDATE_INFO } from "../constants/personal-info.const";
-import { GET_USER_ADMIN } from "../constants/userAdmin.const";
-
 
 const initialState = {
     personalInfo: {},

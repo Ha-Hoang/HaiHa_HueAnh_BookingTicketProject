@@ -2,6 +2,9 @@ import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import IconButton from "@material-ui/core/IconButton";
+import InputBase from "@material-ui/core/InputBase";
+import SearchIcon from "@material-ui/icons/Search";
 import { Button, TextField } from "@material-ui/core";
 import { getMovieListAction } from "../../../../store/actions/movie.action";
 import { deleteFilmInfoAction } from "../../../../store/actions/filmAdmin.action";
@@ -110,7 +113,7 @@ export default function FilmManagement() {
               onClick={() => {
                 if (
                   window.confirm(
-                    "Bạn có chắc muốn xóa phim " + params.row.tenPhim
+                    "Bạn có chắc muốn xóa phim" + params.row.tenPhim
                   )
                 ) {
                   //gọi action
@@ -121,11 +124,7 @@ export default function FilmManagement() {
               {" "}
               <DeleteIcon />
             </span>
-            <NavLink
-              key={3}
-              to={`/admin/film-management/show-time/${params?.row.maPhim}`}
-              style={{ color: "red" }}
-            >
+            <NavLink key={3} to={`/admin/film-management/show-time/${params?.row.maPhim}`} style={{ color: "red" }}>
               <EventIcon />
             </NavLink>
           </>
@@ -140,9 +139,12 @@ export default function FilmManagement() {
   }, []);
   const rows = useSelector((state) => state.movie.movieList);
 
+
+
   const handleSearch = (e) => {
     dispatch(getMovieListAction(e.target.value))
   };
+
 
   return (
     <div style={{ height: 400, width: "100%" }}>
@@ -151,12 +153,10 @@ export default function FilmManagement() {
         <Button>+Thêm phim</Button>
       </NavLink>
       <Paper component="form" className={classes.rootSearch}>
-        <TextField
-          className={classes.input}
-          type="search"
-          placeholder="Nhập tên phim..."
-          onChange={handleSearch}
-        />
+        <TextField className={classes.input} type="search" placeholder="Nhập tên phim..." />
+        <IconButton className={classes.iconButton} aria-label="search">
+          <SearchIcon />
+        </IconButton>
       </Paper>
       <DataGrid
         rows={rows}

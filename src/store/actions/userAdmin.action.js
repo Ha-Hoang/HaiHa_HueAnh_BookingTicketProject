@@ -1,12 +1,10 @@
-import { addUserAdminAPI, deleteUserAPI, getListUserAdminAPI, getTypeofUserAPI, searchUserAPI } from "../../api/userAdmin.api";
+import { addUserAdminAPI, deleteUserAPI, getListUserAdminAPI} from "../../api/userAdmin.api";
 import { GET_LIST_USER_ADMIN } from "../constants/userAdmin.const";
-import { startLoadingAction, stopLoadingAction } from "./common.action";
-
-export const getListUserAdminAction = (maNhom) => {
+export const getListUserAdminAction = (maNhom,taiKhoan="") => {
   return async (dispatch) => {
     try {
       
-      const res = await getListUserAdminAPI(maNhom);
+      const res = await getListUserAdminAPI(maNhom,taiKhoan);
       dispatch({
         type: GET_LIST_USER_ADMIN,
         payload: res.data,
@@ -37,19 +35,9 @@ export const deleteUserAction = (user) => {
       const res = await deleteUserAPI(user,token);
       alert("Xóa tài khoản thành công !");
       dispatch(getListUserAdminAction())
-      window.location.reload();
-    } catch (error) {
-      console.log(error.response?.data);
-    }
-  };
-};
-
-export const searchUserAction = (maNhom,taiKhoan) => {
-  return async () => {
-    try {
-      const res = await searchUserAPI(maNhom,taiKhoan);
-    } catch (error) {
       
+    } catch (error) {
+      alert(error.response?.data);
     }
   };
 };

@@ -36,17 +36,6 @@ function App() {
     });
   }
 
-  // if(getLocalStorage){
-  //   dispatch(signInAction(SIGN_IN), JSON.parse(getLocalStorage));
-  // }
-  // const dispatch = useDispatch();
-
-  // function getLocal(){
-  //   const getLocalStorage = localStorage.getItem('getLocal');
-  //   if(getLocalStorage){
-  //     return dispatch(signInAction(SIGN_IN), JSON.parse(getLocalStorage));
-  //   }
-  // }
 
   return (
     <>
