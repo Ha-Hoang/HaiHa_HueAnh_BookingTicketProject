@@ -15,7 +15,6 @@ import HeaderResponsive from "./header.responsive";
 
 import { NavDropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { getUserInfoAction } from "../../../../store/actions/user.action";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,12 +60,11 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: "none",
     },
   },
-  
 }));
 
 export default function Header() {
-  const dispatch = useDispatch();
 
+  const [userLogin, setUserLogin] = useState(null);
   const classes = useStyles();
   //Breakpoints
   const theme = useTheme();
@@ -74,14 +72,11 @@ export default function Header() {
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
 
   const history = useHistory();
-
-  
-
-  const username = JSON.parse(localStorage.getItem("hoTen"));
   const maLoaiNguoiDung = JSON.parse(localStorage.getItem("maLoaiNguoiDung"));
 
   const handleLogout = () => {
     localStorage.clear();
+    setUserLogin(null);
     history.push("/");
   };
 
@@ -97,14 +92,17 @@ export default function Header() {
   const changeInfoPage = () => {
     history.push("/personalInfo");
   };
-  const changeAdminPage= () =>{
-    history.push("/admin")
-  }
+  const changeAdminPage = () => {
+    history.push("/admin");
+  };
 
   useEffect(() => {
-    dispatch(getUserInfoAction())
-  }, [])
-
+    let user = null;
+    if (localStorage.getItem("user")) {
+      user = JSON.parse(localStorage.getItem("user"));
+    }
+    setUserLogin(user);
+  }, []);
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -156,18 +154,18 @@ export default function Header() {
                 </Link>
               </Toolbar>
               <Toolbar>
-                {username ? (
+                {userLogin ? (
                   <>
                     <NavDropdown
-                      title={username}
+                      title={userLogin.hoTen}
                       show={show}
                       onMouseEnter={showDropdown}
                       onMouseLeave={hideDropdown}
                     >
                       {maLoaiNguoiDung === "QuanTri" ? (
-                        
-                          <NavDropdown.Item onClick={changeAdminPage}>Admin</NavDropdown.Item>
-                        
+                        <NavDropdown.Item onClick={changeAdminPage}>
+                          Admin
+                        </NavDropdown.Item>
                       ) : null}
                       <NavDropdown.Item onClick={changeInfoPage}>
                         {" "}

@@ -21,7 +21,7 @@ export const signInAction = (user, history) =>{
             history.push("/");
             
         } catch (error) {
-            console.log(error);
+            alert(error.response?.data)
         }
     }
 }
