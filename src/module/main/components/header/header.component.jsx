@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -59,11 +59,10 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: "none",
     },
   },
-  
 }));
 
 export default function Header() {
-
+  const [userLogin, setUserLogin] = useState(null);
   const classes = useStyles();
   //Breakpoints
   const theme = useTheme();
@@ -77,6 +76,7 @@ export default function Header() {
 
   const handleLogout = () => {
     localStorage.clear();
+    setUserLogin(null);
     history.push("/");
   };
 
@@ -92,9 +92,17 @@ export default function Header() {
   const changeInfoPage = () => {
     history.push("/personalInfo");
   };
-  const changeAdminPage= () =>{
-    history.push("/admin")
-  }
+  const changeAdminPage = () => {
+    history.push("/admin");
+  };
+
+  useEffect(() => {
+    let user = null;
+    if (localStorage.getItem("user")) {
+      user = JSON.parse(localStorage.getItem("user"));
+    }
+    setUserLogin(user);
+  }, []);
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -146,18 +154,18 @@ export default function Header() {
                 </Link>
               </Toolbar>
               <Toolbar>
-                {username ? (
+                {userLogin ? (
                   <>
                     <NavDropdown
-                      title={username}
+                      title={userLogin.taiKhoan}
                       show={show}
                       onMouseEnter={showDropdown}
                       onMouseLeave={hideDropdown}
                     >
                       {maLoaiNguoiDung === "QuanTri" ? (
-                        
-                          <NavDropdown.Item onClick={changeAdminPage}>Admin</NavDropdown.Item>
-                        
+                        <NavDropdown.Item onClick={changeAdminPage}>
+                          Admin
+                        </NavDropdown.Item>
                       ) : null}
                       <NavDropdown.Item onClick={changeInfoPage}>
                         {" "}
