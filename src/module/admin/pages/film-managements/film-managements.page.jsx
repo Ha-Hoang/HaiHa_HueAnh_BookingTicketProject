@@ -124,7 +124,11 @@ export default function FilmManagement() {
               {" "}
               <DeleteIcon />
             </span>
-            <NavLink key={3} to={`/admin/film-management/show-time/${params?.row.maPhim}`} style={{ color: "red" }}>
+            <NavLink
+              key={3}
+              to={`/admin/film-management/show-time/${params?.row.maPhim}`}
+              style={{ color: "red" }}
+            >
               <EventIcon />
             </NavLink>
           </>
@@ -139,12 +143,9 @@ export default function FilmManagement() {
   }, []);
   const rows = useSelector((state) => state.movie.movieList);
 
-
-
   const handleSearch = (e) => {
-    dispatch(getMovieListAction(e.target.value))
+    dispatch(getMovieListAction(e.target.value));
   };
-
 
   return (
     <div style={{ height: 400, width: "100%" }}>
@@ -153,10 +154,12 @@ export default function FilmManagement() {
         <Button>+Thêm phim</Button>
       </NavLink>
       <Paper component="form" className={classes.rootSearch}>
-        <TextField className={classes.input} type="search" placeholder="Nhập tên phim..." />
-        <IconButton className={classes.iconButton} aria-label="search">
-          <SearchIcon />
-        </IconButton>
+        <TextField
+          className={classes.input}
+          type="search"
+          placeholder="Nhập tên phim..."
+          onChange={handleSearch}
+        />
       </Paper>
       <DataGrid
         rows={rows}

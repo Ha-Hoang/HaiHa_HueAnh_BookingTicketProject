@@ -6,7 +6,7 @@ function MainTemplate(props) {
   return (
     <>
       <Header />
-      <main>{props.children}</main>
+      <main style={{backgroundColor: "white"}}>{props.children}</main>
       <Footer />
     </>
   );

@@ -53,7 +53,8 @@ export const postBookingInfoAction = (maLichChieu, danhSachVe) => {
   return async (dispatch) => {
     try {
       const res = await postBookingInfoAPI(maLichChieu, danhSachVe);
-      alert(res.data);
+      console.log(res.data);
+      alert("Đặt vé thành công !")
     } catch (err) {
       console.log(err);
     }
