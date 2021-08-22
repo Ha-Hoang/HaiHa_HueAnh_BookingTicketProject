@@ -87,3 +87,19 @@
   }
 }
 
+.home-tool {
+  max-width: 1000px;
+  margin: auto;
+  border: 1px solid transparent;
+  background-color: #fff;
+  transform: translate(0, -55%);
+  border-radius: 5px;
+  @media screen and (max-width: 992px) {
+    transform: translate(0, 10%);
+    max-width: 800px;
+  }
+  @media screen and (max-width: 992px) {
+    transform: 0;
+    margin-top: 20px;
+  }
+}

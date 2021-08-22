@@ -143,7 +143,10 @@ export default class Home extends Component {
             </button>
           </div>
         </div>
-        <section style={{ maxWidth: "1000px", margin: "auto", paddingTop: "50px" }}>
+        <section
+          className="home-tool"
+          style={{ boxShadow: "0 0 10px rgb(0 0 0 / 30%)" }}
+        >
           <HomeTool />
         </section>
         <section>

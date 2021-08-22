@@ -57,7 +57,6 @@ export default function HomeTool(props) {
   const [valueMovie, setValueMovie] = useState("");
   const [valueCinema, setValueCinema] = useState("");
   const [valueDate, setValueDate] = useState("");
-  const [valueTime, setValueTime] = useState("");
 
   const [state, setState] = useState({
     movie: [],
@@ -119,10 +118,6 @@ export default function HomeTool(props) {
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const handleTimeChange = (e) => {
-    setValueTime(e.target.value);
   };
 
   return (
@@ -202,7 +197,7 @@ export default function HomeTool(props) {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={12} sm={2}>
+        <Grid item xs={12} sm={3} style={{padding: "10px"}}>
           <Button className={classes.btnBuyTicket} disabled>Mua vé</Button>
         </Grid>
       </Grid>
