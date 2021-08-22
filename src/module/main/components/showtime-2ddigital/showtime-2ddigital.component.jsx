@@ -8,6 +8,10 @@ const useStyles = makeStyles((theme) => ({
   coverText: {
     padding: "5px",
     display: "inline-block",
+    border: "1px solid transparent",
+    backgroundColor: "#efefef",
+    borderRadius: "10px",
+    margin: "0 5px",
   },
   textTime: {
     color: "#43a047",
@@ -24,11 +28,11 @@ export default function ShowTime2dDigital(props) {
 
   return lichChieu.map((time, index) => {
     return (
-        <Typography key={index} className={classes.coverText} variant="h5">
-          <Link to="/" className={classes.textTime}>
-            {Format("hh:mm", new Date(time.ngayChieuGioChieu))}
-          </Link>
-        </Typography>
+      <Typography key={index} className={classes.coverText} variant="h5">
+        <Link to="/" className={classes.textTime}>
+          {Format("dd/MM hh:mm", new Date(time.ngayChieuGioChieu))}
+        </Link>
+      </Typography>
     );
   });
 }

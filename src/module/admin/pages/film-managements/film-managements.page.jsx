@@ -113,7 +113,7 @@ export default function FilmManagement() {
               onClick={() => {
                 if (
                   window.confirm(
-                    "Bạn có chắc muốn xóa phim" + params.row.tenPhim
+                    "Bạn có chắc muốn xóa phim " + params.row.tenPhim
                   )
                 ) {
                   //gọi action

@@ -37,7 +37,7 @@ export default function Day(props) {
     "Thứ 7",
   ];
 
-  for (let i = 0; i <= 13; i++) {
+  for (let i = 0; i <= 6; i++) {
     let date = new Date(Date.now() + 1000 * 60 * 60 * 24 * i);
     daysofWeek.push(date);
   }
@@ -50,7 +50,6 @@ export default function Day(props) {
         onClick={() => props.handleChoiceDay(day.getDay())}
       >
         <p className={classes.pDay}>{days[day.getDay()]}</p>
-        <p className={classes.pDate}>{day.getDate()}</p>
       </li>
     );
   });
