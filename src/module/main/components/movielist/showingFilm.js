@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ShowingFilm(props) {
   const history = useHistory();
   const { movie } = props;
+  console.log(movie);
 
   const classes = useStyles();
 

@@ -23,6 +23,7 @@ export default class Home extends Component {
       arrowArray: arrow,
       open: false,
     };
+    console.log(this.state.slideArray);
   }
   next() {
     this.slider.slickNext();

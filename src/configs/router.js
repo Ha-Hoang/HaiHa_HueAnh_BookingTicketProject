@@ -7,7 +7,6 @@ import UserManagement from "../module/admin/pages/user-managements/user-manageme
 
 import PersonalInfo from "../module/main/pages/personal-info/personal-info.page";
 import BookingTicket from "../module/main/pages/booking-ticket/booking-ticket.page";
-import ShowtimeManagement from "../module/admin/pages/film-managements/showtime-film/showtime-film.page";
 import FilmManagement from "../module/admin/pages/film-managements/film-managements.page";
 import AddFilm from "../module/admin/pages/film-managements/add-film/add-film.page";
 import EditFilm from "../module/admin/pages/film-managements/edit-film/edit-film.page";
@@ -89,5 +88,4 @@ export const routerAdmin = [
     exact: true,
     Component: EditUser,
   },
- 
 ];

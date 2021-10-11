@@ -15,6 +15,7 @@ import HeaderResponsive from "./header.responsive";
 
 import { NavDropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { NavHashLink } from "react-router-hash-link";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,7 +64,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header() {
-
   const [userLogin, setUserLogin] = useState(null);
   const classes = useStyles();
   //Breakpoints
@@ -119,39 +119,29 @@ export default function Header() {
                 />
               </NavLink>
               <Toolbar className={classes.title}>
-                <Link
-                  activeClass="active"
-                  to="movieList"
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                >
+                <NavHashLink to="/#movieList" smooth style={{ color: "#000" }}>
                   <Typography className={classes.textNavLink && classes.hover}>
                     Lịch chiếu
                   </Typography>
-                </Link>
-                <Link
-                  activeClass="active"
-                  to="cinemaGroup"
-                  spy={true}
-                  smooth={true}
-                  duration={500}
+                </NavHashLink>
+                <NavHashLink
+                  to="/#cinemaGroup"
+                  smooth
+                  style={{ color: "#000" }}
                 >
                   <Typography className={classes.textNavLink && classes.hover}>
                     Cụm rạp
                   </Typography>
-                </Link>
-                <Link
-                  activeClass="active"
-                  to="application"
-                  spy={true}
-                  smooth={true}
-                  duration={500}
+                </NavHashLink>
+                <NavHashLink
+                  to="/#application"
+                  smooth
+                  style={{ color: "#000" }}
                 >
                   <Typography className={classes.textNavLink && classes.hover}>
                     Ứng dụng
                   </Typography>
-                </Link>
+                </NavHashLink>
               </Toolbar>
               <Toolbar>
                 {userLogin ? (

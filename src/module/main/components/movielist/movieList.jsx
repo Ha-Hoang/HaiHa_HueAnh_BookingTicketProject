@@ -134,6 +134,7 @@ export default function MovieList() {
   }, []);
 
   const movieList = useSelector((state) => state.movie.movieList);
+  console.log(movieList);
   const loading = useSelector((state) => state.common.loading);
 
   const renderMovieList = () => {

@@ -14,6 +14,7 @@ export const signInAction = (user, history) =>{
             localStorage.setItem("maLoaiNguoiDung", JSON.stringify(maLoaiNguoiDung));
             localStorage.setItem("token", JSON.stringify(accessToken));
             localStorage.setItem("user",JSON.stringify(res.data));
+            console.log("user", userLogin);
             dispatch({
                 type: SIGN_IN,
                 payload: userLogin,

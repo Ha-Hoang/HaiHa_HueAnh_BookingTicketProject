@@ -15,7 +15,6 @@ import { ThemeProvider } from "@material-ui/core";
 import { Provider } from "react-redux";
 import { store } from "./store/config-store";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import MomentUtils from '@date-io/moment';
 import DateFnsUtils from '@date-io/date-fns';
 
 ReactDOM.render(
