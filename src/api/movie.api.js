@@ -4,12 +4,12 @@ import { baseUrl, GET } from "../configs/api";
 export const getListMovieAPI = (tenPhim = "") => {
   if (tenPhim.trim() !== "") {
     return axios({
-      url: `${baseUrl}/QuanLyPhim/LayDanhSachPhim?maNhom=GP01&tenPhim=${tenPhim}`,
+      url: `${baseUrl}/QuanLyPhim/LayDanhSachPhim?maNhom=GP02&tenPhim=${tenPhim}`,
       method: GET,
     });
   }
   return axios({
-    url: `${baseUrl}/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`,
+    url: `${baseUrl}/QuanLyPhim/LayDanhSachPhim?maNhom=GP02`,
     method: GET,
   });
 };

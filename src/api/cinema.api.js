@@ -17,7 +17,7 @@ export const getCinemaGroupAPI = (maHeThongRap) => {
 
 export const getCinemaDetailAPI = () => {
   return axios({
-    url: `${baseUrl}/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP01`,
+    url: `${baseUrl}/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP02`,
     method: GET,
   });
 };
